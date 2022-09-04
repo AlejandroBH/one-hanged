@@ -1,8 +1,8 @@
 const entry = document.querySelector('body');
 const divHiddenWord = document.getElementById('hidden-word');
 const divWrongWord = document.getElementById('wrong-word');
+const btnNewGame = document.getElementById('btn-new-game');
 
-let words = ['raton','perro','gato','cerdo'];
 let selectedWord;
 let arrayWord = [];
 let keyPressed;
@@ -11,6 +11,12 @@ let lettersUsed = [];
 let fail = 0;
 
 entry.addEventListener('keypress',captureKey);
+btnNewGame.addEventListener('click', newGame);
+
+// Esta funcion reinicia el juego y genera una nueva palabra aleatoria
+function newGame(){
+    location.reload();
+}
 
 // Esta funcion genera una palabra aleatoria y asigna un espacio vacio para cada letra
 function createWord(){
@@ -61,7 +67,6 @@ function checkWord(){
 
 // Esta funcion muestra la imagen del ahorcado segun el parametro que se le envie
 function hangedCharacter(condition){
-
     for(let i=0; i<8; i++){
         document.querySelector('.char-' + i).style.display = 'none';
     }
