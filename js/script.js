@@ -25,7 +25,7 @@ function createWord(){
     arrayWord = selectedWord.split('');
 
     for(let i=0; i<arrayWord.length; i++){
-        let div = document.createElement('div');
+        const div = document.createElement('div');
         div.setAttribute('id', i);
         div.textContent = '.';
         divHiddenWord.appendChild(div);
@@ -35,7 +35,7 @@ function createWord(){
 // Esta funcion captura la tecla presionada a travez de un teclado fisico
 // y evita que la misma tecla sea presionada 2 veces.
 function captureKey(event){
-    let validation = 'QWERTYUIOPASDFGHJKLÑZXCVBNMqwertyuiopasdfghjklñzxcvbnm';
+    const validation = 'QWERTYUIOPASDFGHJKLÑZXCVBNMqwertyuiopasdfghjklñzxcvbnm';
     keyPressed = event.key.toUpperCase();
 
     if(validation.includes(event.key) && !lettersUsed.toString().includes(keyPressed)){
@@ -54,11 +54,11 @@ function checkWord(){
             }
         }
     }else{
-        let div = document.createElement('div');
+        const div = document.createElement('div');
         div.textContent = keyPressed;
         divWrongWord.appendChild(div);
 
-        if(fail < 8){
+        if(fail < 7){
             fail++;
             hangedCharacter(fail);
         }
@@ -67,21 +67,8 @@ function checkWord(){
 
 // Esta funcion muestra la imagen del ahorcado segun el parametro que se le envie
 function hangedCharacter(condition){
-    for(let i=0; i<8; i++){
-        document.querySelector('.char-' + i).style.display = 'none';
-    }
-
-    switch(condition){
-        case 0:document.querySelector('.char-0').style.display = 'block'; break;
-        case 1:document.querySelector('.char-1').style.display = 'block'; break;
-        case 2:document.querySelector('.char-2').style.display = 'block'; break;
-        case 3:document.querySelector('.char-3').style.display = 'block'; break;
-        case 4:document.querySelector('.char-4').style.display = 'block'; break;
-        case 5:document.querySelector('.char-5').style.display = 'block'; break;
-        case 6:document.querySelector('.char-6').style.display = 'block'; break;
-        case 7:document.querySelector('.char-7').style.display = 'block'; break;
-       default:document.querySelector('.char-7').style.display = 'block'; break;
-    }
+    const getImage = document.querySelector('#hanged-character img');
+    getImage.setAttribute('src','img/assets/hanget_'+ condition +'.svg');
 }
 
 hangedCharacter(0);
