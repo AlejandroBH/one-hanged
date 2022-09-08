@@ -82,6 +82,37 @@ function pressB(){keyPressed = 'B'; checkWord(); keyB.disabled = true;}
 function pressN(){keyPressed = 'N'; checkWord(); keyN.disabled = true;}
 function pressM(){keyPressed = 'M'; checkWord(); keyM.disabled = true;}
 
+// Desactiva tecla de teclado virtual luego de ser presionada, mediante teclado fisico
+function disableKey(){
+    if(keyPressed == 'Q'){keyQ.disabled = true;}
+    if(keyPressed == 'W'){keyW.disabled = true;}
+    if(keyPressed == 'E'){keyE.disabled = true;}
+    if(keyPressed == 'R'){keyR.disabled = true;}
+    if(keyPressed == 'T'){keyT.disabled = true;}
+    if(keyPressed == 'Y'){keyY.disabled = true;}
+    if(keyPressed == 'U'){keyU.disabled = true;}
+    if(keyPressed == 'I'){keyI.disabled = true;}
+    if(keyPressed == 'O'){keyO.disabled = true;}
+    if(keyPressed == 'P'){keyP.disabled = true;}
+    if(keyPressed == 'A'){keyA.disabled = true;}
+    if(keyPressed == 'S'){keyS.disabled = true;}
+    if(keyPressed == 'D'){keyD.disabled = true;}
+    if(keyPressed == 'F'){keyF.disabled = true;}
+    if(keyPressed == 'G'){keyG.disabled = true;}
+    if(keyPressed == 'H'){keyH.disabled = true;}
+    if(keyPressed == 'J'){keyJ.disabled = true;}
+    if(keyPressed == 'K'){keyK.disabled = true;}
+    if(keyPressed == 'L'){keyL.disabled = true;}
+    if(keyPressed == 'Ñ'){keyÑ.disabled = true;}
+    if(keyPressed == 'Z'){keyZ.disabled = true;}
+    if(keyPressed == 'X'){keyX.disabled = true;}
+    if(keyPressed == 'C'){keyC.disabled = true;}
+    if(keyPressed == 'V'){keyV.disabled = true;}
+    if(keyPressed == 'B'){keyB.disabled = true;}
+    if(keyPressed == 'N'){keyN.disabled = true;}
+    if(keyPressed == 'M'){keyM.disabled = true;}
+}
+
 // Esta funcion bloquea el teclado virtual cuando el juego termina
 function keyboardLock(){
     keyQ.disabled = true;

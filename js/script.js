@@ -39,6 +39,8 @@ function captureKey(event){
     const validation = 'QWERTYUIOPASDFGHJKLÑZXCVBNMqwertyuiopasdfghjklñzxcvbnm';
     keyPressed = event.key.toUpperCase();
 
+    disableKey();
+
     if(validation.includes(event.key) && !lettersUsed.toString().includes(keyPressed) && fail < 7 && win < selectedWord.length){
         lettersUsed.push(keyPressed);
         checkWord();
