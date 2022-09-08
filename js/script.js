@@ -10,7 +10,7 @@ let lettersUsed = [];
 let fail = 0;
 let win = 0;
 
-entry.addEventListener('keypress',captureKey);
+entry.addEventListener('keypress', captureKey);
 btnNewGame.addEventListener('click', newGame);
 
 // Esta funcion reinicia el juego y genera una nueva palabra aleatoria
@@ -39,7 +39,7 @@ function captureKey(event){
     const validation = 'QWERTYUIOPASDFGHJKLÑZXCVBNMqwertyuiopasdfghjklñzxcvbnm';
     keyPressed = event.key.toUpperCase();
 
-    if(validation.includes(event.key) && !lettersUsed.toString().includes(keyPressed) && fail <= 7 && win < selectedWord.length){
+    if(validation.includes(event.key) && !lettersUsed.toString().includes(keyPressed) && fail < 7 && win < selectedWord.length){
         lettersUsed.push(keyPressed);
         checkWord();
     }
@@ -73,9 +73,11 @@ function checkWord(){
 function endGameMsg(){
     if(fail == 7){
         console.log('perdiste');
+        keyboardLock();
     }
     if(win == selectedWord.length){
         console.log('ganaste');
+        keyboardLock();
     }
 }
 
