@@ -7,8 +7,8 @@ let selectedWord;
 let arrayWord = [];
 let keyPressed;
 let lettersUsed = [];
-
 let fail = 0;
+let win = 0;
 
 entry.addEventListener('keypress',captureKey);
 btnNewGame.addEventListener('click', newGame);
@@ -34,11 +34,12 @@ function createWord(){
 
 // Esta funcion captura la tecla presionada a travez de un teclado fisico
 // y evita que la misma tecla sea presionada 2 veces.
+// Tambien sirve para bloquear las teclas cuando el juego finaliza.
 function captureKey(event){
     const validation = 'QWERTYUIOPASDFGHJKLÑZXCVBNMqwertyuiopasdfghjklñzxcvbnm';
     keyPressed = event.key.toUpperCase();
 
-    if(validation.includes(event.key) && !lettersUsed.toString().includes(keyPressed)){
+    if(validation.includes(event.key) && !lettersUsed.toString().includes(keyPressed) && fail <= 7 && win < selectedWord.length){
         lettersUsed.push(keyPressed);
         checkWord();
     }
@@ -51,6 +52,8 @@ function checkWord(){
             if(arrayWord[i]==keyPressed){
                 let found = i;
                 document.getElementById(found).innerHTML = keyPressed;
+                win++;
+                endGameMsg();
             }
         }
     }else{
@@ -61,7 +64,18 @@ function checkWord(){
         if(fail < 7){
             fail++;
             hangedCharacter(fail);
+            endGameMsg();
         }
+    }
+}
+
+// Esta funcion muestra mensaje si gano o perdio
+function endGameMsg(){
+    if(fail == 7){
+        console.log('perdiste');
+    }
+    if(win == selectedWord.length){
+        console.log('ganaste');
     }
 }
 
