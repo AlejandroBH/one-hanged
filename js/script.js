@@ -55,6 +55,7 @@ function checkWord(){
                 let found = i;
                 document.getElementById(found).innerHTML = keyPressed;
                 win++;
+                document.querySelector('.btn-'+ keyPressed).style.backgroundColor = "green";
                 endGameMsg();
             }
         }
@@ -66,6 +67,7 @@ function checkWord(){
         if(fail < 7){
             fail++;
             hangedCharacter(fail);
+            document.querySelector('.btn-'+ keyPressed).style.backgroundColor = "red";
             endGameMsg();
         }
     }
