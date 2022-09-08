@@ -54,33 +54,33 @@ keyB.addEventListener('click', pressB);
 keyN.addEventListener('click', pressN);
 keyM.addEventListener('click', pressM);
 
-function pressQ(){keyPressed = 'Q'; checkWord(); keyQ.disabled = true;}
-function pressW(){keyPressed = 'W'; checkWord(); keyW.disabled = true;}
-function pressE(){keyPressed = 'E'; checkWord(); keyE.disabled = true;}
-function pressR(){keyPressed = 'R'; checkWord(); keyR.disabled = true;}
-function pressT(){keyPressed = 'T'; checkWord(); keyT.disabled = true;}
-function pressY(){keyPressed = 'Y'; checkWord(); keyY.disabled = true;}
-function pressU(){keyPressed = 'U'; checkWord(); keyU.disabled = true;}
-function pressI(){keyPressed = 'I'; checkWord(); keyI.disabled = true;}
-function pressO(){keyPressed = 'O'; checkWord(); keyO.disabled = true;}
-function pressP(){keyPressed = 'P'; checkWord(); keyP.disabled = true;}
-function pressA(){keyPressed = 'A'; checkWord(); keyA.disabled = true;}
-function pressS(){keyPressed = 'S'; checkWord(); keyS.disabled = true;}
-function pressD(){keyPressed = 'D'; checkWord(); keyD.disabled = true;}
-function pressF(){keyPressed = 'F'; checkWord(); keyF.disabled = true;}
-function pressG(){keyPressed = 'G'; checkWord(); keyG.disabled = true;}
-function pressH(){keyPressed = 'H'; checkWord(); keyH.disabled = true;}
-function pressJ(){keyPressed = 'J'; checkWord(); keyJ.disabled = true;}
-function pressK(){keyPressed = 'K'; checkWord(); keyK.disabled = true;}
-function pressL(){keyPressed = 'L'; checkWord(); keyL.disabled = true;}
-function pressÑ(){keyPressed = 'Ñ'; checkWord(); keyÑ.disabled = true;}
-function pressZ(){keyPressed = 'Z'; checkWord(); keyZ.disabled = true;}
-function pressX(){keyPressed = 'X'; checkWord(); keyX.disabled = true;}
-function pressC(){keyPressed = 'C'; checkWord(); keyC.disabled = true;}
-function pressV(){keyPressed = 'V'; checkWord(); keyV.disabled = true;}
-function pressB(){keyPressed = 'B'; checkWord(); keyB.disabled = true;}
-function pressN(){keyPressed = 'N'; checkWord(); keyN.disabled = true;}
-function pressM(){keyPressed = 'M'; checkWord(); keyM.disabled = true;}
+function pressQ(){keyPressed = 'Q'; lettersUsed.push(keyPressed); checkWord(); keyQ.disabled = true;}
+function pressW(){keyPressed = 'W'; lettersUsed.push(keyPressed); checkWord(); keyW.disabled = true;}
+function pressE(){keyPressed = 'E'; lettersUsed.push(keyPressed); checkWord(); keyE.disabled = true;}
+function pressR(){keyPressed = 'R'; lettersUsed.push(keyPressed); checkWord(); keyR.disabled = true;}
+function pressT(){keyPressed = 'T'; lettersUsed.push(keyPressed); checkWord(); keyT.disabled = true;}
+function pressY(){keyPressed = 'Y'; lettersUsed.push(keyPressed); checkWord(); keyY.disabled = true;}
+function pressU(){keyPressed = 'U'; lettersUsed.push(keyPressed); checkWord(); keyU.disabled = true;}
+function pressI(){keyPressed = 'I'; lettersUsed.push(keyPressed); checkWord(); keyI.disabled = true;}
+function pressO(){keyPressed = 'O'; lettersUsed.push(keyPressed); checkWord(); keyO.disabled = true;}
+function pressP(){keyPressed = 'P'; lettersUsed.push(keyPressed); checkWord(); keyP.disabled = true;}
+function pressA(){keyPressed = 'A'; lettersUsed.push(keyPressed); checkWord(); keyA.disabled = true;}
+function pressS(){keyPressed = 'S'; lettersUsed.push(keyPressed); checkWord(); keyS.disabled = true;}
+function pressD(){keyPressed = 'D'; lettersUsed.push(keyPressed); checkWord(); keyD.disabled = true;}
+function pressF(){keyPressed = 'F'; lettersUsed.push(keyPressed); checkWord(); keyF.disabled = true;}
+function pressG(){keyPressed = 'G'; lettersUsed.push(keyPressed); checkWord(); keyG.disabled = true;}
+function pressH(){keyPressed = 'H'; lettersUsed.push(keyPressed); checkWord(); keyH.disabled = true;}
+function pressJ(){keyPressed = 'J'; lettersUsed.push(keyPressed); checkWord(); keyJ.disabled = true;}
+function pressK(){keyPressed = 'K'; lettersUsed.push(keyPressed); checkWord(); keyK.disabled = true;}
+function pressL(){keyPressed = 'L'; lettersUsed.push(keyPressed); checkWord(); keyL.disabled = true;}
+function pressÑ(){keyPressed = 'Ñ'; lettersUsed.push(keyPressed); checkWord(); keyÑ.disabled = true;}
+function pressZ(){keyPressed = 'Z'; lettersUsed.push(keyPressed); checkWord(); keyZ.disabled = true;}
+function pressX(){keyPressed = 'X'; lettersUsed.push(keyPressed); checkWord(); keyX.disabled = true;}
+function pressC(){keyPressed = 'C'; lettersUsed.push(keyPressed); checkWord(); keyC.disabled = true;}
+function pressV(){keyPressed = 'V'; lettersUsed.push(keyPressed); checkWord(); keyV.disabled = true;}
+function pressB(){keyPressed = 'B'; lettersUsed.push(keyPressed); checkWord(); keyB.disabled = true;}
+function pressN(){keyPressed = 'N'; lettersUsed.push(keyPressed); checkWord(); keyN.disabled = true;}
+function pressM(){keyPressed = 'M'; lettersUsed.push(keyPressed); checkWord(); keyM.disabled = true;}
 
 // Desactiva tecla de teclado virtual luego de ser presionada, mediante teclado fisico
 function disableKey(){
