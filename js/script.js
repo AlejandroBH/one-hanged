@@ -1,12 +1,12 @@
 const entry = document.querySelector('body');
 const divHiddenWord = document.getElementById('hidden-word');
-const divWrongWord = document.getElementById('wrong-word');
 const btnNewGame = document.getElementById('btn-new-game');
 const viewKeyboard = document.getElementById('virtual-keyboard');
 const alertWin = document.querySelector('.alert-win');
 const alertFail = document.querySelector('.alert-fail');
 const alertSecretWord = document.getElementById('alert-secret-word');
 const alertPoints = document.getElementById('alert-points');
+const score = document.querySelector('.accumulated-points');
 
 let selectedWord;
 let arrayWord = [];
@@ -44,6 +44,7 @@ function newGame(){
     createWord();
     console.log(selectedWord);
     console.log(points);
+    score.innerHTML = points;
 }
 
 // Esta funcion elimina los elementos div creados a travez de js
@@ -100,10 +101,6 @@ function checkWord(){
             }
         }
     }else{
-        const div = document.createElement('div');
-        div.textContent = keyPressed;
-        divWrongWord.appendChild(div);
-
         if(fail < 7){
             fail++;
             hangedCharacter(fail);
@@ -126,7 +123,7 @@ function endGameMsg(){
     if(win == selectedWord.length){
         complete = true;
         points = points + selectedWord.length;
-        alertPoints.innerHTML = points;
+        alertPoints.innerHTML = selectedWord.length;
         alertWin.style.display = 'block';
         keyboardLock();
     }
