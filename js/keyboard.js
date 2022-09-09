@@ -141,5 +141,63 @@ function keyboardLock(){
     keyV.disabled = true;
     keyB.disabled = true;
     keyN.disabled = true;
-    keyM.disabled = true;    
+    keyM.disabled = true;
+}
+
+// Esta funcion desbloquea el teclado virtual cuando se inicia un nuevo juego
+function keyboardUnlock(){
+    keyQ.disabled = false;
+    keyW.disabled = false;
+    keyE.disabled = false;
+    keyR.disabled = false;
+    keyT.disabled = false;
+    keyY.disabled = false;
+    keyU.disabled = false;
+    keyI.disabled = false;
+    keyO.disabled = false;
+    keyP.disabled = false;
+    keyA.disabled = false;
+    keyS.disabled = false;
+    keyD.disabled = false;
+    keyF.disabled = false;
+    keyG.disabled = false;
+    keyH.disabled = false;
+    keyJ.disabled = false;
+    keyK.disabled = false;
+    keyL.disabled = false;
+    keyÑ.disabled = false;
+    keyZ.disabled = false;
+    keyX.disabled = false;
+    keyC.disabled = false;
+    keyV.disabled = false;
+    keyB.disabled = false;
+    keyN.disabled = false;
+    keyM.disabled = false;
+    keyQ.removeAttribute('style');
+    keyW.removeAttribute('style');
+    keyE.removeAttribute('style');
+    keyR.removeAttribute('style');
+    keyT.removeAttribute('style');
+    keyY.removeAttribute('style');
+    keyU.removeAttribute('style');
+    keyI.removeAttribute('style');
+    keyO.removeAttribute('style');
+    keyP.removeAttribute('style');
+    keyA.removeAttribute('style');
+    keyS.removeAttribute('style');
+    keyD.removeAttribute('style');
+    keyF.removeAttribute('style');
+    keyG.removeAttribute('style');
+    keyH.removeAttribute('style');
+    keyJ.removeAttribute('style');
+    keyK.removeAttribute('style');
+    keyL.removeAttribute('style');
+    keyÑ.removeAttribute('style');
+    keyZ.removeAttribute('style');
+    keyX.removeAttribute('style');
+    keyC.removeAttribute('style');
+    keyV.removeAttribute('style');
+    keyB.removeAttribute('style');
+    keyN.removeAttribute('style');
+    keyM.removeAttribute('style');
 }

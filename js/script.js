@@ -15,6 +15,7 @@ let lettersUsed = [];
 let fail = 0;
 let win = 0;
 let points = 0;
+let complete = false;
 
 viewKeyboard.style.display = 'block';
 alertWin.style.display = 'none';
@@ -25,7 +26,33 @@ btnNewGame.addEventListener('click', newGame);
 
 // Esta funcion reinicia el juego y genera una nueva palabra aleatoria
 function newGame(){
-    location.reload();
+    lettersUsed = [];
+    fail = 0;
+    win = 0;
+
+    if(complete == false){
+        points = 0;
+    }
+
+    complete = false;
+
+    removeWordDiv();
+    hangedCharacter(0);
+    alertWin.style.display = 'none';
+    alertFail.style.display = 'none';
+    keyboardUnlock();
+    createWord();
+    console.log(selectedWord);
+    console.log(points);
+}
+
+// Esta funcion elimina los elementos div creados a travez de js
+function removeWordDiv(){
+    arrayWord = [];
+    for(let i=0; i<selectedWord.length; i++){
+        let removeDivHidden = document.getElementById(i);
+        divHiddenWord.removeChild(removeDivHidden);
+    }
 }
 
 // Esta funcion genera una palabra aleatoria y asigna un espacio vacio para cada letra
@@ -64,10 +91,9 @@ function checkWord(){
         for(let i=0; i<arrayWord.length; i++){
             if(arrayWord[i]==keyPressed){
                 let found = i;
+                win++;
                 document.getElementById(found).innerHTML = keyPressed;
                 document.getElementById(found).removeAttribute('class','hidde')
-                win++;
-                points++;
                 document.querySelector('.btn-'+ keyPressed).style.backgroundColor = "green";
                 document.querySelector('.btn-'+ keyPressed).style.color = "white";
                 endGameMsg();
@@ -91,11 +117,15 @@ function checkWord(){
 // Esta funcion muestra mensaje si gano o perdio
 function endGameMsg(){
     if(fail == 7){
+        complete = false;
+        points = 0;
         alertSecretWord.innerHTML = selectedWord;
         alertFail.style.display = 'block';
         keyboardLock();
     }
     if(win == selectedWord.length){
+        complete = true;
+        points = points + selectedWord.length;
         alertPoints.innerHTML = points;
         alertWin.style.display = 'block';
         keyboardLock();
@@ -108,7 +138,6 @@ function hangedCharacter(condition){
     getImage.setAttribute('src','img/assets/hanget_'+ condition +'.svg');
 }
 
-hangedCharacter(0); //default 0
-
+hangedCharacter(0);
 createWord();
-console.log(selectedWord);
+console.log(selectedWord)
