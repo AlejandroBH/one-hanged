@@ -5,6 +5,8 @@ const btnNewGame = document.getElementById('btn-new-game');
 const viewKeyboard = document.getElementById('virtual-keyboard');
 const alertWin = document.querySelector('.alert-win');
 const alertFail = document.querySelector('.alert-fail');
+const alertSecretWord = document.getElementById('alert-secret-word');
+const alertPoints = document.getElementById('alert-points');
 
 let selectedWord;
 let arrayWord = [];
@@ -12,6 +14,7 @@ let keyPressed;
 let lettersUsed = [];
 let fail = 0;
 let win = 0;
+let points = 0;
 
 viewKeyboard.style.display = 'block';
 alertWin.style.display = 'none';
@@ -64,6 +67,7 @@ function checkWord(){
                 document.getElementById(found).innerHTML = keyPressed;
                 document.getElementById(found).removeAttribute('class','hidde')
                 win++;
+                points++;
                 document.querySelector('.btn-'+ keyPressed).style.backgroundColor = "green";
                 document.querySelector('.btn-'+ keyPressed).style.color = "white";
                 endGameMsg();
@@ -87,10 +91,12 @@ function checkWord(){
 // Esta funcion muestra mensaje si gano o perdio
 function endGameMsg(){
     if(fail == 7){
+        alertSecretWord.innerHTML = selectedWord;
         alertFail.style.display = 'block';
         keyboardLock();
     }
     if(win == selectedWord.length){
+        alertPoints.innerHTML = points;
         alertWin.style.display = 'block';
         keyboardLock();
     }

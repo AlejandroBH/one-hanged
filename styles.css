@@ -13,7 +13,7 @@ body{
 }
 
 #box-alert{
-    position: fixed;
+    position: absolute;
     top: 150px;
     width: 100%;
     background: transparent;
@@ -38,7 +38,15 @@ body{
     background-color: transparent;
     font-size: 32px;
     color: #000000;
+}
+
+.alert-win p{
+    background-color: transparent;
     padding: 0 0 15px;
+}
+
+.alert-win span{
+    background-color: transparent;
 }
 
 .alert-fail{
@@ -60,7 +68,15 @@ body{
     background-color: transparent;
     font-size: 32px;
     color: #000000;
+}
+
+.alert-fail p{
+    background-color: transparent;
     padding: 0 0 15px;
+}
+
+.alert-fail span{
+    background-color: transparent;
 }
 
 #hidden-word div{
