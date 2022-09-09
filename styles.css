@@ -9,11 +9,37 @@ body{
     width: 20px;
     padding: 10px;
     margin: 10px;
-    border-bottom: 5px solid black;
+    border-bottom: 5px solid #0A3871;
+    color: #0A3871;
+    font-weight: bold;
 }
+
+#hidden-word .hidde{
+    color: transparent;
+}
+
 
 #wrong-word div{
     display: inline-block;
     margin: 2px;
-    color: red;
+    color: #0A3871;
+}
+
+#virtual-keyboard {
+    width: 350px;
+    margin: auto;
+}
+
+#virtual-keyboard button{
+    border: none;
+    width: 25px;
+    height: 25px;
+    margin: 4px 2px;
+    text-align: center;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+#virtual-keyboard button:hover{
+    background-color: #cccccc;
 }

@@ -27,6 +27,7 @@ function createWord(){
     for(let i=0; i<arrayWord.length; i++){
         const div = document.createElement('div');
         div.setAttribute('id', i);
+        div.setAttribute('class', 'hidde');
         div.textContent = '.';
         divHiddenWord.appendChild(div);
     }
@@ -54,8 +55,10 @@ function checkWord(){
             if(arrayWord[i]==keyPressed){
                 let found = i;
                 document.getElementById(found).innerHTML = keyPressed;
+                document.getElementById(found).removeAttribute('class','hidde')
                 win++;
                 document.querySelector('.btn-'+ keyPressed).style.backgroundColor = "green";
+                document.querySelector('.btn-'+ keyPressed).style.color = "white";
                 endGameMsg();
             }
         }
@@ -68,6 +71,7 @@ function checkWord(){
             fail++;
             hangedCharacter(fail);
             document.querySelector('.btn-'+ keyPressed).style.backgroundColor = "red";
+            document.querySelector('.btn-'+ keyPressed).style.color = "white";
             endGameMsg();
         }
     }
