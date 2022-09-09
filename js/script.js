@@ -2,6 +2,9 @@ const entry = document.querySelector('body');
 const divHiddenWord = document.getElementById('hidden-word');
 const divWrongWord = document.getElementById('wrong-word');
 const btnNewGame = document.getElementById('btn-new-game');
+const viewKeyboard = document.getElementById('virtual-keyboard');
+const alertWin = document.querySelector('.alert-win');
+const alertFail = document.querySelector('.alert-fail');
 
 let selectedWord;
 let arrayWord = [];
@@ -10,11 +13,12 @@ let lettersUsed = [];
 let fail = 0;
 let win = 0;
 
+viewKeyboard.style.display = 'block';
+alertWin.style.display = 'none';
+alertFail.style.display = 'none';
+
 entry.addEventListener('keypress', captureKey);
 btnNewGame.addEventListener('click', newGame);
-
-const viewKeyboard = document.getElementById('virtual-keyboard');
-viewKeyboard.style.display = 'block';
 
 // Esta funcion reinicia el juego y genera una nueva palabra aleatoria
 function newGame(){
@@ -83,11 +87,11 @@ function checkWord(){
 // Esta funcion muestra mensaje si gano o perdio
 function endGameMsg(){
     if(fail == 7){
-        console.log('perdiste');
+        alertFail.style.display = 'block';
         keyboardLock();
     }
     if(win == selectedWord.length){
-        console.log('ganaste');
+        alertWin.style.display = 'block';
         keyboardLock();
     }
 }
@@ -98,7 +102,7 @@ function hangedCharacter(condition){
     getImage.setAttribute('src','img/assets/hanget_'+ condition +'.svg');
 }
 
-hangedCharacter(0);
+hangedCharacter(0); //default 0
 
 createWord();
 console.log(selectedWord);

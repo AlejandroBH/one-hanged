@@ -12,6 +12,57 @@ body{
     user-select: none;
 }
 
+#box-alert{
+    position: fixed;
+    top: 150px;
+    width: 100%;
+    background: transparent;
+}
+
+.alert-win{
+    width: 250px;
+    margin: auto;
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(5px);
+    border-radius: 25px;
+    box-shadow: 0px 24px 32px -8px rgba(0, 0, 0, 0.08);
+}
+
+.alert-win img{
+    background-color: transparent;
+    width: 80px;
+    padding: 15px 0 0;
+}
+
+.alert-win h2{
+    background-color: transparent;
+    font-size: 32px;
+    color: #000000;
+    padding: 0 0 15px;
+}
+
+.alert-fail{
+    width: 250px;
+    margin: auto;
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(5px);
+    border-radius: 25px;
+    box-shadow: 0px 24px 32px -8px rgba(0, 0, 0, 0.08);
+}
+
+.alert-fail img{
+    background-color: transparent;
+    width: 80px;
+    padding: 15px 0 0;
+}
+
+.alert-fail h2{
+    background-color: transparent;
+    font-size: 32px;
+    color: #000000;
+    padding: 0 0 15px;
+}
+
 #hidden-word div{
     display: inline-block;
     width: 50px;
@@ -37,10 +88,10 @@ body{
     background: #D8DFE8;
     color: #0A3871;
     font-size: 1.5em;
-    width: 328px;
-    height: 67px;
+    width: 250px;
+    height: 50px;
     border-radius: 24px;
-    margin: 10px 15px;
+    margin: 10px 5px;
     border: 1px solid #0A3871;
     cursor: pointer;
     transition: 0.5s;
@@ -49,11 +100,6 @@ body{
 #buttons button:hover{
     background: #0A3871;
     color: #D8DFE8;
-    font-size: 1.5em;
-    width: 328px;
-    height: 67px;
-    border-radius: 24px;
-    margin: 10px 15px;
     border: 1px solid #0A3871;
     cursor: pointer;
 }
@@ -61,7 +107,6 @@ body{
 #virtual-keyboard {
     width: 450px;
     margin: auto;
-    /* background-color: aquamarine; */
     text-align: center;
 }
 
@@ -76,7 +121,6 @@ body{
     color: #0A3871;
     border: 1px solid #0A3871;
     background: transparent;
-    font-weight: bold;
 }
 
 #virtual-keyboard button:hover{
