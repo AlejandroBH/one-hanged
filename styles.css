@@ -1,3 +1,11 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background: #F3F5FC;
+    font-family: 'Roboto Flex', sans-serif;
+}
+
 body{
     font-family: Arial, Helvetica, sans-serif;
     text-align: center;
@@ -6,7 +14,7 @@ body{
 
 #hidden-word div{
     display: inline-block;
-    width: 20px;
+    width: 50px;
     padding: 10px;
     margin: 10px;
     border-bottom: 5px solid #0A3871;
@@ -20,29 +28,63 @@ body{
 
 #wrong-word div{
     display: inline-block;
-    margin: 2px;
+    margin: 3px;
     color: #0A3871;
+    font-weight: bold;
+}
+
+#buttons button{
+    background: #D8DFE8;
+    color: #0A3871;
+    font-size: 1.5em;
+    width: 328px;
+    height: 67px;
+    border-radius: 24px;
+    margin: 10px 15px;
+    border: 1px solid #0A3871;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+#buttons button:hover{
+    background: #0A3871;
+    color: #D8DFE8;
+    font-size: 1.5em;
+    width: 328px;
+    height: 67px;
+    border-radius: 24px;
+    margin: 10px 15px;
+    border: 1px solid #0A3871;
+    cursor: pointer;
 }
 
 #virtual-keyboard {
-    width: 350px;
+    width: 450px;
     margin: auto;
+    /* background-color: aquamarine; */
+    text-align: center;
 }
 
 #virtual-keyboard button{
     border: none;
-    width: 25px;
-    height: 25px;
+    width: 50px;
+    height: 35px;
+    font-size: 20px;
     margin: 4px 2px;
-    text-align: center;
     border-radius: 5px;
     transition: 0.3s;
+    color: #0A3871;
+    border: 1px solid #0A3871;
+    background: transparent;
+    font-weight: bold;
 }
 
 #virtual-keyboard button:hover{
-    background-color: #cccccc;
+    background-color: #0A3871;
+    color: #ffffff;
 }
 
 #virtual-keyboard button:disabled{
-    background-color: rgba(239, 239, 239, 0.3);
+    background: transparent;
+    color: #0A3871;
 }

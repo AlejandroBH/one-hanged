@@ -13,6 +13,9 @@ let win = 0;
 entry.addEventListener('keypress', captureKey);
 btnNewGame.addEventListener('click', newGame);
 
+const viewKeyboard = document.getElementById('virtual-keyboard');
+viewKeyboard.style.display = 'block';
+
 // Esta funcion reinicia el juego y genera una nueva palabra aleatoria
 function newGame(){
     location.reload();
