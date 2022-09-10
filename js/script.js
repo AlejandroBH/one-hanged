@@ -109,8 +109,8 @@ function checkWord(){
                 win++;
                 document.getElementById(found).innerHTML = keyPressed;
                 document.getElementById(found).removeAttribute('class','hidde')
-                document.querySelector('.btn-'+ keyPressed).style.backgroundColor = "green";
-                document.querySelector('.btn-'+ keyPressed).style.color = "white";
+                document.querySelector('.btn-'+ keyPressed).style.backgroundColor = '#52C41A';
+                document.querySelector('.btn-'+ keyPressed).style.color = 'white';
                 endGameMsg();
             }
         }
@@ -118,8 +118,8 @@ function checkWord(){
         if(fail < 7){
             fail++;
             hangedCharacter(fail);
-            document.querySelector('.btn-'+ keyPressed).style.backgroundColor = "red";
-            document.querySelector('.btn-'+ keyPressed).style.color = "white";
+            document.querySelector('.btn-'+ keyPressed).style.backgroundColor = '#F5222D';
+            document.querySelector('.btn-'+ keyPressed).style.color = 'white';
             endGameMsg();
         }
     }

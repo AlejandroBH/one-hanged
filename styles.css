@@ -66,7 +66,7 @@ body{
 }
 
 #main-menu .btn-add-word:hover{
-    background: #eeeeee;
+    background: #FFFFFF;
     color: #363f45;
     border: 1px solid #363f45;
     cursor: pointer;
@@ -177,12 +177,12 @@ body{
     color: transparent;
 }
 
-#buttons button{
+#btn-new-game{
     background: #3e50b4;
     color: #FFFFFF;
     font-size: 16px;
     font-weight: 500;
-    width: 300px;
+    width: 285px;
     height: 50px;
     border-radius: 10px;
     margin: 10px 5px;
@@ -192,10 +192,32 @@ body{
     transition: 0.5s;
 }
 
-#buttons button:hover{
+#btn-new-game:hover{
     background: #4f66e4;
     color: #FFFFFF;
     border: 1px solid #4f66e4;
+    cursor: pointer;
+}
+
+#btn-desist{
+    background: transparent;
+    color: #363f45;
+    font-size: 16px;
+    font-weight: 500;
+    width: 100px;
+    height: 50px;
+    border-radius: 10px;
+    margin: 10px 5px;
+    border: none;
+    border: 1px solid #363f45;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+#btn-desist:hover{
+    background: #FFFFFF;
+    color: #363f45;
+    border: 1px solid #363f45;
     cursor: pointer;
 }
 
@@ -264,7 +286,7 @@ footer img{
     }
 
     #hidden-word div{
-        width: 31px;
+        width: 30px;
         margin: 2px;
     }
 
@@ -272,10 +294,18 @@ footer img{
         width: 200px;
     }
 
-    #buttons button{
-        font-size: 15px;
-        width: 170px;
+    #btn-new-game{
+        font-size: 14px;
+        width: 225px;
         height: 45px;
+        margin: 0 2px 10px;
+    }
+
+    #btn-desist{
+        font-size: 14px;
+        width: 100px;
+        height: 45px;
+        margin: 0 2px 10px;
     }
 
     footer{
