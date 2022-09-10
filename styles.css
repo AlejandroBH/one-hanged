@@ -176,7 +176,7 @@ body{
 }
 
 #virtual-keyboard {
-    width: 450px;
+    max-width: 450px;
     margin: auto;
     text-align: center;
 }
@@ -202,4 +202,27 @@ body{
 #virtual-keyboard button:disabled{
     background: transparent;
     color: #363f45;
+}
+
+@media screen and (max-width:1000px) {
+    #main-menu, #game-box{
+        top: 5px;
+    }
+
+    #box-alert{
+        top: 90px;
+    }
+
+    #hidden-word div{
+        width: 31px;
+        margin: 2px;
+    }
+
+    #hanged-character img{
+        width: 200px;
+    }
+
+    #buttons button{
+        width: 150px;
+    }
 }
