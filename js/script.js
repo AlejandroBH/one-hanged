@@ -1,11 +1,10 @@
 const mainMenu = document.getElementById('main-menu');
 const gameBox = document.getElementById('game-box');
-
 const btnStartGame = document.querySelector('.btn-start-game');
-
 const entry = document.querySelector('body');
 const divHiddenWord = document.getElementById('hidden-word');
 const btnNewGame = document.getElementById('btn-new-game');
+const btnDesist = document.getElementById('btn-desist');
 const alertWin = document.querySelector('.alert-win');
 const alertFail = document.querySelector('.alert-fail');
 const alertSecretWord = document.getElementById('alert-secret-word');
@@ -22,14 +21,12 @@ let points = 0;
 let complete = false;
 
 gameBox.style.display = 'none';
-
 alertWin.style.display = 'none';
 alertFail.style.display = 'none';
-
 btnStartGame.addEventListener('click', newGame);
-
 entry.addEventListener('keypress', captureKey);
 btnNewGame.addEventListener('click', newGame);
+btnDesist.addEventListener('click', desist);
 
 // Esta funcion reinicia el juego y genera una nueva palabra aleatoria
 function newGame(){
@@ -52,9 +49,16 @@ function newGame(){
     alertFail.style.display = 'none';
     keyboardUnlock();
     createWord();
-    console.log(selectedWord);
-    console.log(points);
+    // console.log(selectedWord);
+    // console.log(points);
     score.innerHTML = points;
+}
+
+// Esta funcion permite rendirse y volver al menu principal
+function desist(){
+    newGame();
+    gameBox.style.display = 'none';
+    mainMenu.style.display = 'block';
 }
 
 // Esta funcion elimina los elementos div creados a travez de js
