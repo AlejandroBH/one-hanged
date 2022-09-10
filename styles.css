@@ -149,14 +149,23 @@ body{
 #score-box h3{
     display: inline-block;
     padding: 10px;
-    color: #363f45;
+    color: #3e50b4;
+    font-weight: 500;
+}
+
+#score-box h3 .accumulated-points{
+    font-weight: 500;
+}
+
+#hidden-word{
+    margin: 15px;
 }
 
 #hidden-word div{
     display: inline-block;
     width: 50px;
     padding: 10px;
-    margin: 10px;
+    margin: 5px;
     border-bottom: 5px solid #363f45;
     color: #363f45;
     font-weight: 500;
@@ -217,6 +226,18 @@ body{
     color: #363f45;
 }
 
+footer{
+    position: absolute;
+    bottom: 0;
+    margin: 0 0 10px;
+    width: 100%;
+}
+
+footer img{
+    width: 25px;
+    margin: 5px 2px;
+}
+
 @media screen and (max-width:950px) {
     #main-menu, #game-box{
         top: 5px;
@@ -239,5 +260,14 @@ body{
         font-size: 15px;
         width: 170px;
         height: 45px;
+    }
+
+    footer{
+        position: relative;
+        margin: 25px 0 5px;
+    }
+
+    footer img{
+        width: 50px;
     }
 }
