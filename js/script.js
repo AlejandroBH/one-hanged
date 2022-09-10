@@ -1,7 +1,11 @@
+const mainMenu = document.getElementById('main-menu');
+const gameBox = document.getElementById('game-box');
+
+const btnStartGame = document.querySelector('.btn-start-game');
+
 const entry = document.querySelector('body');
 const divHiddenWord = document.getElementById('hidden-word');
 const btnNewGame = document.getElementById('btn-new-game');
-const viewKeyboard = document.getElementById('virtual-keyboard');
 const alertWin = document.querySelector('.alert-win');
 const alertFail = document.querySelector('.alert-fail');
 const alertSecretWord = document.getElementById('alert-secret-word');
@@ -17,15 +21,21 @@ let win = 0;
 let points = 0;
 let complete = false;
 
-viewKeyboard.style.display = 'block';
+gameBox.style.display = 'none';
+
 alertWin.style.display = 'none';
 alertFail.style.display = 'none';
+
+btnStartGame.addEventListener('click', newGame);
 
 entry.addEventListener('keypress', captureKey);
 btnNewGame.addEventListener('click', newGame);
 
 // Esta funcion reinicia el juego y genera una nueva palabra aleatoria
 function newGame(){
+    gameBox.style.display = 'block';
+    mainMenu.style.display = 'none';
+
     lettersUsed = [];
     fail = 0;
     win = 0;
@@ -137,4 +147,3 @@ function hangedCharacter(condition){
 
 hangedCharacter(0);
 createWord();
-console.log(selectedWord)
