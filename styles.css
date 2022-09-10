@@ -3,7 +3,8 @@
     padding: 0;
     box-sizing: border-box;
     background: #F3F5FC;
-    font-family: 'Roboto Flex', sans-serif;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
 }
 
 body{
@@ -18,11 +19,19 @@ body{
 
 #main-menu h1{
     font-size: 48px;
+    font-family: 'Permanent Marker', cursive;
+    color: #3e50b4;
+}
+
+#main-menu img{
+    width: 250px;
+    margin: 20px 0;
 }
 
 #main-menu .btn-start-game{
     background: #3e50b4;
     color: #FFFFFF;
+    font-weight: 500;
     font-size: 18px;
     width: 300px;
     height: 100px;
@@ -44,6 +53,7 @@ body{
 #main-menu .btn-add-word{
     background: transparent;
     color: #363f45;
+    font-weight: 500;
     font-size: 18px;
     width: 250px;
     height: 50px;
@@ -92,6 +102,7 @@ body{
 .alert-win h2{
     background-color: transparent;
     font-size: 32px;
+    font-weight: 500;
     color: #000000;
 }
 
@@ -122,6 +133,7 @@ body{
 .alert-fail h2{
     background-color: transparent;
     font-size: 32px;
+    font-weight: 500;
     color: #000000;
 }
 
@@ -147,7 +159,7 @@ body{
     margin: 10px;
     border-bottom: 5px solid #363f45;
     color: #363f45;
-    font-weight: bold;
+    font-weight: 500;
 }
 
 #hidden-word .hidde{
@@ -157,8 +169,9 @@ body{
 #buttons button{
     background: #3e50b4;
     color: #FFFFFF;
-    font-size: 18px;
-    width: 250px;
+    font-size: 16px;
+    font-weight: 500;
+    width: 300px;
     height: 50px;
     border-radius: 10px;
     margin: 10px 5px;
@@ -204,7 +217,7 @@ body{
     color: #363f45;
 }
 
-@media screen and (max-width:1000px) {
+@media screen and (max-width:950px) {
     #main-menu, #game-box{
         top: 5px;
     }
@@ -223,6 +236,8 @@ body{
     }
 
     #buttons button{
-        width: 150px;
+        font-size: 15px;
+        width: 170px;
+        height: 45px;
     }
 }
