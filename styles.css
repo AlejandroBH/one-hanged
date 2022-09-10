@@ -229,9 +229,8 @@ body{
 }
 
 footer{
-    position: absolute;
-    bottom: 0;
-    margin: 0 0 10px;
+    position: relative;
+    margin: 75px 0;
     width: 100%;
 }
 
@@ -243,6 +242,21 @@ footer img{
 @media screen and (max-width:950px) {
     #main-menu, #game-box{
         top: 5px;
+    }
+
+    #main-menu img{
+        width: 200px;
+        margin: 0 0 10px;
+    }
+
+    #main-menu .btn-start-game{
+        font-size: 16px;
+        width: 250px;
+    }
+
+    #main-menu .btn-add-word{
+        font-size: 16px;
+        width: 240px;
     }
 
     #box-alert{
@@ -265,11 +279,12 @@ footer img{
     }
 
     footer{
+        font-size: 14px;
         position: relative;
-        margin: 25px 0 5px;
+        margin: 15px 0 5px;
     }
 
     footer img{
-        width: 50px;
+        width: 35px;
     }
 }
