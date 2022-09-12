@@ -12,6 +12,7 @@ const alertFail = document.querySelector('.alert-fail');
 const alertSecretWord = document.getElementById('alert-secret-word');
 const alertPoints = document.getElementById('alert-points');
 const score = document.querySelector('.accumulated-points');
+const maxedScore = document.querySelector('.maxed-points');
 
 let selectedWord;
 let arrayWord = [];
@@ -20,6 +21,7 @@ let lettersUsed = [];
 let fail = 0;
 let win = 0;
 let points = 0;
+let maxedPoints = 0;
 let complete = false;
 
 gameBox.style.display = 'none';
@@ -62,9 +64,8 @@ function newGame(){
     alertFail.style.display = 'none';
     keyboardUnlock();
     createWord();
-    // console.log(selectedWord);
-    // console.log(points);
     score.innerHTML = points;
+    maxedScore.innerHTML = maxedPoints;
 }
 
 // Esta funcion permite rendirse y volver al menu principal
@@ -150,6 +151,11 @@ function endGameMsg(){
     if(win == selectedWord.length){
         complete = true;
         points = points + selectedWord.length;
+
+        if(points>maxedPoints){
+            maxedPoints = points;
+        }
+
         alertPoints.innerHTML = selectedWord.length;
         alertWin.style.display = 'block';
         keyboardLock();
