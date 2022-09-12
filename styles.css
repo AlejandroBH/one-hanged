@@ -23,6 +23,15 @@ body{
     color: #3e50b4;
 }
 
+#main-menu h3{
+    color: #3e50b4;
+    font-weight: 500;
+}
+
+#main-menu span{
+    font-weight: 500;
+}
+
 #main-menu img{
     width: 250px;
     margin: 20px 0;
@@ -252,18 +261,27 @@ body{
 
 /* pantalla de seleccion de categoria */
 #category{
-    width: 1000px;
+    position: relative;
+    top: 50px;
+    padding: 0 0 10px;
+    width: 800px;
     margin: auto;
+}
+
+#category h1{
+    font-size: 48px;
+    font-family: 'Permanent Marker', cursive;
+    color: #3e50b4;
 }
 
 #category button{
     padding: 10px;
-    width: 450px;
-    height: 150px;
-    margin: 10px 10px;
+    width: 350px;
+    height: 100px;
+    margin: 5px 3px;
     border: none;
     border-radius: 25px;
-    font-size: 38px;
+    font-size: 24px;
     text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.8);
     color: #FFFFFF;
     font-weight: 500;
@@ -362,7 +380,8 @@ footer img{
 
     #category{
         width: 100%;
-        max-width: 450px;
+        top: 0;
+        max-width: 350px;
     }
 
     #category button{
@@ -374,7 +393,7 @@ footer img{
     footer{
         font-size: 14px;
         position: relative;
-        margin: 15px 0 5px;
+        margin: 25px 0 5px;
     }
 
     footer img{
