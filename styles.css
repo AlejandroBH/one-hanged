@@ -274,6 +274,15 @@ body{
     color: #3e50b4;
 }
 
+#category h3{
+    color: #3e50b4;
+    font-weight: 500;
+}
+
+#category span{
+    font-weight: 500;
+}
+
 #category button{
     padding: 10px;
     width: 350px;

@@ -1,5 +1,5 @@
 // SelectCategory:
-// 0: Personalizar
+// 0: Personalizado
 // 1: Predeterminado
 // 2: Informatica
 // 3: Frutas
@@ -8,14 +8,15 @@
 // 6: Marcas de autos
 // 7: Profesiones
 
-btnCategory0 = document.querySelector('.category-0');
-btnCategory1 = document.querySelector('.category-1');
-btnCategory2 = document.querySelector('.category-2');
-btnCategory3 = document.querySelector('.category-3');
-btnCategory4 = document.querySelector('.category-4');
-btnCategory5 = document.querySelector('.category-5');
-btnCategory6 = document.querySelector('.category-6');
-btnCategory7 = document.querySelector('.category-7');
+const categoryTitle = document.querySelector('.selected-title-category');
+const btnCategory0 = document.querySelector('.category-0');
+const btnCategory1 = document.querySelector('.category-1');
+const btnCategory2 = document.querySelector('.category-2');
+const btnCategory3 = document.querySelector('.category-3');
+const btnCategory4 = document.querySelector('.category-4');
+const btnCategory5 = document.querySelector('.category-5');
+const btnCategory6 = document.querySelector('.category-6');
+const btnCategory7 = document.querySelector('.category-7');
 
 let words = [];
 let customWords = [];
@@ -29,14 +30,14 @@ btnCategory5.addEventListener('click', accessCategory5);
 btnCategory6.addEventListener('click', accessCategory6);
 btnCategory7.addEventListener('click', accessCategory7);
 
-function accessCategory0(){alert('no programado aun'); selectCategory(1);newGame();} //programar funcion para agregar palabras
-function accessCategory1(){selectCategory(1);newGame();}
-function accessCategory2(){selectCategory(2);newGame();}
-function accessCategory3(){selectCategory(3);newGame();}
-function accessCategory4(){selectCategory(4);newGame();}
-function accessCategory5(){selectCategory(5);newGame();}
-function accessCategory6(){selectCategory(6);newGame();}
-function accessCategory7(){selectCategory(7);newGame();}
+function accessCategory0(){alert('Proximamente'); categoryTitle.innerHTML='personalizadas';} //programar funcion para agregar palabras
+function accessCategory1(){selectCategory(1); categoryTitle.innerHTML='predeterminadas'; newGame();}
+function accessCategory2(){selectCategory(2); categoryTitle.innerHTML='de informatica'; newGame();}
+function accessCategory3(){selectCategory(3); categoryTitle.innerHTML='de frutas'; newGame();}
+function accessCategory4(){selectCategory(4); categoryTitle.innerHTML='de animales'; newGame();}
+function accessCategory5(){selectCategory(5); categoryTitle.innerHTML='de videojuegos'; newGame();}
+function accessCategory6(){selectCategory(6); categoryTitle.innerHTML='de marcas de autos'; newGame();}
+function accessCategory7(){selectCategory(7); categoryTitle.innerHTML='de profesiones'; newGame();}
 
 // Esta funcion crea array de palabras segun la categoria seleccionada
 function selectCategory(option){
@@ -68,7 +69,7 @@ function selectCategory(option){
                 'conectar',
                 'marco',
                 'pollito',
-                'jaguar',
+                'mapache',
                 'sombrero',
                 'turistas',
                 'termostato',
@@ -166,15 +167,15 @@ function selectCategory(option){
         case 7:
             words = [
                 'piloto',
-                'ingeniera',
+                'ingeniero',
                 'ingeniero',
                 'mecanico',
                 'arquitecto',
                 'carnicero',
-                'granjera',
+                'granjero',
                 'profesor',
                 'carabinero',
-                'profesora',
+                'profesor',
         ]; break;
     }
 }
