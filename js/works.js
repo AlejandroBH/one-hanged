@@ -1,19 +1,51 @@
 // SelectCategory:
-// 0: Predeterminado
-// 1: Informatica
-// 2: Frutas
-// 3: Animales
-// 4: Videojuegos
-// 5: Marcas de autos
-// 6: Profesiones
-// 7: Palabras personalizadas
+// 0: Personalizar
+// 1: Predeterminado
+// 2: Informatica
+// 3: Frutas
+// 4: Animales
+// 5: Videojuegos
+// 6: Marcas de autos
+// 7: Profesiones
+
+btnCategory0 = document.querySelector('.category-0');
+btnCategory1 = document.querySelector('.category-1');
+btnCategory2 = document.querySelector('.category-2');
+btnCategory3 = document.querySelector('.category-3');
+btnCategory4 = document.querySelector('.category-4');
+btnCategory5 = document.querySelector('.category-5');
+btnCategory6 = document.querySelector('.category-6');
+btnCategory7 = document.querySelector('.category-7');
+
 let words = [];
 let customWords = [];
+
+btnCategory0.addEventListener('click', accessCategory0);
+btnCategory1.addEventListener('click', accessCategory1);
+btnCategory2.addEventListener('click', accessCategory2);
+btnCategory3.addEventListener('click', accessCategory3);
+btnCategory4.addEventListener('click', accessCategory4);
+btnCategory5.addEventListener('click', accessCategory5);
+btnCategory6.addEventListener('click', accessCategory6);
+btnCategory7.addEventListener('click', accessCategory7);
+
+function accessCategory0(){alert('no programado aun'); selectCategory(1);newGame();} //programar funcion para agregar palabras
+function accessCategory1(){selectCategory(1);newGame();}
+function accessCategory2(){selectCategory(2);newGame();}
+function accessCategory3(){selectCategory(3);newGame();}
+function accessCategory4(){selectCategory(4);newGame();}
+function accessCategory5(){selectCategory(5);newGame();}
+function accessCategory6(){selectCategory(6);newGame();}
+function accessCategory7(){selectCategory(7);newGame();}
 
 // Esta funcion crea array de palabras segun la categoria seleccionada
 function selectCategory(option){
     switch(option){
         case 0:
+            // Crear metodo para insertar palabras personalizadas
+            words = [];
+        break;
+        case 1:
             words = [
                 'empalmar',
                 'velador',
@@ -66,7 +98,7 @@ function selectCategory(option){
                 'sumar',
                 'yegua',
         ]; break;
-        case 1:
+        case 2:
             words = [
                 'software',
                 'hardware',
@@ -79,7 +111,7 @@ function selectCategory(option){
                 'phyton',
                 'enlace',
         ]; break;
-        case 2:
+        case 3:
             words = [
                 'manzana',
                 'pera',
@@ -92,7 +124,7 @@ function selectCategory(option){
                 'papaya',
                 'mango',
         ]; break;
-        case 3:
+        case 4:
             words = [
                 'perro',
                 'gato',
@@ -105,7 +137,7 @@ function selectCategory(option){
                 'jaguar',
                 'canguro',
         ]; break;
-        case 4:
+        case 5:
             words = [
                 'sekiro',
                 'darksoul',
@@ -118,7 +150,7 @@ function selectCategory(option){
                 'rayman',
                 'megaman',
         ]; break;
-        case 5:
+        case 6:
             words = [
                 'mazda',
                 'chevrolet',
@@ -131,7 +163,7 @@ function selectCategory(option){
                 'maserati',
                 'peugeot',
         ]; break;
-        case 6:
+        case 7:
             words = [
                 'piloto',
                 'ingeniera',
@@ -144,11 +176,7 @@ function selectCategory(option){
                 'carabinero',
                 'profesora',
         ]; break;
-        case 7:
-            // Crear metodo para insertar palabras personalizadas
-            words = [];
-        break;
     }
 }
 
-selectCategory(0);
+selectCategory(1);

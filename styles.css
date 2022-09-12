@@ -50,7 +50,7 @@ body{
     cursor: pointer;
 }
 
-#main-menu .btn-add-word{
+#main-menu .btn-customize-game{
     background: transparent;
     color: #363f45;
     font-weight: 500;
@@ -65,7 +65,7 @@ body{
     transition: 0.5s;
 }
 
-#main-menu .btn-add-word:hover{
+#main-menu .btn-customize-game:hover{
     background: #FFFFFF;
     color: #363f45;
     border: 1px solid #363f45;
@@ -250,6 +250,58 @@ body{
     color: #363f45;
 }
 
+/* pantalla de seleccion de categoria */
+#category{
+    width: 1000px;
+    margin: auto;
+}
+
+#category button{
+    padding: 10px;
+    width: 450px;
+    height: 150px;
+    margin: 10px 10px;
+    border: none;
+    border-radius: 25px;
+    font-size: 38px;
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.8);
+    color: #FFFFFF;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+#category .category-0{
+    background-image: url(img/category/0_default.png);
+}
+
+#category .category-1{
+    background-image: url(img/category/1_personalizar.png);
+}
+
+#category .category-2{
+    background-image: url(img/category/2_informatica.png);
+}
+
+#category .category-3{
+    background-image: url(img/category/3_frutas.png);
+}
+
+#category .category-4{
+    background-image: url(img/category/4_animales.png);
+}
+
+#category .category-5{
+    background-image: url(img/category/5_videojuegos.png);
+}
+
+#category .category-6{
+    background-image: url(img/category/6_autos.png);
+}
+
+#category .category-7{
+    background-image: url(img/category/7_profesiones.png);
+}
+
 footer{
     position: relative;
     margin: 75px 0;
@@ -306,6 +358,17 @@ footer img{
         width: 100px;
         height: 45px;
         margin: 0 2px 10px;
+    }
+
+    #category{
+        width: 100%;
+        max-width: 450px;
+    }
+
+    #category button{
+        font-size: 24px;
+        width: 95%;
+        margin: 5px 0;
     }
 
     footer{

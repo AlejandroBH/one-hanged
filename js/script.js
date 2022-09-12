@@ -1,6 +1,8 @@
 const mainMenu = document.getElementById('main-menu');
 const gameBox = document.getElementById('game-box');
+const category = document.getElementById('category');
 const btnStartGame = document.querySelector('.btn-start-game');
+const btnCustomizeGame = document.querySelector('.btn-customize-game');
 const entry = document.querySelector('body');
 const divHiddenWord = document.getElementById('hidden-word');
 const btnNewGame = document.getElementById('btn-new-game');
@@ -21,17 +23,28 @@ let points = 0;
 let complete = false;
 
 gameBox.style.display = 'none';
+category.style.display = 'none';
 alertWin.style.display = 'none';
 alertFail.style.display = 'none';
+
 btnStartGame.addEventListener('click', newGame);
+btnCustomizeGame.addEventListener('click', customizeGame);
 entry.addEventListener('keypress', captureKey);
 btnNewGame.addEventListener('click', newGame);
 btnDesist.addEventListener('click', desist);
+
+// Esta funcion permite seleccionar categoria de palabras
+function customizeGame(){
+    gameBox.style.display = 'none';
+    mainMenu.style.display = 'none';
+    category.style.display = 'block';
+}
 
 // Esta funcion reinicia el juego y genera una nueva palabra aleatoria
 function newGame(){
     gameBox.style.display = 'block';
     mainMenu.style.display = 'none';
+    category.style.display = 'none';
 
     lettersUsed = [];
     fail = 0;
