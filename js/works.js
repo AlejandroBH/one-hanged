@@ -69,6 +69,7 @@ function addCustomWord(){
 function playCustomWord(){
     if(words.length==0){
         alert('Agrega al menos una palabra para jugar');
+        inputWord.focus();
     }else{
         sectionAddWords.style.display = 'none';
         newGame();
