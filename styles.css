@@ -259,7 +259,6 @@ body{
     color: #363f45;
 }
 
-/* pantalla de seleccion de categoria */
 #category{
     position: relative;
     top: 50px;
@@ -327,6 +326,85 @@ body{
 
 #category .category-7{
     background-image: url(img/category/7_profesiones.png);
+}
+
+#add-words{
+    position: relative;
+    top: 50px;
+    padding: 0 0 10px;
+    width: 800px;
+    margin: auto;
+}
+
+#add-words h1{
+    font-size: 48px;
+    font-family: 'Permanent Marker', cursive;
+    color: #3e50b4;
+}
+
+#add-words h3{
+    color: #3e50b4;
+    font-weight: 500;
+}
+
+#add-words input{
+    margin: 10px 0;
+    font-size: 24px;
+    width: 450px;
+    height: 100px;
+    border-radius: 10px;
+    background: #FFFFFF;
+    text-align: center;
+    border: none;
+}
+
+input:focus{
+    border: none;
+    outline: none
+}
+
+#add-words .btn-add-word{
+    background: #3e50b4;
+    color: #FFFFFF;
+    font-size: 16px;
+    font-weight: 500;
+    width: 285px;
+    height: 50px;
+    border-radius: 10px;
+    margin: 10px 5px;
+    border: none;
+    border: 1px solid #3e50b4;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+#add-words .btn-add-word:hover{
+    background: #4f66e4;
+    color: #FFFFFF;
+    border: 1px solid #4f66e4;
+    cursor: pointer;
+}
+
+#add-words .btn-add-word-play{
+    background: transparent;
+    color: #363f45;
+    font-size: 16px;
+    font-weight: 500;
+    width: 100px;
+    height: 50px;
+    border-radius: 10px;
+    margin: 10px 5px;
+    border: none;
+    border: 1px solid #363f45;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+#add-words .btn-add-word-play:hover{
+    background: #FFFFFF;
+    color: #363f45;
+    border: 1px solid #363f45;
+    cursor: pointer;
 }
 
 footer{
@@ -397,6 +475,30 @@ footer img{
         font-size: 24px;
         width: 95%;
         margin: 5px 0;
+    }
+
+    #add-words{
+        width: 100%;
+        top: 0;
+    }
+
+    #add-words input{
+        width: 80%;
+        margin: 25px 0;
+    }
+
+    #add-words .btn-add-word{
+        font-size: 14px;
+        width: 225px;
+        height: 45px;
+        margin: 0 2px 10px;
+    }
+
+    #add-words .btn-add-word-play{
+        font-size: 14px;
+        width: 100px;
+        height: 45px;
+        margin: 0 2px 10px;
     }
 
     footer{

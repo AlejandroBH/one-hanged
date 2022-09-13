@@ -17,9 +17,12 @@ const btnCategory4 = document.querySelector('.category-4');
 const btnCategory5 = document.querySelector('.category-5');
 const btnCategory6 = document.querySelector('.category-6');
 const btnCategory7 = document.querySelector('.category-7');
+let inputWord = document.querySelector('#input-custom-word');
+const btnAddWords = document.querySelector('.btn-add-word');
+const btnAddWordsPlay = document.querySelector('.btn-add-word-play');
 
 let words = [];
-let customWords = [];
+let customWordsArray = [];
 
 btnCategory0.addEventListener('click', accessCategory0);
 btnCategory1.addEventListener('click', accessCategory1);
@@ -29,8 +32,38 @@ btnCategory4.addEventListener('click', accessCategory4);
 btnCategory5.addEventListener('click', accessCategory5);
 btnCategory6.addEventListener('click', accessCategory6);
 btnCategory7.addEventListener('click', accessCategory7);
+btnAddWords.addEventListener('click', addCustomWord);
+btnAddWordsPlay.addEventListener('click', playCustomWord);
 
-function accessCategory0(){alert('Proximamente'); categoryTitle.innerHTML='personalizadas';} //programar funcion para agregar palabras
+// Esta funcion agrega palabras personalizadas
+function addCustomWord(){
+    if(inputWord.value==''){
+        alert('El campo esta vacio');
+        inputWord.focus();
+    }else{
+        customWordsArray.push(inputWord.value);
+        inputWord.value = '';
+        inputWord.focus();
+    }
+}
+
+// Esta funcion permite iniciar el juego luego de agregar palabras personalizadas
+function playCustomWord(){
+    if(words.length==0){
+        alert('Agrega al menos una palabra para jugar');
+    }else{
+        sectionAddWords.style.display = 'none';
+        newGame();
+    }
+}
+
+function accessCategory0(){
+    category.style.display = 'none';
+    sectionAddWords.style.display = 'block';
+    categoryTitle.innerHTML='personalizadas';
+    selectCategory(0);
+}
+
 function accessCategory1(){selectCategory(1); categoryTitle.innerHTML='predeterminadas'; newGame();}
 function accessCategory2(){selectCategory(2); categoryTitle.innerHTML='de informatica'; newGame();}
 function accessCategory3(){selectCategory(3); categoryTitle.innerHTML='de frutas'; newGame();}
@@ -44,7 +77,7 @@ function selectCategory(option){
     switch(option){
         case 0:
             // Crear metodo para insertar palabras personalizadas
-            words = [];
+            words = customWordsArray;
         break;
         case 1:
             words = [

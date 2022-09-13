@@ -1,6 +1,7 @@
 const mainMenu = document.getElementById('main-menu');
 const gameBox = document.getElementById('game-box');
 const category = document.getElementById('category');
+const sectionAddWords = document.getElementById('add-words');
 const btnStartGame = document.querySelector('.btn-start-game');
 const btnCustomizeGame = document.querySelector('.btn-customize-game');
 const entry = document.querySelector('body');
@@ -26,6 +27,7 @@ let complete = false;
 
 gameBox.style.display = 'none';
 category.style.display = 'none';
+sectionAddWords.style.display = 'none'
 alertWin.style.display = 'none';
 alertFail.style.display = 'none';
 
