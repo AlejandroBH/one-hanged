@@ -35,6 +35,24 @@ btnCategory7.addEventListener('click', accessCategory7);
 btnAddWords.addEventListener('click', addCustomWord);
 btnAddWordsPlay.addEventListener('click', playCustomWord);
 
+// Esta funcion impide que se ingresen numeros o caracteres especiales
+function onlyLetters(e){
+    let key = e.keyCode || e.which;
+    let keyboard = String.fromCharCode(key).toLowerCase();
+    const validation = 'qwertyuiopasdfghjklñzxcvbnm';
+    const specials = '8-37-38-46-164'
+    let specialKeyboard = false;
+    for(let i in specials){
+        if(key == specials[i]){
+            specialKeyboard = true;
+            break;
+        }
+    }
+    if(validation.indexOf(keyboard) ==- 1 && !specialKeyboard){
+        return false;
+    }
+}
+
 // Esta funcion agrega palabras personalizadas
 function addCustomWord(){
     if(inputWord.value==''){

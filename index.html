@@ -96,7 +96,7 @@
     <section id="add-words">
         <h1>Configurar</h1>
         <h3>Palabras personalizadas</h3>
-        <input id="input-custom-word" type="text" minlength="1" maxlength="10" placeholder="Ingresa aqui">
+        <input id="input-custom-word" type="text" maxlength="10" placeholder="Ingresa aqui" onkeypress="return onlyLetters(event)">
         <br>
         <button class="btn-add-word">Agregar</button>
         <button class="btn-add-word-play">Jugar</button>
