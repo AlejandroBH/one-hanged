@@ -95,7 +95,6 @@ function accessCategory7(){selectCategory(7); categoryTitle.innerHTML='de profes
 function selectCategory(option){
     switch(option){
         case 0:
-            // Crear metodo para insertar palabras personalizadas
             words = customWordsArray;
         break;
         case 1:
