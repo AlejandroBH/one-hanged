@@ -2,7 +2,7 @@
 
 <div align="center">
   
-  ![Alura Geek](https://raw.githubusercontent.com/AlejandroBH/one-hanged/refs/heads/develop/assets/images/review.png)
+  ![Alura Geek](https://raw.githubusercontent.com/AlejandroBH/one-hanged/refs/heads/main/assets/images/review.png)
 
 </div>
 
@@ -32,7 +32,7 @@
 
 <div align="center">
   
-  ![giphy](https://raw.githubusercontent.com/AlejandroBH/one-hanged/refs/heads/develop/assets/images/develop.gif)
+  ![giphy](https://raw.githubusercontent.com/AlejandroBH/one-hanged/refs/heads/main/assets/images/develop.gif)
   
   ⌨️ con ❤️ por [AlejandroBH](https://www.linkedin.com/in/alejandro-bh91/) 😊
 </div>
