@@ -8,6 +8,8 @@
 
 * Este proyecto forma parte del programa de formación Oracle Next Education (Alura Challenger 2), en el cual desarrollé un juego del ahorcado interactivo con múltiples categorías de palabras y la opción de agregar palabras personalizadas.
 
+[Puedes probarlo aqui!](https://alejandrobh.github.io/one-hanged)
+
 ## Tecnologias usadas 🛠️
 
 * Html
