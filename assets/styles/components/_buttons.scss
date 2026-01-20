@@ -1,0 +1,192 @@
+// Estilos de botones
+@mixin button-primary {
+    background: $primary-color;
+    color: $white;
+    font-weight: $font-medium;
+    border-radius: $border-radius-md;
+    border: 1px solid $primary-color;
+    cursor: pointer;
+    transition: $transition-normal;
+
+    &:hover {
+        background: $primary-hover;
+        border: 1px solid $primary-hover;
+    }
+}
+
+@mixin button-secondary {
+    background: transparent;
+    color: $secondary-color;
+    font-weight: $font-medium;
+    border-radius: $border-radius-md;
+    border: 1px solid $secondary-color;
+    cursor: pointer;
+    transition: $transition-normal;
+
+    &:hover {
+        background: $white;
+    }
+}
+
+// Botones del menú principal
+#main-menu {
+    .btn-start-game {
+        @include button-primary;
+        font-size: 18px;
+        width: 300px;
+        height: $btn-height-lg;
+        margin: $spacing-sm $spacing-xs;
+    }
+
+    .btn-customize-game {
+        @include button-secondary;
+        font-size: 18px;
+        width: 250px;
+        height: $btn-height-md;
+        margin: $spacing-sm $spacing-xs;
+    }
+}
+
+// Botones del juego
+#btn-new-game {
+    @include button-primary;
+    font-size: 16px;
+    width: 285px;
+    height: $btn-height-md;
+    margin: $spacing-sm $spacing-xs;
+}
+
+#btn-desist {
+    @include button-secondary;
+    font-size: 16px;
+    width: 100px;
+    height: $btn-height-md;
+    margin: $spacing-sm $spacing-xs;
+}
+
+// Botones de palabras personalizadas
+#add-words {
+    .btn-add-word {
+        @include button-primary;
+        font-size: 16px;
+        width: 285px;
+        height: $btn-height-md;
+        margin: $spacing-sm $spacing-xs;
+    }
+
+    .btn-add-word-play {
+        @include button-secondary;
+        font-size: 16px;
+        width: 100px;
+        height: $btn-height-md;
+        margin: $spacing-sm $spacing-xs;
+    }
+}
+
+// Botones de categorías
+#category {
+    button {
+        padding: $spacing-sm;
+        width: 350px;
+        height: $btn-height-lg;
+        margin: $spacing-xs 3px;
+        border: none;
+        border-radius: $border-radius-lg;
+        font-size: 24px;
+        text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.8);
+        color: $white;
+        font-weight: $font-medium;
+        cursor: pointer;
+    }
+
+    .category-0 {
+        background-color: #3f51b5;
+        background-image: url(../../images/category/0_default.png);
+    }
+
+    .category-1 {
+        background-color: #f44336;
+        background-image: url(../../images/category/1_personalizar.png);
+    }
+
+    .category-2 {
+        background-color: #607d8b;
+        background-image: url(../../images/category/2_informatica.png);
+    }
+
+    .category-3 {
+        background-color: #ff9800;
+        background-image: url(../../images/category/3_frutas.png);
+    }
+
+    .category-4 {
+        background-color: #4caf50;
+        background-image: url(../../images/category/4_animales.png);
+    }
+
+    .category-5 {
+        background-color: #4caf50;
+        background-image: url(../../images/category/5_videojuegos.png);
+    }
+
+    .category-6 {
+        background-color: #cddc39;
+        background-image: url(../../images/category/6_autos.png);
+    }
+
+    .category-7 {
+        background-color: #673ab7;
+        background-image: url(../../images/category/7_profesiones.png);
+    }
+}
+
+// Responsive
+@media screen and (max-width: 950px) {
+    #main-menu {
+        .btn-start-game {
+            font-size: 16px;
+            width: 270px;
+        }
+
+        .btn-customize-game {
+            font-size: 16px;
+            width: 235px;
+        }
+    }
+
+    #btn-new-game {
+        font-size: 14px;
+        width: 225px;
+        height: $btn-height-sm;
+        margin: 0 2px $spacing-sm;
+    }
+
+    #btn-desist {
+        font-size: 14px;
+        width: 100px;
+        height: $btn-height-sm;
+        margin: 0 2px $spacing-sm;
+    }
+
+    #category button {
+        font-size: 24px;
+        width: 95%;
+        margin: $spacing-xs 0;
+    }
+
+    #add-words {
+        .btn-add-word {
+            font-size: 14px;
+            width: 225px;
+            height: $btn-height-sm;
+            margin: 0 2px $spacing-sm;
+        }
+
+        .btn-add-word-play {
+            font-size: 14px;
+            width: 100px;
+            height: $btn-height-sm;
+            margin: 0 2px $spacing-sm;
+        }
+    }
+}

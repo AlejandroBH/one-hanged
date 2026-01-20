@@ -1,23 +1,26 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width">
     <title>Hanged Game</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="shortcut icon" href="img/icon.png"/>
+    <link rel="stylesheet" href="assets/styles/main.css">
+    <link rel="shortcut icon" href="assets/images/icon.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Roboto:wght@300;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Roboto:wght@300;500&display=swap"
+        rel="stylesheet">
 </head>
+
 <body>
 
     <section id="main-menu">
         <h1>Hanged Game</h1>
         <h3>Puntaje maximo: <span class="maxed-points">0</span></h3>
         <br>
-        <img src="img/assets/hanget_7.svg" alt="Horca">
+        <img src="assets/images/assets/hanget_7.svg" alt="Horca">
         <br>
         <button class="btn-start-game">Iniciar Juego</button>
         <br>
@@ -27,12 +30,12 @@
     <section id="game-box">
         <div id="box-alert">
             <div class="alert-win">
-                <img src="img/icon-win.svg" alt="">
+                <img src="assets/images/icon-win.svg" alt="">
                 <h2>GANASTE</h2>
                 <p>Obtuviste: <br>"<span id="alert-points"></span> PUNTOS"</p>
             </div>
             <div class="alert-fail">
-                <img src="img/icon-fail.svg" alt="">
+                <img src="assets/images/icon-fail.svg" alt="">
                 <h2>PERDISTE</h2>
                 <p>La palabra era: <br>"<span id="alert-secret-word"></span>"</p>
             </div>
@@ -41,7 +44,7 @@
             <h3>Puntaje total: <span class="accumulated-points">0</span></h3>
         </div>
         <div id="hanged-character">
-            <img src="img/assets/hanget_0.svg" alt="Horca">
+            <img src="assets/images/assets/hanget_0.svg" alt="Horca">
         </div>
         <div id="hidden-word"></div>
         <div id="buttons">
@@ -96,7 +99,8 @@
     <section id="add-words">
         <h1>Configurar</h1>
         <h3>Palabras personalizadas</h3>
-        <input id="input-custom-word" type="text" maxlength="10" placeholder="Ingresa aqui" onkeypress="return onlyLetters(event)">
+        <input id="input-custom-word" type="text" maxlength="10" placeholder="Ingresa aqui"
+            onkeypress="return onlyLetters(event)">
         <br>
         <button class="btn-add-word">Agregar</button>
         <button class="btn-add-word-play">Jugar</button>
@@ -104,12 +108,13 @@
 
     <footer>
         <p>Alura Challenger 2 - Develop by A. Barrera 2022</p>
-        <a target="_blank" href="https://www.linkedin.com/in/alejandro-bh91/"><img src="img/LinkedIn_Logo.svg" alt="LinkedIn"></a>
-        <a target="_blank" href="https://github.com/AlejandroBH/"><img src="img/Github_Logo.svg" alt="Github"></a>
+        <a target="_blank" href="https://www.linkedin.com/in/alejandro-bh91/"><img src="assets/images/LinkedIn_Logo.svg"
+                alt="LinkedIn"></a>
+        <a target="_blank" href="https://github.com/AlejandroBH/"><img src="assets/images/Github_Logo.svg"
+                alt="Github"></a>
     </footer>
 
-    <script src="js/keyboard.js"></script>
-    <script src="js/works.js"></script>
-    <script src="js/script.js"></script>
+    <script type="module" src="app.js" async></script>
 </body>
+
 </html>

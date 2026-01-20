@@ -1,0 +1,73 @@
+// Sección de categorías
+#category {
+    position: relative;
+    top: 50px;
+    padding: 0 0 $spacing-sm;
+    width: 800px;
+    margin: auto;
+
+    h1 {
+        font-size: 48px;
+        font-family: $font-title;
+        color: $primary-color;
+    }
+
+    h3 {
+        color: $primary-color;
+        font-weight: $font-medium;
+    }
+
+    span {
+        font-weight: $font-medium;
+    }
+}
+
+// Sección de palabras personalizadas
+#add-words {
+    position: relative;
+    top: 50px;
+    padding: 0 0 $spacing-sm;
+    width: 800px;
+    margin: auto;
+
+    h1 {
+        font-size: 48px;
+        font-family: $font-title;
+        color: $primary-color;
+    }
+
+    h3 {
+        color: $primary-color;
+        font-weight: $font-medium;
+    }
+
+    input {
+        margin: $spacing-sm 0;
+        font-size: 24px;
+        width: 450px;
+        height: $btn-height-lg;
+        border-radius: $border-radius-md;
+        background: $white;
+        text-align: center;
+        border: none;
+    }
+}
+
+// Responsive
+@media screen and (max-width: 950px) {
+    #category {
+        width: 100%;
+        top: 0;
+        max-width: 350px;
+    }
+
+    #add-words {
+        width: 100%;
+        top: 0;
+
+        input {
+            width: 80%;
+            margin: $spacing-xl 0;
+        }
+    }
+}

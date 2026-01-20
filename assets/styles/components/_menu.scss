@@ -1,0 +1,35 @@
+// Menú principal
+#main-menu {
+    position: relative;
+    top: 50px;
+
+    h1 {
+        font-size: 48px;
+        font-family: $font-title;
+        color: $primary-color;
+    }
+
+    h3 {
+        color: $primary-color;
+        font-weight: $font-medium;
+    }
+
+    span {
+        font-weight: $font-medium;
+    }
+
+    img {
+        width: 250px;
+        margin: $spacing-lg 0;
+    }
+}
+
+// Responsive
+@media screen and (max-width: 950px) {
+    #main-menu {
+        img {
+            width: 200px;
+            margin: 0 0 $spacing-sm;
+        }
+    }
+}

@@ -1,0 +1,19 @@
+// Estilos base
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background: $background-color;
+    font-family: $font-primary;
+    font-weight: $font-light;
+}
+
+body {
+    text-align: center;
+    user-select: none;
+}
+
+input:focus {
+    border: none;
+    outline: none;
+}

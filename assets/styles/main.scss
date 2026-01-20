@@ -1,0 +1,14 @@
+// Importar variables primero
+@import 'components/variables';
+
+// Importar estilos base
+@import 'components/base';
+
+// Importar componentes
+@import 'components/menu';
+@import 'components/buttons';
+@import 'components/game';
+@import 'components/keyboard';
+@import 'components/alerts';
+@import 'components/sections';
+@import 'components/footer';

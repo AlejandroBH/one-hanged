@@ -1,0 +1,472 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background: #F3F5FC;
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+}
+
+body {
+  text-align: center;
+  user-select: none;
+}
+
+input:focus {
+  border: none;
+  outline: none;
+}
+
+#main-menu {
+  position: relative;
+  top: 50px;
+}
+#main-menu h1 {
+  font-size: 48px;
+  font-family: "Permanent Marker", cursive;
+  color: #3e50b4;
+}
+#main-menu h3 {
+  color: #3e50b4;
+  font-weight: 500;
+}
+#main-menu span {
+  font-weight: 500;
+}
+#main-menu img {
+  width: 250px;
+  margin: 20px 0;
+}
+
+@media screen and (max-width: 950px) {
+  #main-menu img {
+    width: 200px;
+    margin: 0 0 10px;
+  }
+}
+#main-menu .btn-start-game {
+  background: #3e50b4;
+  color: #FFFFFF;
+  font-weight: 500;
+  border-radius: 10px;
+  border: 1px solid #3e50b4;
+  cursor: pointer;
+  transition: 0.5s;
+}
+#main-menu .btn-start-game:hover {
+  background: #4f66e4;
+  border: 1px solid #4f66e4;
+}
+#main-menu .btn-start-game {
+  font-size: 18px;
+  width: 300px;
+  height: 100px;
+  margin: 10px 5px;
+}
+#main-menu .btn-customize-game {
+  background: transparent;
+  color: #363f45;
+  font-weight: 500;
+  border-radius: 10px;
+  border: 1px solid #363f45;
+  cursor: pointer;
+  transition: 0.5s;
+}
+#main-menu .btn-customize-game:hover {
+  background: #FFFFFF;
+}
+#main-menu .btn-customize-game {
+  font-size: 18px;
+  width: 250px;
+  height: 50px;
+  margin: 10px 5px;
+}
+
+#btn-new-game {
+  background: #3e50b4;
+  color: #FFFFFF;
+  font-weight: 500;
+  border-radius: 10px;
+  border: 1px solid #3e50b4;
+  cursor: pointer;
+  transition: 0.5s;
+}
+#btn-new-game:hover {
+  background: #4f66e4;
+  border: 1px solid #4f66e4;
+}
+#btn-new-game {
+  font-size: 16px;
+  width: 285px;
+  height: 50px;
+  margin: 10px 5px;
+}
+
+#btn-desist {
+  background: transparent;
+  color: #363f45;
+  font-weight: 500;
+  border-radius: 10px;
+  border: 1px solid #363f45;
+  cursor: pointer;
+  transition: 0.5s;
+}
+#btn-desist:hover {
+  background: #FFFFFF;
+}
+#btn-desist {
+  font-size: 16px;
+  width: 100px;
+  height: 50px;
+  margin: 10px 5px;
+}
+
+#add-words .btn-add-word {
+  background: #3e50b4;
+  color: #FFFFFF;
+  font-weight: 500;
+  border-radius: 10px;
+  border: 1px solid #3e50b4;
+  cursor: pointer;
+  transition: 0.5s;
+}
+#add-words .btn-add-word:hover {
+  background: #4f66e4;
+  border: 1px solid #4f66e4;
+}
+#add-words .btn-add-word {
+  font-size: 16px;
+  width: 285px;
+  height: 50px;
+  margin: 10px 5px;
+}
+#add-words .btn-add-word-play {
+  background: transparent;
+  color: #363f45;
+  font-weight: 500;
+  border-radius: 10px;
+  border: 1px solid #363f45;
+  cursor: pointer;
+  transition: 0.5s;
+}
+#add-words .btn-add-word-play:hover {
+  background: #FFFFFF;
+}
+#add-words .btn-add-word-play {
+  font-size: 16px;
+  width: 100px;
+  height: 50px;
+  margin: 10px 5px;
+}
+
+#category button {
+  padding: 10px;
+  width: 350px;
+  height: 100px;
+  margin: 5px 3px;
+  border: none;
+  border-radius: 25px;
+  font-size: 24px;
+  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.8);
+  color: #FFFFFF;
+  font-weight: 500;
+  cursor: pointer;
+}
+#category .category-0 {
+  background-color: #3f51b5;
+  background-image: url(../../images/category/0_default.png);
+}
+#category .category-1 {
+  background-color: #f44336;
+  background-image: url(../../images/category/1_personalizar.png);
+}
+#category .category-2 {
+  background-color: #607d8b;
+  background-image: url(../../images/category/2_informatica.png);
+}
+#category .category-3 {
+  background-color: #ff9800;
+  background-image: url(../../images/category/3_frutas.png);
+}
+#category .category-4 {
+  background-color: #4caf50;
+  background-image: url(../../images/category/4_animales.png);
+}
+#category .category-5 {
+  background-color: #4caf50;
+  background-image: url(../../images/category/5_videojuegos.png);
+}
+#category .category-6 {
+  background-color: #cddc39;
+  background-image: url(../../images/category/6_autos.png);
+}
+#category .category-7 {
+  background-color: #673ab7;
+  background-image: url(../../images/category/7_profesiones.png);
+}
+
+@media screen and (max-width: 950px) {
+  #main-menu .btn-start-game {
+    font-size: 16px;
+    width: 270px;
+  }
+  #main-menu .btn-customize-game {
+    font-size: 16px;
+    width: 235px;
+  }
+  #btn-new-game {
+    font-size: 14px;
+    width: 225px;
+    height: 45px;
+    margin: 0 2px 10px;
+  }
+  #btn-desist {
+    font-size: 14px;
+    width: 100px;
+    height: 45px;
+    margin: 0 2px 10px;
+  }
+  #category button {
+    font-size: 24px;
+    width: 95%;
+    margin: 5px 0;
+  }
+  #add-words .btn-add-word {
+    font-size: 14px;
+    width: 225px;
+    height: 45px;
+    margin: 0 2px 10px;
+  }
+  #add-words .btn-add-word-play {
+    font-size: 14px;
+    width: 100px;
+    height: 45px;
+    margin: 0 2px 10px;
+  }
+}
+#game-box {
+  position: relative;
+  top: 50px;
+}
+
+#score-box h3 {
+  display: inline-block;
+  padding: 10px;
+  color: #3e50b4;
+  font-weight: 500;
+}
+#score-box h3 .accumulated-points {
+  font-weight: 500;
+}
+
+#hidden-word {
+  margin: 15px;
+}
+#hidden-word div {
+  display: inline-block;
+  width: 50px;
+  padding: 10px;
+  margin: 5px;
+  border-bottom: 5px solid #363f45;
+  color: #363f45;
+  font-weight: 500;
+}
+#hidden-word .hidde {
+  color: transparent;
+}
+
+#hanged-character img {
+  max-width: 100%;
+  height: auto;
+}
+
+@media screen and (max-width: 950px) {
+  #main-menu,
+  #game-box {
+    top: 5px;
+  }
+  #hidden-word div {
+    width: 30px;
+    margin: 2px;
+  }
+  #hanged-character img {
+    width: 200px;
+  }
+}
+#virtual-keyboard {
+  max-width: 450px;
+  margin: auto;
+  text-align: center;
+}
+#virtual-keyboard button {
+  border: 1px solid #363f45;
+  background: transparent;
+  width: 50px;
+  height: 35px;
+  font-size: 20px;
+  margin: 4px 2px;
+  border-radius: 5px;
+  transition: 0.3s;
+  color: #363f45;
+}
+#virtual-keyboard button:hover {
+  background-color: #363f45;
+  color: #FFFFFF;
+}
+#virtual-keyboard button:disabled {
+  background: transparent;
+  color: #363f45;
+}
+
+#box-alert {
+  position: absolute;
+  top: 150px;
+  width: 100%;
+  background: transparent;
+}
+
+.alert-win {
+  width: 250px;
+  margin: auto;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(5px);
+  border-radius: 25px;
+  border: 1px dashed #3e50b4;
+  box-shadow: 0px 24px 32px -8px rgba(0, 0, 0, 0.08);
+}
+.alert-win img {
+  background-color: transparent;
+  width: 80px;
+  padding: 15px 0 0;
+}
+.alert-win h2 {
+  background-color: transparent;
+  font-size: 32px;
+  font-weight: 500;
+  color: #000000;
+}
+.alert-win p {
+  background-color: transparent;
+  padding: 0 0 15px;
+}
+.alert-win span {
+  background-color: transparent;
+}
+
+.alert-fail {
+  width: 250px;
+  margin: auto;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(5px);
+  border-radius: 25px;
+  border: 1px dashed #3e50b4;
+  box-shadow: 0px 24px 32px -8px rgba(0, 0, 0, 0.08);
+}
+.alert-fail img {
+  background-color: transparent;
+  width: 80px;
+  padding: 15px 0 0;
+}
+.alert-fail h2 {
+  background-color: transparent;
+  font-size: 32px;
+  font-weight: 500;
+  color: #000000;
+}
+.alert-fail p {
+  background-color: transparent;
+  padding: 0 0 15px;
+}
+.alert-fail span {
+  background-color: transparent;
+}
+
+@media screen and (max-width: 950px) {
+  #box-alert {
+    top: 90px;
+  }
+}
+#category {
+  position: relative;
+  top: 50px;
+  padding: 0 0 10px;
+  width: 800px;
+  margin: auto;
+}
+#category h1 {
+  font-size: 48px;
+  font-family: "Permanent Marker", cursive;
+  color: #3e50b4;
+}
+#category h3 {
+  color: #3e50b4;
+  font-weight: 500;
+}
+#category span {
+  font-weight: 500;
+}
+
+#add-words {
+  position: relative;
+  top: 50px;
+  padding: 0 0 10px;
+  width: 800px;
+  margin: auto;
+}
+#add-words h1 {
+  font-size: 48px;
+  font-family: "Permanent Marker", cursive;
+  color: #3e50b4;
+}
+#add-words h3 {
+  color: #3e50b4;
+  font-weight: 500;
+}
+#add-words input {
+  margin: 10px 0;
+  font-size: 24px;
+  width: 450px;
+  height: 100px;
+  border-radius: 10px;
+  background: #FFFFFF;
+  text-align: center;
+  border: none;
+}
+
+@media screen and (max-width: 950px) {
+  #category {
+    width: 100%;
+    top: 0;
+    max-width: 350px;
+  }
+  #add-words {
+    width: 100%;
+    top: 0;
+  }
+  #add-words input {
+    width: 80%;
+    margin: 25px 0;
+  }
+}
+footer {
+  position: relative;
+  margin: 75px 0;
+  width: 100%;
+}
+footer img {
+  width: 25px;
+  margin: 5px 2px;
+}
+
+@media screen and (max-width: 950px) {
+  footer {
+    font-size: 14px;
+    position: relative;
+    margin: 25px 0 5px;
+  }
+  footer img {
+    width: 35px;
+  }
+}
+
+/*# sourceMappingURL=main.css.map */

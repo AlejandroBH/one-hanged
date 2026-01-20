@@ -1,0 +1,61 @@
+// Estilos del área de juego
+#game-box {
+    position: relative;
+    top: 50px;
+}
+
+#score-box {
+    h3 {
+        display: inline-block;
+        padding: $spacing-sm;
+        color: $primary-color;
+        font-weight: $font-medium;
+
+        .accumulated-points {
+            font-weight: $font-medium;
+        }
+    }
+}
+
+#hidden-word {
+    margin: $spacing-md;
+
+    div {
+        display: inline-block;
+        width: 50px;
+        padding: $spacing-sm;
+        margin: $spacing-xs;
+        border-bottom: 5px solid $secondary-color;
+        color: $secondary-color;
+        font-weight: $font-medium;
+    }
+
+    .hidde {
+        color: transparent;
+    }
+}
+
+#hanged-character {
+    img {
+        max-width: 100%;
+        height: auto;
+    }
+}
+
+// Responsive
+@media screen and (max-width: 950px) {
+
+    #main-menu,
+    #game-box {
+        top: 5px;
+    }
+
+    #hidden-word div {
+        width: 30px;
+        margin: 2px;
+    }
+
+    #hanged-character img {
+        width: 200px;
+    }
+}

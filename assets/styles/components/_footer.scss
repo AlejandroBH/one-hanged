@@ -1,0 +1,24 @@
+// Footer
+footer {
+    position: relative;
+    margin: 75px 0;
+    width: 100%;
+
+    img {
+        width: 25px;
+        margin: $spacing-xs 2px;
+    }
+}
+
+// Responsive
+@media screen and (max-width: 950px) {
+    footer {
+        font-size: 14px;
+        position: relative;
+        margin: $spacing-xl 0 $spacing-xs;
+
+        img {
+            width: 35px;
+        }
+    }
+}
