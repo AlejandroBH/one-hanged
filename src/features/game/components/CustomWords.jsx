@@ -17,15 +17,39 @@ const CustomWords = ({ customWords, onAddWord, onRemoveWord, onClearAll, onPlay,
             return;
         }
 
-        // Validación anti-trampa
+        // --- VALIDACIONES ANTI-TRAMPA (INDIVIDUAL 2.0) ---
+
         // 1. Evitar más de 2 caracteres iguales seguidos (ej: aaa)
         const hasTooManyRepeats = /(.)\1\1/.test(word);
-        // 2. Evitar palabras con muy poca variedad de letras (ej: abababab)
-        const uniqueLetters = new Set(word).size;
-        const isTooSimple = word.length >= 4 && uniqueLetters < 3;
+
+        // 2. Complejidad Proporcional (Letras únicas vs Longitud)
+        const uniqueLettersCount = new Set(word).size;
+        let isTooSimple = false;
+
+        if (word.length <= 3 && uniqueLettersCount < 1) isTooSimple = true; // No debería pasar por regex inicial
+        else if (word.length <= 5 && uniqueLettersCount < 3) isTooSimple = true; // ej: "aaaa", "abab"
+        else if (word.length <= 7 && uniqueLettersCount < 4) isTooSimple = true; // ej: "cacasa" (3 unicas: c,a,s)
+        else if (word.length <= 10 && uniqueLettersCount < 5) isTooSimple = true; // ej: "cacasasasa" (3 unicas)
+
+        // 3. Control de Vocales/Consonantes
+        const vowels = word.match(/[aeiouáéíóúü]/g) || [];
+        const consonants = word.match(/[bcdfghjklmnñpqrstvwxyz]/g) || [];
+
+        const hasNoVowels = vowels.length === 0;
+        const hasNoConsonants = word.length > 2 && consonants.length === 0;
 
         if (hasTooManyRepeats || isTooSimple) {
-            showNotification('¡Esa palabra parece trampa! Intenta con una palabra real.', 'error');
+            showNotification('¡Esa palabra es demasiado simple o repetitiva! Sé más creativo.', 'error');
+            return;
+        }
+
+        if (hasNoVowels) {
+            showNotification('La palabra debe tener al menos una vocal.', 'warning');
+            return;
+        }
+
+        if (hasNoConsonants) {
+            showNotification('La palabra debe tener al menos una consonante.', 'warning');
             return;
         }
 
@@ -46,6 +70,54 @@ const CustomWords = ({ customWords, onAddWord, onRemoveWord, onClearAll, onPlay,
             showNotification(`Necesitas agregar ${MAX_WORDS} palabras para jugar`, 'info');
             return;
         }
+
+        // --- VALIDACIÓN ANTI-TRAMPA (GLOBAL 2.0) ---
+
+        const allText = customWords.join('').toLowerCase();
+        const allLetters = allText.split('');
+
+        // 1. Variedad de Alfabeto (mínimo 8 letras distintas en todo el set)
+        const globalUniqueLetters = new Set(allLetters).size;
+
+        if (globalUniqueLetters < 8) {
+            showNotification(
+                'Tu lista usa muy pocas letras del abecedario. ¡Hazlo más difícil!',
+                'error'
+            );
+            return;
+        }
+
+        // 2. Análisis de Entropía (Distribución de letras)
+        // Si las 3 letras más comunes dominan el set, es un "hack" de cacas/casas
+        const charMap = {};
+        allLetters.forEach(char => {
+            charMap[char] = (charMap[char] || 0) + 1;
+        });
+
+        const sortedFreqs = Object.values(charMap).sort((a, b) => b - a);
+        const top3Sum = (sortedFreqs[0] || 0) + (sortedFreqs[1] || 0) + (sortedFreqs[2] || 0);
+        const top3Ratio = top3Sum / allLetters.length;
+
+        if (top3Ratio > 0.55) {
+            showNotification(
+                'Demasiada repetición de las mismas letras en toda la lista. ¡No hagas trampa! 🧐',
+                'error'
+            );
+            return;
+        }
+
+        // 3. Detección de Spam Estructural (variedad de sets de letras)
+        const letterSets = customWords.map(w => [...new Set(w.toLowerCase())].sort().join(''));
+        const uniqueSets = new Set(letterSets).size;
+
+        if (uniqueSets < 5) {
+            showNotification(
+                'Tus palabras son estructuralmente casi iguales. ¡Varía un poco!',
+                'error'
+            );
+            return;
+        }
+
         onPlay();
     };
 
