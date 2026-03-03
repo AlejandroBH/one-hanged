@@ -3,7 +3,6 @@ node_modules/
 psd/*.*
 
 # Build
-dist/
 dist-ssr/
 
 # Environment
