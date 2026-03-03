@@ -16,10 +16,10 @@ const MainMenu = ({ maxPoints, onStartGame, onCustomize, onShowRanking }) => {
                 </Button>
                 <div className="main-menu__subactions">
                     <Button variant="secondary" size="md" onClick={onCustomize}>
-                        🛠️ Personalizar
+                        Personalizar
                     </Button>
                     <Button variant="secondary" size="md" onClick={onShowRanking}>
-                        🏆 Ver Ranking
+                        Ver Ranking
                     </Button>
                 </div>
             </div>

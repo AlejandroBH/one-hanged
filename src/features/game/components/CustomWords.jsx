@@ -9,23 +9,41 @@ const CustomWords = ({ customWords, onAddWord, onRemoveWord, onClearAll, onPlay,
     const hasWords = customWords.length > 0;
 
     const handleAdd = () => {
-        if (inputValue.trim() === '') return;
+        const word = inputValue.trim().toLowerCase();
+        if (word === '') return;
+
         if (isFull) {
             alert('Has alcanzado el límite de 10 palabras');
+            return;
+        }
+
+        // Validación anti-trampa
+        // 1. Evitar más de 2 caracteres iguales seguidos (ej: aaa)
+        const hasTooManyRepeats = /(.)\1\1/.test(word);
+        // 2. Evitar palabras con muy poca variedad de letras (ej: abababab)
+        const uniqueLetters = new Set(word).size;
+        const isTooSimple = word.length >= 4 && uniqueLetters < 3;
+
+        if (hasTooManyRepeats || isTooSimple) {
+            alert('¡Esa palabra parece trampa! Intenta con una palabra real.');
+            return;
+        }
+
+        // Validación de duplicados (explícita)
+        if (customWords.includes(word)) {
+            alert(`La palabra "${word}" ya está en tu lista.`);
             return;
         }
 
         const success = onAddWord(inputValue);
         if (success) {
             setInputValue('');
-        } else {
-            alert('Esa palabra ya existe');
         }
     };
 
     const handlePlay = () => {
-        if (customWords.length === 0) {
-            alert('Agrega al menos una palabra para jugar');
+        if (customWords.length < MAX_WORDS) {
+            alert(`Necesitas agregar ${MAX_WORDS} palabras para jugar`);
             return;
         }
         onPlay();
@@ -44,6 +62,8 @@ const CustomWords = ({ customWords, onAddWord, onRemoveWord, onClearAll, onPlay,
             handleAdd();
         }
     };
+
+    const remainingWords = MAX_WORDS - customWords.length;
 
     return (
         <section className="custom-words">
@@ -127,9 +147,11 @@ const CustomWords = ({ customWords, onAddWord, onRemoveWord, onClearAll, onPlay,
                     variant="primary"
                     size="lg"
                     onClick={handlePlay}
-                    disabled={customWords.length === 0}
+                    disabled={customWords.length < MAX_WORDS}
                 >
-                    ¡Jugar Ahora!
+                    {customWords.length < MAX_WORDS
+                        ? `¡Faltan ${remainingWords}!`
+                        : '¡Jugar Ahora!'}
                 </Button>
             </div>
         </section>
