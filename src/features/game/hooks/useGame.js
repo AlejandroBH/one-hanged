@@ -62,6 +62,37 @@ const useGame = () => {
     const [timeLeft, setTimeLeft] = useState(GAME_TIME_LIMIT);
     const [lastWonWordLength, setLastWonWordLength] = useState(0);
     const [lastEarnedPoints, setLastEarnedPoints] = useState(0);
+    const [notification, setNotification] = useState({
+        isOpen: false,
+        message: '',
+        type: 'info',
+        onConfirm: null,
+        confirmLabel: 'Entendido'
+    });
+
+    const showNotification = useCallback((message, type = 'info', confirmLabel = 'Entendido') => {
+        setNotification({
+            isOpen: true,
+            message,
+            type,
+            onConfirm: null,
+            confirmLabel
+        });
+    }, []);
+
+    const showConfirm = useCallback((message, onConfirm, confirmLabel = 'Confirmar') => {
+        setNotification({
+            isOpen: true,
+            message,
+            type: 'confirm',
+            onConfirm,
+            confirmLabel
+        });
+    }, []);
+
+    const closeNotification = useCallback(() => {
+        setNotification((prev) => ({ ...prev, isOpen: false }));
+    }, []);
 
     // Sistema de cuenta regresiva
     useEffect(() => {
@@ -302,10 +333,12 @@ const useGame = () => {
 
     // Elimina todas las palabras personalizadas
     const clearCustomWords = useCallback(() => {
-        if (window.confirm('¿Estás seguro de que quieres eliminar todas las palabras?')) {
-            setCustomWords([]);
-        }
-    }, []);
+        showConfirm(
+            '¿Estás seguro de que quieres eliminar todas las palabras? Esta acción no se puede deshacer.',
+            () => setCustomWords([]),
+            'Eliminar Todo'
+        );
+    }, [showConfirm]);
 
     // Desistir — volver al menú
     const desist = useCallback(() => {
@@ -350,6 +383,7 @@ const useGame = () => {
         correctCount,
         lastWonWordLength,
         lastEarnedPoints,
+        notification,
 
         // Acciones
         startGame,
@@ -367,6 +401,9 @@ const useGame = () => {
         clearCustomWords,
         saveRankingScore,
         resetGameAfterLost,
+        showNotification,
+        showConfirm,
+        closeNotification,
     };
 };
 

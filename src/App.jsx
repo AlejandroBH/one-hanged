@@ -10,6 +10,7 @@ import {
 import Footer from '@/components/Footer';
 import ThemeToggle from '@/components/ui/ThemeToggle';
 import useTheme from '@/hooks/useTheme';
+import NotificationModal from '@/components/ui/NotificationModal';
 import './App.css';
 
 const App = () => {
@@ -43,6 +44,10 @@ const App = () => {
         clearCustomWords,
         saveRankingScore,
         resetGameAfterLost,
+        notification,
+        showNotification,
+        showConfirm,
+        closeNotification,
     } = useGame();
 
     return (
@@ -115,12 +120,22 @@ const App = () => {
                         onClearAll={clearCustomWords}
                         onPlay={startGame}
                         onBack={goToCategories}
+                        showNotification={showNotification}
                     />
                 )}
 
             </main>
 
             <Footer />
+
+            <NotificationModal
+                isOpen={notification.isOpen}
+                message={notification.message}
+                type={notification.type}
+                onClose={closeNotification}
+                onConfirm={notification.onConfirm}
+                confirmLabel={notification.confirmLabel}
+            />
         </div>
     );
 };

@@ -2,7 +2,7 @@ import { useState } from 'react';
 import Button from '@/components/ui/Button';
 import './CustomWords.css';
 
-const CustomWords = ({ customWords, onAddWord, onRemoveWord, onClearAll, onPlay, onBack }) => {
+const CustomWords = ({ customWords, onAddWord, onRemoveWord, onClearAll, onPlay, onBack, showNotification }) => {
     const [inputValue, setInputValue] = useState('');
     const MAX_WORDS = 10;
     const isFull = customWords.length >= MAX_WORDS;
@@ -13,7 +13,7 @@ const CustomWords = ({ customWords, onAddWord, onRemoveWord, onClearAll, onPlay,
         if (word === '') return;
 
         if (isFull) {
-            alert('Has alcanzado el límite de 10 palabras');
+            showNotification('Has alcanzado el límite de 10 palabras', 'warning');
             return;
         }
 
@@ -25,13 +25,13 @@ const CustomWords = ({ customWords, onAddWord, onRemoveWord, onClearAll, onPlay,
         const isTooSimple = word.length >= 4 && uniqueLetters < 3;
 
         if (hasTooManyRepeats || isTooSimple) {
-            alert('¡Esa palabra parece trampa! Intenta con una palabra real.');
+            showNotification('¡Esa palabra parece trampa! Intenta con una palabra real.', 'error');
             return;
         }
 
         // Validación de duplicados (explícita)
         if (customWords.includes(word)) {
-            alert(`La palabra "${word}" ya está en tu lista.`);
+            showNotification(`La palabra "${word}" ya está en tu lista.`, 'warning');
             return;
         }
 
@@ -43,7 +43,7 @@ const CustomWords = ({ customWords, onAddWord, onRemoveWord, onClearAll, onPlay,
 
     const handlePlay = () => {
         if (customWords.length < MAX_WORDS) {
-            alert(`Necesitas agregar ${MAX_WORDS} palabras para jugar`);
+            showNotification(`Necesitas agregar ${MAX_WORDS} palabras para jugar`, 'info');
             return;
         }
         onPlay();

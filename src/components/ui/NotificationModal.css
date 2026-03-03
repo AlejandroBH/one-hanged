@@ -1,0 +1,96 @@
+.notification-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    backdrop-filter: blur(4px);
+    animation: fadeIn 0.2s ease-out;
+}
+
+.notification-modal {
+    background: var(--color-surface);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-xl);
+    max-width: 400px;
+    width: 90%;
+    box-shadow: var(--shadow-xl);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-md);
+    text-align: center;
+    border: 1px solid var(--color-border);
+    animation: modalScaleIn 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.notification-modal--error {
+    border-top: 4px solid #e74c3c;
+}
+
+.notification-modal--warning {
+    border-top: 4px solid #f1c40f;
+}
+
+.notification-modal--success {
+    border-top: 4px solid #2ecc71;
+}
+
+.notification-modal--confirm {
+    border-top: 4px solid var(--color-primary);
+}
+
+.notification-modal__icon {
+    font-size: 3rem;
+    margin-bottom: var(--spacing-xs);
+}
+
+.notification-modal__message {
+    font-size: 1.1rem;
+    color: var(--color-text);
+    line-height: 1.5;
+    margin: 0;
+    font-family: var(--font-primary);
+}
+
+.notification-modal__footer {
+    width: 100%;
+    margin-top: var(--spacing-sm);
+}
+
+.notification-modal__actions {
+    display: flex;
+    gap: var(--spacing-md);
+    width: 100%;
+}
+
+.notification-modal__actions button {
+    flex: 1;
+}
+
+@keyframes modalScaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
