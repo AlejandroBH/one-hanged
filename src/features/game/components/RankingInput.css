@@ -1,0 +1,110 @@
+.ranking-input {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-xl);
+    max-width: 500px;
+    width: 90%;
+    margin: auto;
+    padding: var(--spacing-xl);
+    background: var(--color-surface);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+    border: 1px solid var(--color-border);
+    animation: bounceIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) both;
+}
+
+.ranking-input__header {
+    text-align: center;
+}
+
+.ranking-input__title {
+    font-size: clamp(1.75rem, 5vw, 2.5rem);
+    font-family: var(--font-title);
+    color: #e74c3c;
+    margin: 0;
+    text-transform: uppercase;
+}
+
+.ranking-input__subtitle {
+    color: var(--color-text-muted);
+    font-size: 0.95rem;
+    margin-top: var(--spacing-xs);
+}
+
+.ranking-input__score-badge {
+    margin-top: var(--spacing-lg);
+    background: var(--gradient-primary);
+    padding: var(--spacing-md) var(--spacing-lg);
+    border-radius: var(--radius-md);
+    display: flex;
+    flex-direction: column;
+    color: white;
+    box-shadow: var(--shadow-md);
+}
+
+.ranking-input__score-label {
+    font-size: 0.75rem;
+    font-weight: var(--font-bold);
+    opacity: 0.9;
+    letter-spacing: 1px;
+}
+
+.ranking-input__score-value {
+    font-size: 2.5rem;
+    font-family: var(--font-title);
+    line-height: 1;
+}
+
+.ranking-input__form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-md);
+    width: 100%;
+}
+
+.ranking-input__label {
+    font-size: 0.9rem;
+    font-weight: var(--font-medium);
+    color: var(--color-text-muted);
+}
+
+.ranking-input__field {
+    font-size: 3rem;
+    font-family: var(--font-title);
+    width: 200px;
+    text-align: center;
+    background: var(--color-background);
+    border: 3px solid var(--color-border);
+    border-radius: var(--radius-md);
+    color: var(--color-primary);
+    letter-spacing: 10px;
+    padding: var(--spacing-sm);
+    text-transform: uppercase;
+    transition: all var(--transition-fast);
+}
+
+.ranking-input__field:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 4px var(--color-primary-soft);
+}
+
+.ranking-input__actions {
+    align-items: center;
+    display: flex;
+    gap: var(--spacing-md);
+    margin-top: var(--spacing-md);
+    width: 100%;
+}
+
+.ranking-input__actions .button {
+    flex: 1;
+}
+
+@media screen and (max-width: 480px) {
+    .ranking-input__actions {
+        flex-direction: column-reverse;
+    }
+}

@@ -2,7 +2,7 @@ import hangedImg from '@/assets/images/hanged/hanget_7.svg';
 import Button from '@/components/ui/Button';
 import './MainMenu.css';
 
-const MainMenu = ({ maxPoints, onStartGame, onCustomize }) => {
+const MainMenu = ({ maxPoints, onStartGame, onCustomize, onShowRanking }) => {
     return (
         <section className="main-menu">
             <h1 className="main-menu__title">Hanged Game</h1>
@@ -14,12 +14,18 @@ const MainMenu = ({ maxPoints, onStartGame, onCustomize }) => {
                 <Button variant="primary" size="lg" onClick={onStartGame} className="btn--pulse">
                     Iniciar Juego
                 </Button>
-                <Button variant="secondary" size="md" onClick={onCustomize}>
-                    Juego Personalizado
-                </Button>
+                <div className="main-menu__subactions">
+                    <Button variant="secondary" size="md" onClick={onCustomize}>
+                        🛠️ Personalizar
+                    </Button>
+                    <Button variant="secondary" size="md" onClick={onShowRanking}>
+                        🏆 Ver Ranking
+                    </Button>
+                </div>
             </div>
         </section>
     );
 };
+
 
 export default MainMenu;

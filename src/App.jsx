@@ -1,4 +1,12 @@
-import { MainMenu, GameBoard, CategorySelector, CustomWords, useGame } from '@/features/game';
+import {
+    MainMenu,
+    GameBoard,
+    CategorySelector,
+    CustomWords,
+    RankingInput,
+    RankingBoard,
+    useGame
+} from '@/features/game';
 import Footer from '@/components/Footer';
 import ThemeToggle from '@/components/ui/ThemeToggle';
 import useTheme from '@/hooks/useTheme';
@@ -14,6 +22,7 @@ const App = () => {
         maxPoints,
         currentCategory,
         customWords,
+        ranking,
         gamePhase,
         revealedLetters,
         lastWonWordLength,
@@ -26,22 +35,25 @@ const App = () => {
         desist,
         goToCategories,
         goToCustomWords,
+        goToRanking,
         goToMenu,
         getLetterStatus,
         removeCustomWord,
         clearCustomWords,
+        saveRankingScore,
+        resetGameAfterLost,
     } = useGame();
 
     return (
         <div className="app">
             <ThemeToggle isDark={isDark} onToggle={toggleTheme} />
             <main className="app__content">
-                {/* Menú principal */}
                 {gamePhase === 'menu' && (
                     <MainMenu
                         maxPoints={maxPoints}
                         onStartGame={startGame}
                         onCustomize={goToCategories}
+                        onShowRanking={goToRanking}
                     />
                 )}
 
@@ -61,6 +73,23 @@ const App = () => {
                         onNewGame={newGame}
                         onDesist={desist}
                         getLetterStatus={getLetterStatus}
+                    />
+                )}
+
+                {/* Entrada de Ranking */}
+                {gamePhase === 'rankingInput' && (
+                    <RankingInput
+                        score={points}
+                        onSave={saveRankingScore}
+                        onCancel={resetGameAfterLost}
+                    />
+                )}
+
+                {/* Tabla de Ranking */}
+                {gamePhase === 'rankingBoard' && (
+                    <RankingBoard
+                        ranking={ranking}
+                        onBack={goToMenu}
                     />
                 )}
 

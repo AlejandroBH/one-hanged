@@ -8,6 +8,7 @@ const STORAGE_KEYS = {
     POINTS: 'hanged-game-points',
     STREAK: 'hanged-game-streak',
     CATEGORY: 'hanged-game-category',
+    RANKING: 'hanged-game-ranking',
 };
 
 // Multiplicadores por dificultad de categoría
@@ -52,9 +53,18 @@ const useGame = () => {
         const stored = localStorage.getItem(STORAGE_KEYS.CUSTOM_WORDS);
         return stored ? JSON.parse(stored) : [];
     });
-    const [gamePhase, setGamePhase] = useState('menu'); // 'menu' | 'playing' | 'won' | 'lost' | 'categories' | 'customWords'
+    const [ranking, setRanking] = useState(() => {
+        const stored = localStorage.getItem(STORAGE_KEYS.RANKING);
+        return stored ? JSON.parse(stored) : [];
+    });
+    const [gamePhase, setGamePhase] = useState('menu'); // 'menu' | 'playing' | 'won' | 'lost' | 'categories' | 'customWords' | 'rankingInput' | 'rankingBoard'
     const [lastWonWordLength, setLastWonWordLength] = useState(0);
     const [lastEarnedPoints, setLastEarnedPoints] = useState(0);
+
+    // Persistencia de ranking
+    useEffect(() => {
+        localStorage.setItem(STORAGE_KEYS.RANKING, JSON.stringify(ranking));
+    }, [ranking]);
 
     // Persistencia de puntaje máximo
     useEffect(() => {
@@ -195,13 +205,49 @@ const useGame = () => {
             setFails(newFails);
 
             if (newFails >= MAX_FAILS) {
-                setPoints(0);
-                setStreak(0);
-                setGamePhase('lost');
+                if (points > 0) {
+                    setGamePhase('rankingInput');
+                } else {
+                    setPoints(0);
+                    setStreak(0);
+                    setGamePhase('lost');
+                }
             }
         }
     }, [lettersUsed, gamePhase, selectedWord, points, maxPoints, fails, streak, currentCategory]);
 
+    // Guarda el puntaje en el ranking
+    const saveRankingScore = useCallback((initials) => {
+        const newRecord = {
+            initials: initials.toUpperCase(),
+            score: points,
+            date: new Date().toISOString()
+        };
+
+        setRanking((prev) => {
+            const updated = [...prev, newRecord]
+                .sort((a, b) => b.score - a.score)
+                .slice(0, 10); // Mantener solo los top 10
+            return updated;
+        });
+
+        // Resetear tras guardar
+        setPoints(0);
+        setStreak(0);
+        setGamePhase('menu');
+    }, [points]);
+
+    // Resetear tras perder sin entrar al ranking
+    const resetGameAfterLost = useCallback(() => {
+        setPoints(0);
+        setStreak(0);
+        setGamePhase('menu');
+    }, []);
+
+    // Navegar al tablero de ranking
+    const goToRanking = useCallback(() => {
+        setGamePhase('rankingBoard');
+    }, []);
 
     // Selecciona una categoría
     const selectCategory = useCallback((categoryId) => {
@@ -269,6 +315,7 @@ const useGame = () => {
         streak,
         currentCategory,
         customWords,
+        ranking,
         gamePhase,
         revealedLetters,
         correctCount,
@@ -284,10 +331,13 @@ const useGame = () => {
         desist,
         goToCategories,
         goToCustomWords,
+        goToRanking,
         goToMenu,
         getLetterStatus,
         removeCustomWord,
         clearCustomWords,
+        saveRankingScore,
+        resetGameAfterLost,
     };
 };
 
