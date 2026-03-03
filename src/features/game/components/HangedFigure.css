@@ -1,0 +1,15 @@
+/* ===========================
+   HangedFigure — BEM
+   =========================== */
+
+.hanged-figure__image {
+    max-width: 100%;
+    height: auto;
+    background: transparent;
+}
+
+@media screen and (max-width: 950px) {
+    .hanged-figure__image {
+        width: 200px;
+    }
+}

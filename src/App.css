@@ -1,0 +1,13 @@
+/* ===========================
+   App — BEM
+   =========================== */
+
+.app {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.app__content {
+    flex: 1;
+}

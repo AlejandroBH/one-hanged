@@ -1,0 +1,43 @@
+/* ===========================
+   MainMenu — BEM
+   =========================== */
+
+.main-menu {
+    position: relative;
+    top: 50px;
+}
+
+.main-menu__title {
+    font-size: 48px;
+    font-family: var(--font-title);
+    color: var(--color-primary);
+    background: transparent;
+}
+
+.main-menu__subtitle {
+    color: var(--color-primary);
+    font-weight: var(--font-medium);
+    background: transparent;
+}
+
+.main-menu__score {
+    font-weight: var(--font-medium);
+    background: transparent;
+}
+
+.main-menu__image {
+    width: 250px;
+    margin: 20px 0;
+    background: transparent;
+}
+
+@media screen and (max-width: 950px) {
+    .main-menu {
+        top: 5px;
+    }
+
+    .main-menu__image {
+        width: 200px;
+        margin: 0 0 10px;
+    }
+}

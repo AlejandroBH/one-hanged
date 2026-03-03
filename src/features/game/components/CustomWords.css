@@ -1,0 +1,65 @@
+/* ===========================
+   CustomWords — BEM
+   =========================== */
+
+.custom-words {
+    position: relative;
+    top: 50px;
+    padding: 0 0 var(--spacing-sm);
+    width: 800px;
+    margin: auto;
+}
+
+.custom-words__title {
+    font-size: 48px;
+    font-family: var(--font-title);
+    color: var(--color-primary);
+    background: transparent;
+}
+
+.custom-words__subtitle {
+    color: var(--color-primary);
+    font-weight: var(--font-medium);
+    background: transparent;
+}
+
+.custom-words__list {
+    margin: var(--spacing-sm) 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--spacing-xs);
+}
+
+.custom-words__tag {
+    background: var(--color-primary);
+    color: var(--color-text-light);
+    padding: 4px 12px;
+    border-radius: var(--radius-lg);
+    font-size: 14px;
+    font-weight: var(--font-medium);
+}
+
+.custom-words__input {
+    margin: var(--spacing-sm) 0;
+    font-size: 24px;
+    width: 450px;
+    height: 100px;
+    border-radius: var(--radius-md);
+    background: var(--color-surface);
+    text-align: center;
+    border: none;
+    font-family: var(--font-primary);
+}
+
+@media screen and (max-width: 950px) {
+    .custom-words {
+        width: 100%;
+        top: 0;
+    }
+
+    .custom-words__input {
+        width: 80%;
+        margin: var(--spacing-xl) 0;
+    }
+}

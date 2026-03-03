@@ -1,0 +1,80 @@
+import { MainMenu, GameBoard, CategorySelector, CustomWords, useGame } from '@/features/game';
+import Footer from '@/components/Footer';
+import './App.css';
+
+const App = () => {
+    const {
+        selectedWord,
+        fails,
+        points,
+        maxPoints,
+        currentCategory,
+        customWords,
+        gamePhase,
+        revealedLetters,
+        lastWonWordLength,
+        startGame,
+        newGame,
+        guessLetter,
+        selectCategory,
+        addCustomWord,
+        desist,
+        goToCategories,
+        goToCustomWords,
+        getLetterStatus,
+    } = useGame();
+
+    return (
+        <div className="app">
+            <main className="app__content">
+                {/* Menú principal */}
+                {gamePhase === 'menu' && (
+                    <MainMenu
+                        maxPoints={maxPoints}
+                        onStartGame={startGame}
+                        onCustomize={goToCategories}
+                    />
+                )}
+
+                {/* Tablero de juego */}
+                {(gamePhase === 'playing' || gamePhase === 'won' || gamePhase === 'lost') && (
+                    <GameBoard
+                        fails={fails}
+                        points={points}
+                        selectedWord={selectedWord}
+                        revealedLetters={revealedLetters}
+                        gamePhase={gamePhase}
+                        lastWonWordLength={lastWonWordLength}
+                        onGuessLetter={guessLetter}
+                        onNewGame={newGame}
+                        onDesist={desist}
+                        getLetterStatus={getLetterStatus}
+                    />
+                )}
+
+                {/* Selector de categorías */}
+                {gamePhase === 'categories' && (
+                    <CategorySelector
+                        currentCategory={currentCategory}
+                        onSelectCategory={selectCategory}
+                        onGoToCustomWords={goToCustomWords}
+                        onStartGame={startGame}
+                    />
+                )}
+
+                {/* Palabras personalizadas */}
+                {gamePhase === 'customWords' && (
+                    <CustomWords
+                        customWords={customWords}
+                        onAddWord={addCustomWord}
+                        onPlay={startGame}
+                    />
+                )}
+            </main>
+
+            <Footer />
+        </div>
+    );
+};
+
+export default App;

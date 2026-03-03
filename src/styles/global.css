@@ -1,0 +1,79 @@
+/* ===========================
+   GLOBAL STYLES — Hanged Game
+   =========================== */
+
+/* --- CSS Variables (Design Tokens) --- */
+:root {
+    /* Colores */
+    --color-primary: #3e50b4;
+    --color-primary-hover: #4f66e4;
+    --color-secondary: #363f45;
+    --color-background: #f3f5fc;
+    --color-surface: #ffffff;
+    --color-black: #000000;
+    --color-success: #52c41a;
+    --color-error: #f5222d;
+    --color-border: #363f45;
+    --color-text: #363f45;
+    --color-text-light: #ffffff;
+
+    /* Tipografía */
+    --font-primary: 'Roboto', sans-serif;
+    --font-title: 'Permanent Marker', cursive;
+    --font-light: 300;
+    --font-medium: 500;
+
+    /* Espaciado */
+    --spacing-xs: 5px;
+    --spacing-sm: 10px;
+    --spacing-md: 15px;
+    --spacing-lg: 20px;
+    --spacing-xl: 25px;
+
+    /* Bordes */
+    --radius-sm: 5px;
+    --radius-md: 10px;
+    --radius-lg: 25px;
+
+    /* Transiciones */
+    --transition-fast: 0.3s;
+    --transition-normal: 0.5s;
+
+    /* Sombras */
+    --shadow-md: 0px 24px 32px -8px rgba(0, 0, 0, 0.08);
+
+    /* Tamaños de botón */
+    --btn-height-sm: 45px;
+    --btn-height-md: 50px;
+    --btn-height-lg: 100px;
+}
+
+/* --- Reset --- */
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* --- Base --- */
+body {
+    background: var(--color-background);
+    font-family: var(--font-primary);
+    font-weight: var(--font-light);
+    text-align: center;
+    user-select: none;
+    min-height: 100vh;
+}
+
+input:focus {
+    border: none;
+    outline: none;
+}
+
+#root {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}

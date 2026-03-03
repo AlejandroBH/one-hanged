@@ -1,0 +1,31 @@
+/* ===========================
+   HiddenWord — BEM
+   =========================== */
+
+.hidden-word {
+    margin: var(--spacing-md);
+}
+
+.hidden-word__letter {
+    display: inline-block;
+    width: 50px;
+    padding: var(--spacing-sm);
+    margin: var(--spacing-xs);
+    border-bottom: 5px solid var(--color-secondary);
+    color: var(--color-secondary);
+    font-weight: var(--font-medium);
+    font-size: 20px;
+    background: transparent;
+}
+
+.hidden-word__letter--hidden {
+    color: transparent;
+}
+
+@media screen and (max-width: 950px) {
+    .hidden-word__letter {
+        width: 30px;
+        margin: 2px;
+        font-size: 16px;
+    }
+}

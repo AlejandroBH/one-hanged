@@ -1,0 +1,38 @@
+/* ===========================
+   Footer — BEM
+   =========================== */
+
+.footer {
+    position: relative;
+    margin: 75px 0;
+    width: 100%;
+}
+
+.footer__text {
+    background: transparent;
+}
+
+.footer__links {
+    background: transparent;
+}
+
+.footer__link {
+    background: transparent;
+}
+
+.footer__icon {
+    width: 25px;
+    margin: var(--spacing-xs) 2px;
+    background: transparent;
+}
+
+@media screen and (max-width: 950px) {
+    .footer {
+        font-size: 14px;
+        margin: 25px 0 5px;
+    }
+
+    .footer__icon {
+        width: 35px;
+    }
+}
