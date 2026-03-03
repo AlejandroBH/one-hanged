@@ -26,8 +26,10 @@ const App = () => {
         desist,
         goToCategories,
         goToCustomWords,
+        goToMenu,
         getLetterStatus,
         removeCustomWord,
+        clearCustomWords,
     } = useGame();
 
     return (
@@ -69,6 +71,7 @@ const App = () => {
                         onSelectCategory={selectCategory}
                         onGoToCustomWords={goToCustomWords}
                         onStartGame={startGame}
+                        onBack={goToMenu}
                     />
                 )}
 
@@ -78,9 +81,12 @@ const App = () => {
                         customWords={customWords}
                         onAddWord={addCustomWord}
                         onRemoveWord={removeCustomWord}
+                        onClearAll={clearCustomWords}
                         onPlay={startGame}
+                        onBack={goToCategories}
                     />
                 )}
+
             </main>
 
             <Footer />

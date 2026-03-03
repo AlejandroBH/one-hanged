@@ -226,6 +226,13 @@ const useGame = () => {
         setCustomWords((prev) => prev.filter((_, index) => index !== indexToRemove));
     }, []);
 
+    // Elimina todas las palabras personalizadas
+    const clearCustomWords = useCallback(() => {
+        if (window.confirm('¿Estás seguro de que quieres eliminar todas las palabras?')) {
+            setCustomWords([]);
+        }
+    }, []);
+
     // Desistir — volver al menú
     const desist = useCallback(() => {
         setPoints(0);
@@ -280,6 +287,7 @@ const useGame = () => {
         goToMenu,
         getLetterStatus,
         removeCustomWord,
+        clearCustomWords,
     };
 };
 

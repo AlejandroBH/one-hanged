@@ -105,7 +105,14 @@
 }
 
 .category-selector__btn--7 {
-    background: linear-gradient(135deg, #4527a0, #7c4dff);
+    background: #e67e22;
+}
+
+.category-selector__actions {
+    margin-top: var(--spacing-lg);
+    display: flex;
+    justify-content: center;
+    width: 100%;
 }
 
 @media screen and (max-width: 480px) {
