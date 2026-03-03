@@ -16,6 +16,10 @@
     transition: filter var(--transition-fast);
 }
 
+[data-theme="dark"] .hanged-figure__image {
+    filter: invert(1) brightness(1.2) drop-shadow(0 2px 8px rgba(0, 0, 0, 0.08));
+}
+
 /* Animación shake que se aplica desde JS */
 .hanged-figure--shake .hanged-figure__image {
     animation: shake 0.5s ease;

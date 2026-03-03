@@ -35,6 +35,10 @@
     transition: transform var(--transition-normal);
 }
 
+[data-theme="dark"] .main-menu__image {
+    filter: invert(1) brightness(1.2) drop-shadow(0 4px 12px rgba(0, 0, 0, 0.1));
+}
+
 .main-menu__image:hover {
     transform: scale(1.05) rotate(-2deg);
 }

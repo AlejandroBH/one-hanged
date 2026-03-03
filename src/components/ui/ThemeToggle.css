@@ -1,0 +1,51 @@
+/* ===========================
+   ThemeToggle — BEM
+   =========================== */
+
+.theme-toggle {
+    position: fixed;
+    top: var(--spacing-md);
+    right: var(--spacing-md);
+    z-index: 200;
+    width: 44px;
+    height: 44px;
+    border-radius: var(--radius-full);
+    border: 1.5px solid var(--color-border);
+    background: var(--color-surface);
+    box-shadow: var(--shadow-md);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all var(--transition-fast);
+    -webkit-tap-highlight-color: transparent;
+}
+
+.theme-toggle:hover {
+    transform: scale(1.1);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--color-primary);
+}
+
+.theme-toggle:active {
+    transform: scale(0.95);
+}
+
+.theme-toggle__icon {
+    font-size: 1.25rem;
+    line-height: 1;
+    user-select: none;
+}
+
+@media screen and (max-width: 480px) {
+    .theme-toggle {
+        width: 40px;
+        height: 40px;
+        top: var(--spacing-sm);
+        right: var(--spacing-sm);
+    }
+
+    .theme-toggle__icon {
+        font-size: 1.1rem;
+    }
+}

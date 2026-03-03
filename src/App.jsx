@@ -1,8 +1,11 @@
 import { MainMenu, GameBoard, CategorySelector, CustomWords, useGame } from '@/features/game';
 import Footer from '@/components/Footer';
+import ThemeToggle from '@/components/ui/ThemeToggle';
+import useTheme from '@/hooks/useTheme';
 import './App.css';
 
 const App = () => {
+    const { isDark, toggleTheme } = useTheme();
     const {
         selectedWord,
         fails,
@@ -26,6 +29,7 @@ const App = () => {
 
     return (
         <div className="app">
+            <ThemeToggle isDark={isDark} onToggle={toggleTheme} />
             <main className="app__content">
                 {/* Menú principal */}
                 {gamePhase === 'menu' && (

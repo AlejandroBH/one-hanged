@@ -40,6 +40,10 @@
     transition: opacity var(--transition-fast);
 }
 
+[data-theme="dark"] .footer__icon[alt="Github"] {
+    filter: invert(1);
+}
+
 .footer__link:hover .footer__icon {
     opacity: 1;
 }
