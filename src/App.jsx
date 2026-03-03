@@ -25,6 +25,7 @@ const App = () => {
         goToCategories,
         goToCustomWords,
         getLetterStatus,
+        removeCustomWord,
     } = useGame();
 
     return (
@@ -71,6 +72,7 @@ const App = () => {
                     <CustomWords
                         customWords={customWords}
                         onAddWord={addCustomWord}
+                        onRemoveWord={removeCustomWord}
                         onPlay={startGame}
                     />
                 )}

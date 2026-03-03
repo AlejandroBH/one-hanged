@@ -36,12 +36,35 @@
 .custom-words__tag {
     background: var(--gradient-primary);
     color: var(--color-text-light);
-    padding: 6px 16px;
+    padding: 6px 12px 6px 16px;
     border-radius: var(--radius-full);
     font-size: 0.8125rem;
     font-weight: var(--font-medium);
     box-shadow: var(--shadow-sm);
     animation: bounceIn 0.3s ease both;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.custom-words__tag-remove {
+    background: none;
+    border: none;
+    color: currentColor;
+    font-size: 1.125rem;
+    line-height: 1;
+    padding: 2px;
+    cursor: pointer;
+    opacity: 0.7;
+    transition: opacity var(--transition-fast), transform var(--transition-fast);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.custom-words__tag-remove:hover {
+    opacity: 1;
+    transform: scale(1.2);
 }
 
 .custom-words__input {

@@ -2,7 +2,7 @@ import { useState } from 'react';
 import Button from '@/components/ui/Button';
 import './CustomWords.css';
 
-const CustomWords = ({ customWords, onAddWord, onPlay }) => {
+const CustomWords = ({ customWords, onAddWord, onRemoveWord, onPlay }) => {
     const [inputValue, setInputValue] = useState('');
 
     const handleAdd = () => {
@@ -44,7 +44,16 @@ const CustomWords = ({ customWords, onAddWord, onPlay }) => {
             {customWords.length > 0 && (
                 <div className="custom-words__list">
                     {customWords.map((word, index) => (
-                        <span key={index} className="custom-words__tag">{word}</span>
+                        <div key={index} className="custom-words__tag">
+                            <span className="custom-words__tag-text">{word}</span>
+                            <button
+                                className="custom-words__tag-remove"
+                                onClick={() => onRemoveWord(index)}
+                                aria-label={`Eliminar palabra ${word}`}
+                            >
+                                &times;
+                            </button>
+                        </div>
                     ))}
                 </div>
             )}

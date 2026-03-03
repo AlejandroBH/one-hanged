@@ -126,10 +126,19 @@ const useGame = () => {
     // Agrega una palabra personalizada
     const addCustomWord = useCallback((word) => {
         if (word && word.trim() !== '') {
-            setCustomWords((prev) => [...prev, word.trim().toLowerCase()]);
+            const trimmedWord = word.trim().toLowerCase();
+            setCustomWords((prev) => {
+                if (prev.includes(trimmedWord)) return prev;
+                return [...prev, trimmedWord];
+            });
             return true;
         }
         return false;
+    }, []);
+
+    // Elimina una palabra personalizada
+    const removeCustomWord = useCallback((indexToRemove) => {
+        setCustomWords((prev) => prev.filter((_, index) => index !== indexToRemove));
     }, []);
 
     // Desistir — volver al menú
@@ -181,6 +190,7 @@ const useGame = () => {
         goToCustomWords,
         goToMenu,
         getLetterStatus,
+        removeCustomWord,
     };
 };
 
