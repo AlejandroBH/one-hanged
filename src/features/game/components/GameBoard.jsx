@@ -71,8 +71,13 @@ const GameBoard = ({
 
             {/* Botones de acción */}
             <div className="game-board__actions">
-                <Button variant="primary" size="md" onClick={handleNewGame}>
-                    Nuevo Juego
+                <Button
+                    variant="primary"
+                    size="md"
+                    onClick={handleNewGame}
+                    disabled={points === 0 && !isGameOver}
+                >
+                    Nueva Palabra
                 </Button>
                 <Button variant="secondary" size="sm" onClick={onDesist}>
                     Desistir

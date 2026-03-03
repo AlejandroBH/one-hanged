@@ -193,10 +193,10 @@ const useGame = () => {
         setLastEarnedPoints(0);
     }, [currentCategory, customWords, generateWord]);
 
-    // Nuevo juego (resetea puntos si el anterior fue derrota)
+    // Nuevo juego (ahora divide puntos a la mitad si se salta la palabra)
     const newGame = useCallback((wasComplete = false, categoryOverride) => {
         if (!wasComplete) {
-            setPoints(0);
+            setPoints((prev) => Math.floor(prev / 2));
             setStreak(0);
         }
         const cat = categoryOverride ?? currentCategory;
@@ -342,14 +342,20 @@ const useGame = () => {
 
     // Desistir — volver al menú
     const desist = useCallback(() => {
-        setPoints(0);
-        setStreak(0);
-        setSelectedWord('');
-        setLettersUsed([]);
-        setFails(0);
-        setGamePhase('menu');
-        setLastEarnedPoints(0);
-    }, []);
+        showConfirm(
+            '¿Estás seguro de que quieres desistir? Perderás todo tu progreso de esta partida (puntos y racha).',
+            () => {
+                setPoints(0);
+                setStreak(0);
+                setSelectedWord('');
+                setLettersUsed([]);
+                setFails(0);
+                setGamePhase('menu');
+                setLastEarnedPoints(0);
+            },
+            'Sí, Desistir'
+        );
+    }, [showConfirm]);
 
     // Navegar a categorías
     const goToCategories = useCallback(() => {
