@@ -2,6 +2,7 @@ import { useState, useCallback, useEffect } from 'react';
 import { CATEGORIES, WORD_LISTS } from '../data/wordLists';
 
 const MAX_FAILS = 7;
+const GAME_TIME_LIMIT = 10;
 const STORAGE_KEYS = {
     CUSTOM_WORDS: 'hanged-game-custom-words',
     MAX_POINTS: 'hanged-game-max-points',
@@ -58,8 +59,30 @@ const useGame = () => {
         return stored ? JSON.parse(stored) : [];
     });
     const [gamePhase, setGamePhase] = useState('menu'); // 'menu' | 'playing' | 'won' | 'lost' | 'categories' | 'customWords' | 'rankingInput' | 'rankingBoard'
+    const [timeLeft, setTimeLeft] = useState(GAME_TIME_LIMIT);
     const [lastWonWordLength, setLastWonWordLength] = useState(0);
     const [lastEarnedPoints, setLastEarnedPoints] = useState(0);
+
+    // Sistema de cuenta regresiva
+    useEffect(() => {
+        let timer;
+        if (gamePhase === 'playing' && timeLeft > 0) {
+            timer = setInterval(() => {
+                setTimeLeft((prev) => prev - 1);
+            }, 1000);
+        } else if (timeLeft === 0 && gamePhase === 'playing') {
+            // Tiempo agotado = Derrota
+            if (points > 0) {
+                setGamePhase('rankingInput');
+            } else {
+                setPoints(0);
+                setStreak(0);
+                setGamePhase('lost');
+            }
+        }
+
+        return () => clearInterval(timer);
+    }, [gamePhase, timeLeft, points]);
 
     // Persistencia de ranking
     useEffect(() => {
@@ -134,6 +157,7 @@ const useGame = () => {
         setSelectedWord(word);
         setLettersUsed([]);
         setFails(0);
+        setTimeLeft(GAME_TIME_LIMIT);
         setGamePhase('playing');
         setLastEarnedPoints(0);
     }, [currentCategory, customWords, generateWord]);
@@ -151,6 +175,7 @@ const useGame = () => {
         setSelectedWord(word);
         setLettersUsed([]);
         setFails(0);
+        setTimeLeft(GAME_TIME_LIMIT);
         setGamePhase('playing');
         setLastEarnedPoints(0);
     }, [currentCategory, customWords, generateWord]);
@@ -167,7 +192,10 @@ const useGame = () => {
         setLettersUsed(newLettersUsed);
 
         if (selectedWord.includes(upperLetter)) {
-            // Letra correcta — verificar si ganó
+            // Letra correcta — reiniciar cronómetro
+            setTimeLeft(GAME_TIME_LIMIT);
+
+            // Verificar si ganó
             const newCorrectCount = selectedWord.split('').filter(
                 (l) => newLettersUsed.includes(l)
             ).length;
@@ -317,6 +345,7 @@ const useGame = () => {
         customWords,
         ranking,
         gamePhase,
+        timeLeft,
         revealedLetters,
         correctCount,
         lastWonWordLength,

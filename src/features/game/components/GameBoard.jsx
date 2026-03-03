@@ -14,6 +14,7 @@ const GameBoard = ({
     gamePhase,
     lastWonWordLength,
     lastEarnedPoints,
+    timeLeft,
     onGuessLetter,
     onNewGame,
     onDesist,
@@ -46,6 +47,13 @@ const GameBoard = ({
                         Puntaje: <span className="game-board__score-value">{points}</span>
                     </h3>
                 </div>
+
+                <div className={`game-board__timer ${timeLeft <= 3 ? 'game-board__timer--urgent' : ''}`}>
+                    <h3 className="game-board__score-text">
+                        Tiempo: <span className="game-board__timer-value">{timeLeft}s</span>
+                    </h3>
+                </div>
+
                 {streak > 0 && (
                     <div className="game-board__streak">
                         <h3 className="game-board__score-text">

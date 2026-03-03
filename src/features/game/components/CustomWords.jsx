@@ -65,7 +65,7 @@ const CustomWords = ({ customWords, onAddWord, onRemoveWord, onClearAll, onPlay,
                             onClick={onClearAll}
                             title="Eliminar todas las palabras"
                         >
-                            🗑️ Limpiar Todo
+                            Limpiar Todo
                         </button>
                     </div>
                 )}

@@ -24,6 +24,7 @@ const App = () => {
         customWords,
         ranking,
         gamePhase,
+        timeLeft,
         revealedLetters,
         lastWonWordLength,
         lastEarnedPoints,
@@ -69,6 +70,7 @@ const App = () => {
                         gamePhase={gamePhase}
                         lastWonWordLength={lastWonWordLength}
                         lastEarnedPoints={lastEarnedPoints}
+                        timeLeft={timeLeft}
                         onGuessLetter={guessLetter}
                         onNewGame={newGame}
                         onDesist={desist}
