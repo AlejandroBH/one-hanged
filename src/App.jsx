@@ -10,12 +10,14 @@ const App = () => {
         selectedWord,
         fails,
         points,
+        streak,
         maxPoints,
         currentCategory,
         customWords,
         gamePhase,
         revealedLetters,
         lastWonWordLength,
+        lastEarnedPoints,
         startGame,
         newGame,
         guessLetter,
@@ -42,14 +44,17 @@ const App = () => {
                 )}
 
                 {/* Tablero de juego */}
+
                 {(gamePhase === 'playing' || gamePhase === 'won' || gamePhase === 'lost') && (
                     <GameBoard
                         fails={fails}
                         points={points}
+                        streak={streak}
                         selectedWord={selectedWord}
                         revealedLetters={revealedLetters}
                         gamePhase={gamePhase}
                         lastWonWordLength={lastWonWordLength}
+                        lastEarnedPoints={lastEarnedPoints}
                         onGuessLetter={guessLetter}
                         onNewGame={newGame}
                         onDesist={desist}

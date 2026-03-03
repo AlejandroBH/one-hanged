@@ -5,7 +5,21 @@ const MAX_FAILS = 7;
 const STORAGE_KEYS = {
     CUSTOM_WORDS: 'hanged-game-custom-words',
     MAX_POINTS: 'hanged-game-max-points',
+    POINTS: 'hanged-game-points',
+    STREAK: 'hanged-game-streak',
     CATEGORY: 'hanged-game-category',
+};
+
+// Multiplicadores por dificultad de categoría
+const CATEGORY_MULTIPLIERS = {
+    [CATEGORIES.CUSTOM]: 1.0,
+    [CATEGORIES.DEFAULT]: 1.0,
+    [CATEGORIES.COMPUTING]: 1.5,
+    [CATEGORIES.FRUITS]: 0.8,
+    [CATEGORIES.ANIMALS]: 1.0,
+    [CATEGORIES.VIDEOGAMES]: 1.5,
+    [CATEGORIES.CAR_BRANDS]: 1.2,
+    [CATEGORIES.PROFESSIONS]: 1.5,
 };
 
 /**
@@ -17,9 +31,16 @@ const useGame = () => {
     const [selectedWord, setSelectedWord] = useState('');
     const [lettersUsed, setLettersUsed] = useState([]);
     const [fails, setFails] = useState(0);
-    const [points, setPoints] = useState(0);
+    const [points, setPoints] = useState(() => {
+        const stored = localStorage.getItem(STORAGE_KEYS.POINTS);
+        return stored ? parseInt(stored, 10) : 0;
+    });
     const [maxPoints, setMaxPoints] = useState(() => {
         const stored = localStorage.getItem(STORAGE_KEYS.MAX_POINTS);
+        return stored ? parseInt(stored, 10) : 0;
+    });
+    const [streak, setStreak] = useState(() => {
+        const stored = localStorage.getItem(STORAGE_KEYS.STREAK);
         return stored ? parseInt(stored, 10) : 0;
     });
     const [currentCategory, setCurrentCategory] = useState(() => {
@@ -33,11 +54,22 @@ const useGame = () => {
     });
     const [gamePhase, setGamePhase] = useState('menu'); // 'menu' | 'playing' | 'won' | 'lost' | 'categories' | 'customWords'
     const [lastWonWordLength, setLastWonWordLength] = useState(0);
+    const [lastEarnedPoints, setLastEarnedPoints] = useState(0);
 
     // Persistencia de puntaje máximo
     useEffect(() => {
         localStorage.setItem(STORAGE_KEYS.MAX_POINTS, maxPoints.toString());
     }, [maxPoints]);
+
+    // Persistencia de puntos actuales
+    useEffect(() => {
+        localStorage.setItem(STORAGE_KEYS.POINTS, points.toString());
+    }, [points]);
+
+    // Persistencia de racha
+    useEffect(() => {
+        localStorage.setItem(STORAGE_KEYS.STREAK, streak.toString());
+    }, [streak]);
 
     // Persistencia de palabras personalizadas
     useEffect(() => {
@@ -93,12 +125,14 @@ const useGame = () => {
         setLettersUsed([]);
         setFails(0);
         setGamePhase('playing');
+        setLastEarnedPoints(0);
     }, [currentCategory, customWords, generateWord]);
 
     // Nuevo juego (resetea puntos si el anterior fue derrota)
     const newGame = useCallback((wasComplete = false, categoryOverride) => {
         if (!wasComplete) {
             setPoints(0);
+            setStreak(0);
         }
         const cat = categoryOverride ?? currentCategory;
         const word = generateWord(cat, customWords);
@@ -108,6 +142,7 @@ const useGame = () => {
         setLettersUsed([]);
         setFails(0);
         setGamePhase('playing');
+        setLastEarnedPoints(0);
     }, [currentCategory, customWords, generateWord]);
 
     // Adivina una letra
@@ -128,9 +163,27 @@ const useGame = () => {
             ).length;
 
             if (newCorrectCount === selectedWord.length) {
-                const newPoints = points + selectedWord.length;
+                // Nueva lógica de puntuación:
+                // puntos = (longitud * 10 * multiplicador) - (fallas * 5) + (racha * 5)
+                const multiplier = CATEGORY_MULTIPLIERS[currentCategory] || 1.0;
+                const basePoints = selectedWord.length * 10;
+                const difficultyBonus = Math.round(basePoints * (multiplier - 1));
+                const failPenalty = fails * 5;
+                const streakBonus = streak * 5;
+
+                const earned = Math.max(
+                    selectedWord.length * 2, // Mínimo garantizado
+                    basePoints + difficultyBonus - failPenalty + streakBonus
+                );
+
+                const newPoints = points + earned;
+                const newStreak = streak + 1;
+
                 setPoints(newPoints);
+                setStreak(newStreak);
+                setLastEarnedPoints(earned);
                 setLastWonWordLength(selectedWord.length);
+
                 if (newPoints > maxPoints) {
                     setMaxPoints(newPoints);
                 }
@@ -143,10 +196,12 @@ const useGame = () => {
 
             if (newFails >= MAX_FAILS) {
                 setPoints(0);
+                setStreak(0);
                 setGamePhase('lost');
             }
         }
-    }, [lettersUsed, gamePhase, selectedWord, points, maxPoints, fails]);
+    }, [lettersUsed, gamePhase, selectedWord, points, maxPoints, fails, streak, currentCategory]);
+
 
     // Selecciona una categoría
     const selectCategory = useCallback((categoryId) => {
@@ -174,10 +229,12 @@ const useGame = () => {
     // Desistir — volver al menú
     const desist = useCallback(() => {
         setPoints(0);
+        setStreak(0);
         setSelectedWord('');
         setLettersUsed([]);
         setFails(0);
         setGamePhase('menu');
+        setLastEarnedPoints(0);
     }, []);
 
     // Navegar a categorías
@@ -202,12 +259,14 @@ const useGame = () => {
         fails,
         points,
         maxPoints,
+        streak,
         currentCategory,
         customWords,
         gamePhase,
         revealedLetters,
         correctCount,
         lastWonWordLength,
+        lastEarnedPoints,
 
         // Acciones
         startGame,
@@ -225,3 +284,4 @@ const useGame = () => {
 };
 
 export default useGame;
+

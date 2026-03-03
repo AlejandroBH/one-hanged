@@ -12,7 +12,16 @@
     max-width: 600px;
 }
 
-.game-board__score {
+.game-board__stats {
+    display: flex;
+    justify-content: center;
+    gap: var(--spacing-sm);
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.game-board__score,
+.game-board__streak {
     display: inline-flex;
     align-items: center;
     gap: var(--spacing-xs);
@@ -29,11 +38,13 @@
     font-size: 0.9375rem;
 }
 
-.game-board__score-value {
+.game-board__score-value,
+.game-board__streak-value {
     font-weight: var(--font-bold);
     color: var(--color-primary);
     font-size: 1.125rem;
 }
+
 
 .game-board__actions {
     display: flex;

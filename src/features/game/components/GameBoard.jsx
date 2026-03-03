@@ -8,10 +8,12 @@ import './GameBoard.css';
 const GameBoard = ({
     fails,
     points,
+    streak,
     selectedWord,
     revealedLetters,
     gamePhase,
     lastWonWordLength,
+    lastEarnedPoints,
     onGuessLetter,
     onNewGame,
     onDesist,
@@ -31,16 +33,26 @@ const GameBoard = ({
                 <GameAlert
                     type={alertType}
                     secretWord={selectedWord}
-                    pointsWon={lastWonWordLength}
+                    pointsWon={lastEarnedPoints}
+                    streak={streak}
                     onAction={handleNewGame}
                 />
             )}
 
-            {/* Puntaje */}
-            <div className="game-board__score">
-                <h3 className="game-board__score-text">
-                    Puntaje total: <span className="game-board__score-value">{points}</span>
-                </h3>
+            {/* Puntaje y Racha */}
+            <div className="game-board__stats">
+                <div className="game-board__score">
+                    <h3 className="game-board__score-text">
+                        Puntaje: <span className="game-board__score-value">{points}</span>
+                    </h3>
+                </div>
+                {streak > 0 && (
+                    <div className="game-board__streak">
+                        <h3 className="game-board__score-text">
+                            Racha: <span className="game-board__streak-value">🔥 {streak}</span>
+                        </h3>
+                    </div>
+                )}
             </div>
 
             {/* Figura del ahorcado */}
