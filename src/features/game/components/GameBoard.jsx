@@ -32,6 +32,7 @@ const GameBoard = ({
                     type={alertType}
                     secretWord={selectedWord}
                     pointsWon={lastWonWordLength}
+                    onAction={handleNewGame}
                 />
             )}
 

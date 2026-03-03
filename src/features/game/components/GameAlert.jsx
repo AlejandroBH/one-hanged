@@ -1,8 +1,9 @@
 import iconWin from '@/assets/images/icon-win.svg';
 import iconFail from '@/assets/images/icon-fail.svg';
+import Button from '@/components/ui/Button';
 import './GameAlert.css';
 
-const GameAlert = ({ type, secretWord, pointsWon }) => {
+const GameAlert = ({ type, secretWord, pointsWon, onAction }) => {
     if (!type) return null;
 
     const isWin = type === 'won';
@@ -19,12 +20,23 @@ const GameAlert = ({ type, secretWord, pointsWon }) => {
                 <h2 className="game-alert__title">
                     {isWin ? '¡GANASTE!' : 'PERDISTE'}
                 </h2>
-                <p className="game-alert__message">
-                    {isWin
-                        ? `Obtuviste: "${pointsWon} PUNTOS"`
-                        : `La palabra era: "${secretWord}"`
-                    }
-                </p>
+                <div className="game-alert__body">
+                    <p className="game-alert__message">
+                        {isWin
+                            ? `Obtuviste: "${pointsWon} PUNTOS"`
+                            : `La palabra era: "${secretWord}"`
+                        }
+                    </p>
+                </div>
+                <div className="game-alert__actions">
+                    <Button
+                        variant="primary"
+                        size="md"
+                        onClick={onAction}
+                    >
+                        {isWin ? 'Siguiente Palabra' : 'Nuevo Juego'}
+                    </Button>
+                </div>
             </div>
         </div>
     );
