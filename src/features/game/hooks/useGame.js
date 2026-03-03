@@ -50,9 +50,13 @@ const useGame = () => {
         return 'wrong';
     }, [lettersUsed, selectedWord]);
 
-    // Inicia un nuevo juego
-    const startGame = useCallback(() => {
-        const word = generateWord(currentCategory, customWords);
+    // Inicia un nuevo juego (categoryOverride evita bug de estado stale)
+    const startGame = useCallback((categoryOverride) => {
+        const cat = categoryOverride ?? currentCategory;
+        if (categoryOverride !== undefined) {
+            setCurrentCategory(cat);
+        }
+        const word = generateWord(cat, customWords);
         if (!word) return;
 
         setSelectedWord(word);
@@ -62,11 +66,12 @@ const useGame = () => {
     }, [currentCategory, customWords, generateWord]);
 
     // Nuevo juego (resetea puntos si el anterior fue derrota)
-    const newGame = useCallback((wasComplete = false) => {
+    const newGame = useCallback((wasComplete = false, categoryOverride) => {
         if (!wasComplete) {
             setPoints(0);
         }
-        const word = generateWord(currentCategory, customWords);
+        const cat = categoryOverride ?? currentCategory;
+        const word = generateWord(cat, customWords);
         if (!word) return;
 
         setSelectedWord(word);

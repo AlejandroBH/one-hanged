@@ -7,8 +7,8 @@ const CategorySelector = ({ currentCategory, onSelectCategory, onGoToCustomWords
             onSelectCategory(categoryId);
             onGoToCustomWords();
         } else {
-            onSelectCategory(categoryId);
-            onStartGame();
+            // Pasar categoría directamente para evitar bug de estado stale
+            onStartGame(categoryId);
         }
     };
 
