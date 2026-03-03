@@ -9,6 +9,7 @@ const GameAlert = ({ type, secretWord, pointsWon }) => {
 
     return (
         <div className="game-alert">
+            <div className="game-alert__overlay" />
             <div className={`game-alert__card game-alert__card--${isWin ? 'win' : 'fail'}`}>
                 <img
                     className="game-alert__icon"
@@ -16,14 +17,13 @@ const GameAlert = ({ type, secretWord, pointsWon }) => {
                     alt={isWin ? 'Victoria' : 'Derrota'}
                 />
                 <h2 className="game-alert__title">
-                    {isWin ? 'GANASTE' : 'PERDISTE'}
+                    {isWin ? '¡GANASTE!' : 'PERDISTE'}
                 </h2>
                 <p className="game-alert__message">
-                    {isWin ? (
-                        <>Obtuviste: <br />"{pointsWon} PUNTOS"</>
-                    ) : (
-                        <>La palabra era: <br />"{secretWord}"</>
-                    )}
+                    {isWin
+                        ? `Obtuviste: "${pointsWon} PUNTOS"`
+                        : `La palabra era: "${secretWord}"`
+                    }
                 </p>
             </div>
         </div>

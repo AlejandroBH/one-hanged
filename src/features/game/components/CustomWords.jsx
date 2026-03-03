@@ -60,13 +60,14 @@ const CustomWords = ({ customWords, onAddWord, onPlay }) => {
                 onKeyDown={handleKeyDown}
                 autoFocus
             />
-            <br />
-            <Button variant="primary" size="md" onClick={handleAdd}>
-                Agregar
-            </Button>
-            <Button variant="secondary" size="sm" onClick={handlePlay}>
-                Jugar
-            </Button>
+            <div className="custom-words__actions">
+                <Button variant="primary" size="md" onClick={handleAdd}>
+                    Agregar
+                </Button>
+                <Button variant="secondary" size="sm" onClick={handlePlay}>
+                    Jugar
+                </Button>
+            </div>
         </section>
     );
 };

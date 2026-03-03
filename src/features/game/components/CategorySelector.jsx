@@ -20,7 +20,6 @@ const CategorySelector = ({ currentCategory, onSelectCategory, onGoToCustomWords
                     {CATEGORY_LABELS[currentCategory] || 'predeterminadas'}
                 </span>
             </h3>
-            <br />
             <div className="category-selector__grid">
                 {CATEGORY_BUTTONS.map((cat) => (
                     <button

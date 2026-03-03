@@ -2,14 +2,27 @@
    HangedFigure — BEM
    =========================== */
 
+.hanged-figure {
+    display: flex;
+    justify-content: center;
+    padding: var(--spacing-sm) 0;
+}
+
 .hanged-figure__image {
     max-width: 100%;
     height: auto;
-    background: transparent;
+    width: min(250px, 55vw);
+    filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.08));
+    transition: filter var(--transition-fast);
 }
 
-@media screen and (max-width: 950px) {
+/* Animación shake que se aplica desde JS */
+.hanged-figure--shake .hanged-figure__image {
+    animation: shake 0.5s ease;
+}
+
+@media screen and (max-width: 480px) {
     .hanged-figure__image {
-        width: 200px;
+        width: min(180px, 50vw);
     }
 }

@@ -3,28 +3,30 @@
    =========================== */
 
 .custom-words {
-    position: relative;
-    top: 50px;
-    padding: 0 0 var(--spacing-sm);
-    width: 800px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-md);
+    max-width: 600px;
+    width: 90%;
     margin: auto;
+    animation: slideUp 0.5s ease both;
 }
 
 .custom-words__title {
-    font-size: 48px;
+    font-size: clamp(2rem, 5vw, 3rem);
     font-family: var(--font-title);
     color: var(--color-primary);
-    background: transparent;
+    text-shadow: 2px 2px 0 var(--color-primary-soft);
 }
 
 .custom-words__subtitle {
-    color: var(--color-primary);
+    color: var(--color-text-muted);
     font-weight: var(--font-medium);
-    background: transparent;
+    font-size: 0.9375rem;
 }
 
 .custom-words__list {
-    margin: var(--spacing-sm) 0;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -32,34 +34,49 @@
 }
 
 .custom-words__tag {
-    background: var(--color-primary);
+    background: var(--gradient-primary);
     color: var(--color-text-light);
-    padding: 4px 12px;
-    border-radius: var(--radius-lg);
-    font-size: 14px;
+    padding: 6px 16px;
+    border-radius: var(--radius-full);
+    font-size: 0.8125rem;
     font-weight: var(--font-medium);
+    box-shadow: var(--shadow-sm);
+    animation: bounceIn 0.3s ease both;
 }
 
 .custom-words__input {
-    margin: var(--spacing-sm) 0;
-    font-size: 24px;
-    width: 450px;
-    height: 100px;
+    font-size: clamp(1rem, 3vw, 1.25rem);
+    width: min(400px, 85vw);
+    height: 56px;
     border-radius: var(--radius-md);
     background: var(--color-surface);
     text-align: center;
-    border: none;
+    border: 1.5px solid var(--color-border);
     font-family: var(--font-primary);
+    color: var(--color-text);
+    transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+    box-shadow: var(--shadow-sm);
 }
 
-@media screen and (max-width: 950px) {
-    .custom-words {
-        width: 100%;
-        top: 0;
-    }
+.custom-words__input:focus {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px var(--color-primary-soft);
+}
 
-    .custom-words__input {
-        width: 80%;
-        margin: var(--spacing-xl) 0;
+.custom-words__input::placeholder {
+    color: var(--color-text-muted);
+}
+
+.custom-words__actions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-xs);
+    flex-wrap: wrap;
+}
+
+@media screen and (max-width: 480px) {
+    .custom-words {
+        width: 95%;
     }
 }

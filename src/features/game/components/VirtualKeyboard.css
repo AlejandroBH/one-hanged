@@ -4,63 +4,79 @@
 
 .virtual-keyboard {
     display: grid;
-    grid-template-columns: repeat(7, 50px);
-    gap: 8px;
-    justify-content: center;
-    margin: auto;
-    padding: var(--spacing-sm) 0;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 6px;
+    width: 100%;
+    max-width: 420px;
+    margin: 0 auto;
+    padding: var(--spacing-sm) var(--spacing-xs);
 }
 
 .virtual-keyboard__key {
-    width: 50px;
-    height: 50px;
-    border: 1px solid #d0d5dd;
+    aspect-ratio: 1;
+    border: 1.5px solid var(--color-border);
     background: var(--color-surface);
-    border-radius: var(--radius-md);
-    font-size: 18px;
-    font-weight: var(--font-medium);
-    color: var(--color-secondary);
+    border-radius: var(--radius-sm);
+    font-size: clamp(0.8125rem, 2.5vw, 1.0625rem);
+    font-weight: var(--font-semibold);
+    color: var(--color-text);
     cursor: pointer;
     font-family: var(--font-primary);
-    transition: var(--transition-fast);
+    transition: all var(--transition-fast);
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+    box-shadow: var(--shadow-sm);
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
 }
 
 .virtual-keyboard__key:hover:not(:disabled) {
-    background-color: var(--color-secondary);
+    background: var(--color-primary);
     color: var(--color-text-light);
-    border-color: var(--color-secondary);
+    border-color: var(--color-primary);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.virtual-keyboard__key:active:not(:disabled) {
+    transform: scale(0.9);
+    box-shadow: none;
 }
 
 .virtual-keyboard__key:disabled {
     cursor: not-allowed;
-    opacity: 0.6;
+    opacity: 0.4;
 }
 
 .virtual-keyboard__key--correct {
-    background-color: var(--color-success);
+    background: var(--color-success);
     color: var(--color-text-light);
     border-color: var(--color-success);
+    box-shadow: 0 0 8px var(--color-success-soft);
 }
 
 .virtual-keyboard__key--wrong {
-    background-color: var(--color-error);
+    background: var(--color-error);
     color: var(--color-text-light);
     border-color: var(--color-error);
+    box-shadow: 0 0 8px var(--color-error-soft);
 }
 
-@media screen and (max-width: 950px) {
+@media screen and (max-width: 768px) {
     .virtual-keyboard {
-        grid-template-columns: repeat(7, 40px);
-        gap: 6px;
+        max-width: 360px;
+        gap: 5px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .virtual-keyboard {
+        max-width: 320px;
+        gap: 4px;
     }
 
     .virtual-keyboard__key {
-        width: 40px;
-        height: 40px;
-        font-size: 16px;
+        border-radius: var(--radius-sm);
     }
 }

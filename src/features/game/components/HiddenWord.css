@@ -3,29 +3,40 @@
    =========================== */
 
 .hidden-word {
-    margin: var(--spacing-md);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--spacing-xs);
+    padding: var(--spacing-sm) var(--spacing-md);
 }
 
 .hidden-word__letter {
-    display: inline-block;
-    width: 50px;
-    padding: var(--spacing-sm);
-    margin: var(--spacing-xs);
-    border-bottom: 5px solid var(--color-secondary);
-    color: var(--color-secondary);
-    font-weight: var(--font-medium);
-    font-size: 20px;
-    background: transparent;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: clamp(30px, 8vw, 50px);
+    height: clamp(36px, 9vw, 56px);
+    border-bottom: 3px solid var(--color-secondary);
+    color: var(--color-text);
+    font-weight: var(--font-bold);
+    font-size: clamp(1rem, 3vw, 1.375rem);
+    transition: all var(--transition-fast);
 }
 
 .hidden-word__letter--hidden {
     color: transparent;
 }
 
-@media screen and (max-width: 950px) {
-    .hidden-word__letter {
-        width: 30px;
-        margin: 2px;
-        font-size: 16px;
+/* Animación al revelar letra */
+.hidden-word__letter--revealed {
+    animation: letterReveal 0.4s ease both;
+    border-color: var(--color-success);
+    color: var(--color-success);
+}
+
+@media screen and (max-width: 480px) {
+    .hidden-word {
+        gap: 3px;
+        padding: var(--spacing-xs) var(--spacing-sm);
     }
 }

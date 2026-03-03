@@ -9,16 +9,15 @@ const MainMenu = ({ maxPoints, onStartGame, onCustomize }) => {
             <h3 className="main-menu__subtitle">
                 Puntaje maximo: <span className="main-menu__score">{maxPoints}</span>
             </h3>
-            <br />
             <img className="main-menu__image" src={hangedImg} alt="Horca" />
-            <br />
-            <Button variant="primary" size="lg" onClick={onStartGame}>
-                Iniciar Juego
-            </Button>
-            <br />
-            <Button variant="secondary" size="md" onClick={onCustomize}>
-                Juego Personalizado
-            </Button>
+            <div className="main-menu__actions">
+                <Button variant="primary" size="lg" onClick={onStartGame} className="btn--pulse">
+                    Iniciar Juego
+                </Button>
+                <Button variant="secondary" size="md" onClick={onCustomize}>
+                    Juego Personalizado
+                </Button>
+            </div>
         </section>
     );
 };

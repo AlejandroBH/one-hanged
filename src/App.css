@@ -3,11 +3,23 @@
    =========================== */
 
 .app {
-    min-height: 100vh;
+    min-height: 100dvh;
     display: flex;
     flex-direction: column;
 }
 
 .app__content {
     flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--spacing-lg) var(--spacing-md);
+}
+
+@media screen and (max-width: 480px) {
+    .app__content {
+        padding: var(--spacing-md) var(--spacing-sm);
+        align-items: flex-start;
+        padding-top: var(--spacing-xl);
+    }
 }
