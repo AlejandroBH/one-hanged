@@ -1,7 +1,12 @@
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import { CATEGORIES, WORD_LISTS } from '../data/wordLists';
 
 const MAX_FAILS = 7;
+const STORAGE_KEYS = {
+    CUSTOM_WORDS: 'hanged-game-custom-words',
+    MAX_POINTS: 'hanged-game-max-points',
+    CATEGORY: 'hanged-game-category',
+};
 
 /**
  * Custom hook que encapsula toda la lógica del juego del ahorcado.
@@ -13,11 +18,36 @@ const useGame = () => {
     const [lettersUsed, setLettersUsed] = useState([]);
     const [fails, setFails] = useState(0);
     const [points, setPoints] = useState(0);
-    const [maxPoints, setMaxPoints] = useState(0);
-    const [currentCategory, setCurrentCategory] = useState(CATEGORIES.DEFAULT);
-    const [customWords, setCustomWords] = useState([]);
+    const [maxPoints, setMaxPoints] = useState(() => {
+        const stored = localStorage.getItem(STORAGE_KEYS.MAX_POINTS);
+        return stored ? parseInt(stored, 10) : 0;
+    });
+    const [currentCategory, setCurrentCategory] = useState(() => {
+        const stored = localStorage.getItem(STORAGE_KEYS.CATEGORY);
+        const numeric = stored !== null ? Number(stored) : null;
+        return Object.values(CATEGORIES).includes(numeric) ? numeric : CATEGORIES.DEFAULT;
+    });
+    const [customWords, setCustomWords] = useState(() => {
+        const stored = localStorage.getItem(STORAGE_KEYS.CUSTOM_WORDS);
+        return stored ? JSON.parse(stored) : [];
+    });
     const [gamePhase, setGamePhase] = useState('menu'); // 'menu' | 'playing' | 'won' | 'lost' | 'categories' | 'customWords'
     const [lastWonWordLength, setLastWonWordLength] = useState(0);
+
+    // Persistencia de puntaje máximo
+    useEffect(() => {
+        localStorage.setItem(STORAGE_KEYS.MAX_POINTS, maxPoints.toString());
+    }, [maxPoints]);
+
+    // Persistencia de palabras personalizadas
+    useEffect(() => {
+        localStorage.setItem(STORAGE_KEYS.CUSTOM_WORDS, JSON.stringify(customWords));
+    }, [customWords]);
+
+    // Persistencia de categoría actual
+    useEffect(() => {
+        localStorage.setItem(STORAGE_KEYS.CATEGORY, currentCategory);
+    }, [currentCategory]);
 
     // Obtiene la lista de palabras activa
     const getWordList = useCallback((category, custom) => {
