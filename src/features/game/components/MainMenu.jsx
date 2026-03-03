@@ -11,7 +11,7 @@ const MainMenu = ({ maxPoints, onStartGame, onCustomize, onShowRanking }) => {
             </h3>
             <img className="main-menu__image" src={hangedImg} alt="Horca" />
             <div className="main-menu__actions">
-                <Button variant="primary" size="lg" onClick={onStartGame} className="btn--pulse">
+                <Button variant="primary" size="lg" onClick={() => onStartGame()} className="btn--pulse">
                     Iniciar Juego
                 </Button>
                 <div className="main-menu__subactions">

@@ -178,8 +178,8 @@ const useGame = () => {
 
     // Inicia un nuevo juego (categoryOverride evita bug de estado stale)
     const startGame = useCallback((categoryOverride) => {
-        const cat = categoryOverride ?? currentCategory;
-        if (categoryOverride !== undefined) {
+        const cat = typeof categoryOverride === 'number' ? categoryOverride : currentCategory;
+        if (typeof categoryOverride === 'number') {
             setCurrentCategory(cat);
         }
         const word = generateWord(cat, customWords);
@@ -199,7 +199,7 @@ const useGame = () => {
             setPoints((prev) => Math.floor(prev / 2));
             setStreak(0);
         }
-        const cat = categoryOverride ?? currentCategory;
+        const cat = typeof categoryOverride === 'number' ? categoryOverride : currentCategory;
         const word = generateWord(cat, customWords);
         if (!word) return;
 
