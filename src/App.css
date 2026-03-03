@@ -19,7 +19,7 @@
 @media screen and (max-width: 480px) {
     .app__content {
         padding: var(--spacing-md) var(--spacing-sm);
-        align-items: flex-start;
+        /* align-items: flex-start; */
         padding-top: var(--spacing-xl);
     }
 }

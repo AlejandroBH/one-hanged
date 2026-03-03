@@ -2,43 +2,61 @@ import Button from '@/components/ui/Button';
 import { CATEGORIES, CATEGORY_LABELS, CATEGORY_BUTTONS } from '../data/wordLists';
 import './CategorySelector.css';
 
+const CATEGORY_ICONS = {
+    [CATEGORIES.CUSTOM]: '✍️',
+    [CATEGORIES.DEFAULT]: '📝',
+    [CATEGORIES.COMPUTING]: '💻',
+    [CATEGORIES.FRUITS]: '🍎',
+    [CATEGORIES.ANIMALS]: '🦁',
+    [CATEGORIES.VIDEOGAMES]: '🎮',
+    [CATEGORIES.CAR_BRANDS]: '🏎️',
+    [CATEGORIES.PROFESSIONS]: '👨‍⚕️',
+};
+
 const CategorySelector = ({ currentCategory, onSelectCategory, onGoToCustomWords, onStartGame, onBack }) => {
     const handleCategoryClick = (categoryId) => {
         if (categoryId === CATEGORIES.CUSTOM) {
             onSelectCategory(categoryId);
             onGoToCustomWords();
         } else {
-            // Pasar categoría directamente para evitar bug de estado stale
             onStartGame(categoryId);
         }
     };
 
     return (
         <section className="category-selector">
-            <h1 className="category-selector__title">Categorias</h1>
-            <h3 className="category-selector__subtitle">
-                Palabras <span className="category-selector__label">
-                    {CATEGORY_LABELS[currentCategory] || 'predeterminadas'}
-                </span>
-            </h3>
+            <header className="category-selector__header">
+                <h1 className="category-selector__title">Categorías</h1>
+                <p className="category-selector__subtitle">
+                    Selecciona un tema para comenzar a jugar
+                </p>
+            </header>
+
             <div className="category-selector__grid">
                 {CATEGORY_BUTTONS.map((cat) => (
                     <button
                         key={cat.id}
-                        className={`category-selector__btn category-selector__btn--${cat.id}`}
+                        className={`category-selector__btn category-selector__btn--${cat.id} ${currentCategory === cat.id ? 'category-selector__btn--active' : ''}`}
                         onClick={() => handleCategoryClick(cat.id)}
                     >
-                        {cat.label}
+                        <span className="category-selector__btn-icon">
+                            {CATEGORY_ICONS[cat.id]}
+                        </span>
+                        <span className="category-selector__btn-label">
+                            {cat.label}
+                        </span>
                     </button>
                 ))}
             </div>
-            <div className="category-selector__actions">
-                <Button variant="secondary" size="md" onClick={onBack}>
-                    Volver
+
+            <footer className="category-selector__footer">
+                <Button variant="secondary" size="lg" onClick={onBack}>
+                    Volver al Menú
                 </Button>
-            </div>
+            </footer>
         </section>
     );
 };
+
 
 export default CategorySelector;

@@ -61,9 +61,9 @@
 }
 
 .custom-words__clear-btn:hover {
-    background: #fff5f5;
-    border-color: #fab1a0;
-    color: #e17055;
+    color: #e74c3c;
+    border-color: #e74c3c87;
+    background: #e74c3c1a;
     transform: translateY(-1px);
     box-shadow: var(--shadow-md);
 }
@@ -99,8 +99,8 @@
 
 .custom-words__counter--full {
     color: #e74c3c;
-    border-color: #fab1a0;
-    background: #fff5f5;
+    border-color: #e74c3c87;
+    background: #e74c3c1a;
 }
 
 .custom-words__content {
