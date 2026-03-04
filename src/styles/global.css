@@ -105,6 +105,11 @@
     box-sizing: border-box;
 }
 
+/* Safari iOS: evitar márgenes blancos en elastic scroll */
+html {
+    background-color: var(--color-background);
+}
+
 /* --- Base --- */
 body {
     background: var(--gradient-bg);
