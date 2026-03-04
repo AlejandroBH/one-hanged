@@ -37,13 +37,7 @@ export const CATEGORY_BUTTONS = [
 // Listas de palabras por categoría
 export const WORD_LISTS = {
     [CATEGORIES.DEFAULT]: [
-        'empalmar', 'velador', 'nieve', 'primera', 'roca', 'riachuelo', 'lago',
-        'levadura', 'ruleta', 'estirar', 'domingo', 'frenar', 'peligro', 'maleta',
-        'profesor', 'epitafio', 'burbuja', 'mesa', 'conectar', 'marco', 'pollito',
-        'mapache', 'sombrero', 'turistas', 'termostato', 'correr', 'doctora', 'yema',
-        'goleada', 'acusado', 'horizonte', 'contento', 'toallero', 'final', 'varilla',
-        'abuelos', 'atreverse', 'maquillaje', 'pauta', 'madera', 'coro', 'principio',
-        'suicidio', 'plumero', 'colocar', 'lazo', 'guillotina', 'manicura', 'sumar', 'yegua',
+        'empalmar'
     ],
     [CATEGORIES.COMPUTING]: [
         'software', 'hardware', 'monitor', 'javascript', 'vscode', 'teclado',

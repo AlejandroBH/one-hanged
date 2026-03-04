@@ -13,8 +13,10 @@ import hanged7 from '@/assets/images/hanged/hanget_7.svg';
 
 const HANGED_IMAGES = [hanged0, hanged1, hanged2, hanged3, hanged4, hanged5, hanged6, hanged7];
 
-const HangedFigure = ({ fails }) => {
+const HangedFigure = ({ fails, streak }) => {
     const [shaking, setShaking] = useState(false);
+    const [displayStreak, setDisplayStreak] = useState(0);
+    const [isVisible, setIsVisible] = useState(false);
     const imageSrc = HANGED_IMAGES[fails] || HANGED_IMAGES[0];
 
     // Disparar shake al cambiar fails (pero no en 0)
@@ -26,6 +28,20 @@ const HangedFigure = ({ fails }) => {
         }
     }, [fails]);
 
+    // Lógica para mostrar la racha temporalmente
+    useEffect(() => {
+        if (streak > 0) {
+            setDisplayStreak(streak);
+            setIsVisible(true);
+
+            const timer = setTimeout(() => {
+                setIsVisible(false);
+            }, 1000); // Duración de 1000ms + margen para animación
+
+            return () => clearTimeout(timer);
+        }
+    }, [streak]);
+
     const figureClass = [
         'hanged-figure',
         shaking ? 'hanged-figure--shake' : '',
@@ -33,7 +49,17 @@ const HangedFigure = ({ fails }) => {
 
     return (
         <div className={figureClass}>
-            <img className="hanged-figure__image" src={imageSrc} alt={`Horca - ${fails} fallos`} />
+            <div className="hanged-figure__container">
+                <img className="hanged-figure__image" src={imageSrc} alt={`Horca - ${fails} fallos`} />
+
+                {isVisible && displayStreak > 1 && (
+                    <div key={displayStreak} className="hanged-figure__streak-badge">
+                        <span className="hanged-figure__streak-text">RACHA</span>
+                        <span className="hanged-figure__streak-count">{displayStreak}</span>
+                        <span className="hanged-figure__streak-fire">🔥</span>
+                    </div>
+                )}
+            </div>
         </div>
     );
 };

@@ -2,7 +2,7 @@ import { useState, useCallback, useEffect } from 'react';
 import { CATEGORIES, WORD_LISTS } from '../data/wordLists';
 
 const MAX_FAILS = 7;
-const GAME_TIME_LIMIT = 10;
+const GAME_TIME_LIMIT = 999;
 const STORAGE_KEYS = {
     CUSTOM_WORDS: 'hanged-game-custom-words',
     MAX_POINTS: 'hanged-game-max-points',

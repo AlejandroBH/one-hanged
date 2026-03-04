@@ -53,18 +53,10 @@ const GameBoard = ({
                         Tiempo: <span className="game-board__timer-value">{timeLeft}s</span>
                     </h3>
                 </div>
-
-                {streak > 0 && (
-                    <div className="game-board__streak">
-                        <h3 className="game-board__score-text">
-                            Racha: <span className="game-board__streak-value">🔥 {streak}</span>
-                        </h3>
-                    </div>
-                )}
             </div>
 
             {/* Figura del ahorcado */}
-            <HangedFigure fails={fails} />
+            <HangedFigure fails={fails} streak={streak} />
 
             {/* Palabra oculta */}
             <HiddenWord revealedLetters={revealedLetters} />

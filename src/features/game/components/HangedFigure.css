@@ -8,16 +8,145 @@
     padding: var(--spacing-sm) 0;
 }
 
+.hanged-figure__container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .hanged-figure__image {
     max-width: 100%;
     height: auto;
     width: min(250px, 55vw);
-    filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.08));
-    transition: filter var(--transition-fast);
+    filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.1));
+    transition: filter var(--transition-medium);
 }
 
 [data-theme="dark"] .hanged-figure__image {
-    filter: invert(1) brightness(1.2) drop-shadow(0 2px 8px rgba(0, 0, 0, 0.08));
+    filter: invert(1) brightness(1.2) drop-shadow(0 4px 12px rgba(255, 255, 255, 0.05));
+}
+
+.hanged-figure__streak-badge {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: linear-gradient(to bottom, #ff8c00, #ff4500, #b22222);
+    /* Degradado de fuego */
+    color: white;
+    padding: 12px 28px;
+    border-radius: 8px;
+    /* Bordes más afilados */
+    font-weight: 950;
+    font-size: 2.2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+    box-shadow:
+        0 0 20px rgba(255, 69, 0, 0.6),
+        0 0 40px rgba(255, 140, 0, 0.4),
+        inset 0 0 15px rgba(255, 255, 255, 0.3);
+    border: 2px solid #ffda44;
+    /* Borde amarillo fuego */
+    animation: badge-mega-pop 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    z-index: 20;
+    pointer-events: none;
+    text-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(2px);
+    letter-spacing: 1px;
+    overflow: hidden;
+}
+
+.hanged-figure__streak-badge::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.2) 0%, transparent 70%);
+    animation: fire-flicker 2s infinite alternate;
+}
+
+.hanged-figure__streak-text {
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.8);
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    margin-bottom: -5px;
+}
+
+.hanged-figure__streak-count {
+    font-size: 3.5rem;
+    background: linear-gradient(to bottom, #fff, #ffda44);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 0 10px rgba(255, 218, 68, 0.3));
+}
+
+.hanged-figure__streak-fire {
+    position: absolute;
+    top: -15px;
+    right: -15px;
+    font-size: 2.5rem;
+    filter: drop-shadow(0 0 20px #ff4500);
+    animation: fire-pulse 0.8s infinite ease-in-out;
+    z-index: 21;
+}
+
+@keyframes badge-mega-pop {
+    0% {
+        transform: translate(-50%, -50%) scale(0.2) rotate(-20deg);
+        opacity: 0;
+    }
+
+    30% {
+        transform: translate(-50%, -50%) scale(1.4) rotate(15deg);
+        opacity: 1;
+    }
+
+    40% {
+        transform: translate(-50%, -50%) scale(1) rotate(0);
+    }
+
+    80% {
+        transform: translate(-50%, -50%) scale(1) rotate(0);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translate(-50%, -50%) scale(0) rotate(20deg);
+        opacity: 0;
+    }
+}
+
+@keyframes fire-flicker {
+    0% {
+        opacity: 0.3;
+        transform: scale(1);
+    }
+
+    100% {
+        opacity: 0.7;
+        transform: scale(1.1);
+    }
+}
+
+@keyframes fire-pulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+        filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.8));
+    }
+
+    50% {
+        transform: scale(1.25);
+        filter: drop-shadow(0 0 15px #fffa65);
+    }
 }
 
 /* Animación shake que se aplica desde JS */
@@ -28,5 +157,21 @@
 @media screen and (max-width: 480px) {
     .hanged-figure__image {
         width: min(180px, 50vw);
+    }
+
+    .hanged-figure__streak-badge {
+        font-size: 1.2rem;
+        padding: 8px 20px;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .hanged-figure__streak-count {
+        font-size: 2.2rem;
+    }
+
+    .hanged-figure__streak-text {
+        font-size: 0.6rem;
     }
 }
