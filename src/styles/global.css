@@ -108,13 +108,14 @@
 /* --- Base --- */
 body {
     background: var(--gradient-bg);
-    background-attachment: fixed;
+    /* background-attachment: fixed; */
     font-family: var(--font-primary);
     font-weight: var(--font-regular);
     color: var(--color-text);
     text-align: center;
     user-select: none;
     min-height: 100dvh;
+    height: 100%;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
