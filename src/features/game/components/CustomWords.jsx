@@ -118,7 +118,7 @@ const CustomWords = ({ customWords, onAddWord, onRemoveWord, onClearAll, onPlay,
             return;
         }
 
-        onPlay();
+        onPlay(0); // Forzar categoría personalizada al iniciar
     };
 
     // Solo permitir letras

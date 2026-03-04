@@ -222,44 +222,50 @@ const useGame = () => {
         const newLettersUsed = [...lettersUsed, upperLetter];
         setLettersUsed(newLettersUsed);
 
+        const categoryMultiplier = CATEGORY_MULTIPLIERS[currentCategory] || 1.0;
+
         if (selectedWord.includes(upperLetter)) {
             // Letra correcta — reiniciar cronómetro
             setTimeLeft(GAME_TIME_LIMIT);
 
+            // Aumentar racha y sumar puntos por letra inmediatamente
+            const newStreak = streak + 1;
+            const letterPoints = Math.round(newStreak * 2 * categoryMultiplier);
+
+            setStreak(newStreak);
+            setPoints(prev => prev + letterPoints);
+
             // Verificar si ganó
-            const newCorrectCount = selectedWord.split('').filter(
+            const newCorrectLettersCount = selectedWord.split('').filter(
                 (l) => newLettersUsed.includes(l)
             ).length;
 
-            if (newCorrectCount === selectedWord.length) {
-                // Nueva lógica de puntuación:
-                // puntos = (longitud * 10 * multiplicador) - (fallas * 5) + (racha * 5)
-                const multiplier = CATEGORY_MULTIPLIERS[currentCategory] || 1.0;
-                const basePoints = selectedWord.length * 10;
-                const difficultyBonus = Math.round(basePoints * (multiplier - 1));
+            if (newCorrectLettersCount === selectedWord.length) {
+                // Bono final por completar la palabra
+                // Bono = (longitud * 10 * multiplicador) - (fallas * 5)
+                const baseBonus = selectedWord.length * 10;
+                const difficultyBonus = Math.round(baseBonus * (categoryMultiplier - 1));
                 const failPenalty = fails * 5;
-                const streakBonus = streak * 5;
 
-                const earned = Math.max(
-                    selectedWord.length * 2, // Mínimo garantizado
-                    basePoints + difficultyBonus - failPenalty + streakBonus
+                const finalBonus = Math.max(
+                    selectedWord.length * 5, // Mínimo garantizado por ganar
+                    baseBonus + difficultyBonus - failPenalty
                 );
 
-                const newPoints = points + earned;
-                const newStreak = streak + 1;
+                const totalPointsAfterWin = points + letterPoints + finalBonus;
 
-                setPoints(newPoints);
-                setStreak(newStreak);
-                setLastEarnedPoints(earned);
+                setPoints(totalPointsAfterWin);
+                setLastEarnedPoints(finalBonus); // Mostramos el gran bono final
                 setLastWonWordLength(selectedWord.length);
 
-                if (newPoints > maxPoints) {
-                    setMaxPoints(newPoints);
+                if (totalPointsAfterWin > maxPoints) {
+                    setMaxPoints(totalPointsAfterWin);
                 }
                 setGamePhase('won');
             }
         } else {
-            // Letra incorrecta
+            // Letra incorrecta — resetear racha
+            setStreak(0);
             const newFails = fails + 1;
             setFails(newFails);
 

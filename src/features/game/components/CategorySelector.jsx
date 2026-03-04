@@ -16,7 +16,6 @@ const CATEGORY_ICONS = {
 const CategorySelector = ({ currentCategory, onSelectCategory, onGoToCustomWords, onStartGame, onBack }) => {
     const handleCategoryClick = (categoryId) => {
         if (categoryId === CATEGORIES.CUSTOM) {
-            onSelectCategory(categoryId);
             onGoToCustomWords();
         } else {
             onStartGame(categoryId);
