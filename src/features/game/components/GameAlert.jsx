@@ -23,7 +23,7 @@ const GameAlert = ({ type, secretWord, pointsWon, streak, onAction }) => {
                 <div className="game-alert__body">
                     <p className="game-alert__message">
                         {isWin
-                            ? `¡Ganaste ${pointsWon} puntos!`
+                            ? `¡Ganaste +${pointsWon} puntos!`
                             : `La palabra era: "${secretWord}"`
                         }
                     </p>

@@ -49,6 +49,7 @@ const RankingInput = ({ score, streak, onSave, onCancel }) => {
                         placeholder="AAA"
                         autoFocus
                         required
+                        autoComplete="off"
                     />
                     <div className="ranking-input__cursor"></div>
                 </div>

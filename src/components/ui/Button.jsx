@@ -1,6 +1,6 @@
 import './Button.css';
 
-const Button = ({ children, variant = 'primary', size = 'md', onClick, disabled = false, className = '' }) => {
+const Button = ({ children, variant = 'primary', size = 'md', onClick, type = 'button', disabled = false, className = '' }) => {
     const btnClass = [
         'btn',
         `btn--${variant}`,
@@ -9,7 +9,7 @@ const Button = ({ children, variant = 'primary', size = 'md', onClick, disabled 
     ].filter(Boolean).join(' ');
 
     return (
-        <button className={btnClass} onClick={onClick} disabled={disabled}>
+        <button type={type} className={btnClass} onClick={onClick} disabled={disabled}>
             {children}
         </button>
     );

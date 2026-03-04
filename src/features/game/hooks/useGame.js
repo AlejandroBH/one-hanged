@@ -5,9 +5,6 @@ const MAX_FAILS = 7;
 const GAME_TIME_LIMIT = 10;
 const STORAGE_KEYS = {
     CUSTOM_WORDS: 'hanged-game-custom-words',
-    MAX_POINTS: 'hanged-game-max-points',
-    POINTS: 'hanged-game-points',
-    STREAK: 'hanged-game-streak',
     CATEGORY: 'hanged-game-category',
     RANKING: 'hanged-game-ranking',
 };
@@ -37,10 +34,6 @@ const useGame = () => {
         const stored = localStorage.getItem(STORAGE_KEYS.POINTS);
         return stored ? parseInt(stored, 10) : 0;
     });
-    const [maxPoints, setMaxPoints] = useState(() => {
-        const stored = localStorage.getItem(STORAGE_KEYS.MAX_POINTS);
-        return stored ? parseInt(stored, 10) : 0;
-    });
     const [streak, setStreak] = useState(() => {
         const stored = localStorage.getItem(STORAGE_KEYS.STREAK);
         return stored ? parseInt(stored, 10) : 0;
@@ -58,7 +51,11 @@ const useGame = () => {
         const stored = localStorage.getItem(STORAGE_KEYS.RANKING);
         return stored ? JSON.parse(stored) : [];
     });
-    const [gamePhase, setGamePhase] = useState('menu'); // 'menu' | 'playing' | 'won' | 'lost' | 'categories' | 'customWords' | 'rankingInput' | 'rankingBoard'
+
+    // Puntaje máximo derivado del Ranking (Top 1)
+    const maxPoints = ranking.length > 0 ? ranking[0].score : 0;
+
+    const [gamePhase, setGamePhase] = useState('menu');
     const [timeLeft, setTimeLeft] = useState(GAME_TIME_LIMIT);
     const [lastWonWordLength, setLastWonWordLength] = useState(0);
     const [lastEarnedPoints, setLastEarnedPoints] = useState(0);
@@ -119,11 +116,6 @@ const useGame = () => {
     useEffect(() => {
         localStorage.setItem(STORAGE_KEYS.RANKING, JSON.stringify(ranking));
     }, [ranking]);
-
-    // Persistencia de puntaje máximo
-    useEffect(() => {
-        localStorage.setItem(STORAGE_KEYS.MAX_POINTS, maxPoints.toString());
-    }, [maxPoints]);
 
     // Persistencia de puntos actuales
     useEffect(() => {
@@ -258,9 +250,6 @@ const useGame = () => {
                 setLastEarnedPoints(finalBonus); // Mostramos el gran bono final
                 setLastWonWordLength(selectedWord.length);
 
-                if (totalPointsAfterWin > maxPoints) {
-                    setMaxPoints(totalPointsAfterWin);
-                }
                 setGamePhase('won');
             }
         } else {
@@ -335,13 +324,17 @@ const useGame = () => {
     // Elimina una palabra personalizada
     const removeCustomWord = useCallback((indexToRemove) => {
         setCustomWords((prev) => prev.filter((_, index) => index !== indexToRemove));
+        setCurrentCategory(CATEGORIES.DEFAULT);
     }, []);
 
     // Elimina todas las palabras personalizadas
     const clearCustomWords = useCallback(() => {
         showConfirm(
             '¿Estás seguro de que quieres eliminar todas las palabras? Esta acción no se puede deshacer.',
-            () => setCustomWords([]),
+            () => {
+                setCustomWords([]);
+                setCurrentCategory(CATEGORIES.DEFAULT);
+            },
             'Confirmar'
         );
     }, [showConfirm]);
