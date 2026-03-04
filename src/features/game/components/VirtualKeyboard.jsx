@@ -1,4 +1,4 @@
-import { useEffect, useCallback } from 'react';
+import { memo, useEffect, useCallback } from 'react';
 import './VirtualKeyboard.css';
 
 const KEYBOARD_LETTERS = [
@@ -10,7 +10,7 @@ const KEYBOARD_LETTERS = [
 
 const VALID_KEYS = 'QWERTYUIOPASDFGHJKLÑZXCVBNMqwertyuiopasdfghjklñzxcvbnm';
 
-const VirtualKeyboard = ({ onKeyPress, getLetterStatus, disabled = false }) => {
+const VirtualKeyboard = memo(({ onKeyPress, getLetterStatus, disabled = false }) => {
     // Captura de teclado físico
     const handlePhysicalKey = useCallback((event) => {
         if (disabled) return;
@@ -48,6 +48,6 @@ const VirtualKeyboard = ({ onKeyPress, getLetterStatus, disabled = false }) => {
             })}
         </div>
     );
-};
+});
 
 export default VirtualKeyboard;

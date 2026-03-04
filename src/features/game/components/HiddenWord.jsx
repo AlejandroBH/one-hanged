@@ -1,7 +1,7 @@
-import { useRef, useEffect } from 'react';
+import { memo, useRef, useEffect } from 'react';
 import './HiddenWord.css';
 
-const HiddenWord = ({ revealedLetters }) => {
+const HiddenWord = memo(({ revealedLetters }) => {
     // Rastrear letras previamente reveladas para animar solo las nuevas
     const prevLettersRef = useRef([]);
 
@@ -29,6 +29,6 @@ const HiddenWord = ({ revealedLetters }) => {
             })}
         </div>
     );
-};
+});
 
 export default HiddenWord;

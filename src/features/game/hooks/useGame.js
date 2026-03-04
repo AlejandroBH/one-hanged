@@ -1,4 +1,4 @@
-import { useState, useCallback, useEffect } from 'react';
+import { useState, useCallback, useEffect, useMemo } from 'react';
 import { CATEGORIES, WORD_LISTS } from '../data/wordLists';
 
 const MAX_FAILS = 7;
@@ -155,10 +155,11 @@ const useGame = () => {
         return words[randomIndex].toUpperCase();
     }, [getWordList]);
 
-    // Letras de la palabra que ya fueron reveladas
-    const revealedLetters = selectedWord.split('').map((letter) =>
-        lettersUsed.includes(letter) ? letter : null
-    );
+    // Letras de la palabra que ya fueron reveladas (memoizado para evitar re-renders)
+    const revealedLetters = useMemo(() =>
+        selectedWord.split('').map((letter) =>
+            lettersUsed.includes(letter) ? letter : null
+        ), [selectedWord, lettersUsed]);
 
     // Cuenta de letras acertadas
     const correctCount = revealedLetters.filter((l) => l !== null).length;

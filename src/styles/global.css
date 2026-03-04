@@ -108,7 +108,7 @@
 /* --- Base --- */
 body {
     background: var(--gradient-bg);
-    /* background-attachment: fixed; */
+    background-attachment: fixed;
     font-family: var(--font-primary);
     font-weight: var(--font-regular);
     color: var(--color-text);
@@ -118,6 +118,13 @@ body {
     height: 100%;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+}
+
+/* Desactivar background-attachment: fixed en móviles (causa repaint costoso) */
+@media (max-width: 768px) {
+    body {
+        background-attachment: scroll;
+    }
 }
 
 input:focus {
