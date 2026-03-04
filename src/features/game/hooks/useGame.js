@@ -187,6 +187,7 @@ const useGame = () => {
         setSelectedWord(word);
         setLettersUsed([]);
         setFails(0);
+        setStreak(0);
         setTimeLeft(GAME_TIME_LIMIT);
         setGamePhase('playing');
         setLastEarnedPoints(0);
