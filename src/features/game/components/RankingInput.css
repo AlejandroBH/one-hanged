@@ -2,58 +2,76 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: var(--spacing-xl);
-    max-width: 500px;
+    gap: var(--spacing-lg);
+    max-width: 450px;
     width: 90%;
     margin: auto;
     padding: var(--spacing-xl);
     background: var(--color-surface);
     border-radius: var(--radius-lg);
-    box-shadow: var(--shadow-lg);
+    box-shadow: var(--shadow-xl);
     border: 1px solid var(--color-border);
     animation: bounceIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) both;
 }
 
 .ranking-input__header {
     text-align: center;
+    width: 100%;
 }
 
 .ranking-input__title {
-    font-size: clamp(1.75rem, 5vw, 2.5rem);
+    font-size: clamp(1.5rem, 6vw, 2.2rem);
     font-family: var(--font-title);
-    color: #e74c3c;
+    color: #ff4757;
     margin: 0;
     text-transform: uppercase;
+    letter-spacing: 2px;
 }
 
 .ranking-input__subtitle {
     color: var(--color-text-muted);
-    font-size: 0.95rem;
+    font-size: 0.9rem;
     margin-top: var(--spacing-xs);
+    opacity: 0.8;
 }
 
-.ranking-input__score-badge {
+.ranking-input__stats {
+    display: flex;
+    gap: var(--spacing-md);
+    justify-content: center;
     margin-top: var(--spacing-lg);
+    width: 100%;
+}
+
+.ranking-input__score-badge,
+.ranking-input__streak-badge {
+    flex: 1;
     background: var(--gradient-primary);
-    padding: var(--spacing-md) var(--spacing-lg);
+    padding: var(--spacing-md) var(--spacing-sm);
     border-radius: var(--radius-md);
     display: flex;
     flex-direction: column;
     color: white;
     box-shadow: var(--shadow-md);
+    transition: transform var(--transition-fast);
+}
+
+.ranking-input__streak-badge {
+    background: linear-gradient(135deg, #ff8c00, #ff4500);
 }
 
 .ranking-input__score-label {
-    font-size: 0.75rem;
-    font-weight: var(--font-bold);
+    font-size: 0.65rem;
+    font-weight: var(--font-black);
     opacity: 0.9;
     letter-spacing: 1px;
+    margin-bottom: 2px;
 }
 
 .ranking-input__score-value {
-    font-size: 2.5rem;
+    font-size: 1.8rem;
     font-family: var(--font-title);
-    line-height: 1;
+    line-height: 1.2;
 }
 
 .ranking-input__form {
@@ -65,21 +83,28 @@
 }
 
 .ranking-input__label {
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     font-weight: var(--font-medium);
     color: var(--color-text-muted);
 }
 
+.ranking-input__field-wrapper {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
 .ranking-input__field {
-    font-size: 3rem;
+    font-size: 2.5rem;
     font-family: var(--font-title);
-    width: 200px;
+    width: 180px;
     text-align: center;
-    background: var(--color-background);
-    border: 3px solid var(--color-border);
+    background: rgba(var(--color-primary-rgb, 108, 92, 231), 0.05);
+    border: 2px solid var(--color-primary-soft);
     border-radius: var(--radius-md);
     color: var(--color-primary);
-    letter-spacing: 10px;
+    letter-spacing: 12px;
     padding: var(--spacing-sm);
     text-transform: uppercase;
     transition: all var(--transition-fast);
@@ -88,23 +113,54 @@
 .ranking-input__field:focus {
     outline: none;
     border-color: var(--color-primary);
-    box-shadow: 0 0 0 4px var(--color-primary-soft);
+    box-shadow: 0 0 20px rgba(var(--color-primary-rgb, 108, 92, 231), 0.2);
+    background: var(--color-surface);
 }
 
 .ranking-input__actions {
-    align-items: center;
     display: flex;
     gap: var(--spacing-md);
     margin-top: var(--spacing-md);
     width: 100%;
+    align-items: center;
 }
 
 .ranking-input__actions .button {
     flex: 1;
 }
 
+/* Mobile Optimizations */
 @media screen and (max-width: 480px) {
+    .ranking-input {
+        gap: var(--spacing-md);
+        padding: var(--spacing-lg) var(--spacing-md);
+        width: 95%;
+        border-radius: var(--radius-md);
+    }
+
+    .ranking-input__stats {
+        margin-top: var(--spacing-md);
+    }
+
+    .ranking-input__score-value {
+        font-size: 1.5rem;
+    }
+
+    .ranking-input__field {
+        font-size: 2rem;
+        width: 150px;
+        letter-spacing: 8px;
+        padding: var(--spacing-xs);
+    }
+
     .ranking-input__actions {
         flex-direction: column-reverse;
+        align-items: center;
+        gap: var(--spacing-sm);
+    }
+
+    .ranking-input__actions .button {
+        width: 100%;
+        padding: 12px;
     }
 }

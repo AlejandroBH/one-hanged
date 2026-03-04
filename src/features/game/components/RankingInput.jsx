@@ -2,7 +2,7 @@ import { useState } from 'react';
 import Button from '@/components/ui/Button';
 import './RankingInput.css';
 
-const RankingInput = ({ score, onSave, onCancel }) => {
+const RankingInput = ({ score, streak, onSave, onCancel }) => {
     const [initials, setInitials] = useState('');
 
     const handleSubmit = (e) => {
@@ -22,23 +22,36 @@ const RankingInput = ({ score, onSave, onCancel }) => {
             <header className="ranking-input__header">
                 <h1 className="ranking-input__title">¡Juego Terminado!</h1>
                 <p className="ranking-input__subtitle">Has conseguido un gran puntaje</p>
-                <div className="ranking-input__score-badge">
-                    <span className="ranking-input__score-label">PUNTUACIÓN</span>
-                    <span className="ranking-input__score-value">{score}</span>
+
+                <div className="ranking-input__stats">
+                    <div className="ranking-input__score-badge">
+                        <span className="ranking-input__score-label">PUNTUACIÓN</span>
+                        <span className="ranking-input__score-value">{score}</span>
+                    </div>
+
+                    {streak > 1 && (
+                        <div className="ranking-input__streak-badge">
+                            <span className="ranking-input__score-label">MÁX. RACHA</span>
+                            <span className="ranking-input__score-value">🔥 {streak}</span>
+                        </div>
+                    )}
                 </div>
             </header>
 
             <form className="ranking-input__form" onSubmit={handleSubmit}>
                 <label className="ranking-input__label">Ingresa tus iniciales (3 letras)</label>
-                <input
-                    type="text"
-                    className="ranking-input__field"
-                    value={initials}
-                    onChange={handleChange}
-                    placeholder="AAA"
-                    autoFocus
-                    required
-                />
+                <div className="ranking-input__field-wrapper">
+                    <input
+                        type="text"
+                        className="ranking-input__field"
+                        value={initials}
+                        onChange={handleChange}
+                        placeholder="AAA"
+                        autoFocus
+                        required
+                    />
+                    <div className="ranking-input__cursor"></div>
+                </div>
 
                 <div className="ranking-input__actions">
                     <Button

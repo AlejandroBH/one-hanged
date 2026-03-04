@@ -87,6 +87,7 @@ const App = () => {
                 {gamePhase === 'rankingInput' && (
                     <RankingInput
                         score={points}
+                        streak={streak}
                         onSave={saveRankingScore}
                         onCancel={resetGameAfterLost}
                     />

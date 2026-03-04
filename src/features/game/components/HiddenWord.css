@@ -15,11 +15,11 @@
     align-items: center;
     justify-content: center;
     width: clamp(30px, 8vw, 50px);
-    height: clamp(36px, 9vw, 56px);
+    height: clamp(32px, 8vw, 56px);
     border-bottom: 3px solid var(--color-secondary);
     color: var(--color-text);
     font-weight: var(--font-bold);
-    font-size: clamp(1rem, 3vw, 1.375rem);
+    font-size: clamp(0.9rem, 2.5vw, 1.375rem);
     transition: all var(--transition-fast);
 }
 
@@ -36,7 +36,30 @@
 
 @media screen and (max-width: 480px) {
     .hidden-word {
-        gap: 3px;
-        padding: var(--spacing-xs) var(--spacing-sm);
+        gap: 4px;
+        padding: var(--spacing-xs);
+        flex-wrap: nowrap;
+        /* Evitar saltos de línea para palabras estándar */
+        overflow-x: auto;
+        /* Permitir scroll si es absurdamente larga */
+    }
+
+    .hidden-word__letter {
+        width: clamp(20px, 8.5vw, 28px);
+        height: 32px;
+        border-bottom-width: 2px;
+        font-size: 0.85rem;
+    }
+}
+
+/* Para pantallas extremadamente pequeñas (iPhone SE/320px) */
+@media screen and (max-width: 320px) {
+    .hidden-word {
+        gap: 2px;
+    }
+
+    .hidden-word__letter {
+        width: 24px;
+        font-size: 0.75rem;
     }
 }
