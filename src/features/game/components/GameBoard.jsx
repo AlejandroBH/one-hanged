@@ -14,6 +14,8 @@ const GameBoard = ({
     gamePhase,
     lastWonWordLength,
     lastEarnedPoints,
+    lastScoreChange,
+    maxLetterStreak,
     timeLeft,
     onGuessLetter,
     onNewGame,
@@ -35,7 +37,7 @@ const GameBoard = ({
                     type={alertType}
                     secretWord={selectedWord}
                     pointsWon={lastEarnedPoints}
-                    streak={streak}
+                    maxLetterStreak={maxLetterStreak}
                     onAction={handleNewGame}
                 />
             )}

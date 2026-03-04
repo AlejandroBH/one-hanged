@@ -29,6 +29,7 @@ const App = () => {
         revealedLetters,
         lastWonWordLength,
         lastEarnedPoints,
+        maxLetterStreak,
         startGame,
         newGame,
         guessLetter,
@@ -75,6 +76,7 @@ const App = () => {
                         gamePhase={gamePhase}
                         lastWonWordLength={lastWonWordLength}
                         lastEarnedPoints={lastEarnedPoints}
+                        maxLetterStreak={maxLetterStreak}
                         timeLeft={timeLeft}
                         onGuessLetter={guessLetter}
                         onNewGame={newGame}

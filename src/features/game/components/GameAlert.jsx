@@ -3,7 +3,7 @@ import iconFail from '@/assets/images/icon-fail.svg';
 import Button from '@/components/ui/Button';
 import './GameAlert.css';
 
-const GameAlert = ({ type, secretWord, pointsWon, streak, onAction }) => {
+const GameAlert = ({ type, secretWord, pointsWon, maxLetterStreak, onAction }) => {
     if (!type) return null;
 
     const isWin = type === 'won';
@@ -27,9 +27,9 @@ const GameAlert = ({ type, secretWord, pointsWon, streak, onAction }) => {
                             : `La palabra era: "${secretWord}"`
                         }
                     </p>
-                    {isWin && streak > 1 && (
+                    {isWin && maxLetterStreak > 1 && (
                         <p className="game-alert__streak">
-                            ¡Racha de {streak} victorias! 🔥
+                            ¡Racha de {maxLetterStreak} letras! 🔥
                         </p>
                     )}
                 </div>

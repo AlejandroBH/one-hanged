@@ -59,6 +59,8 @@ const useGame = () => {
     const [timeLeft, setTimeLeft] = useState(GAME_TIME_LIMIT);
     const [lastWonWordLength, setLastWonWordLength] = useState(0);
     const [lastEarnedPoints, setLastEarnedPoints] = useState(0);
+    const [lastScoreChange, setLastScoreChange] = useState(0);
+    const [maxLetterStreak, setMaxLetterStreak] = useState(0);
     const [notification, setNotification] = useState({
         isOpen: false,
         message: '',
@@ -183,6 +185,8 @@ const useGame = () => {
         setTimeLeft(GAME_TIME_LIMIT);
         setGamePhase('playing');
         setLastEarnedPoints(0);
+        setLastScoreChange(0);
+        setMaxLetterStreak(0);
     }, [currentCategory, customWords, generateWord]);
 
     // Nuevo juego (ahora divide puntos a la mitad si se salta la palabra)
@@ -201,6 +205,8 @@ const useGame = () => {
         setTimeLeft(GAME_TIME_LIMIT);
         setGamePhase('playing');
         setLastEarnedPoints(0);
+        setLastScoreChange(0);
+        setMaxLetterStreak(0);
     }, [currentCategory, customWords, generateWord]);
 
     // Adivina una letra
@@ -225,7 +231,11 @@ const useGame = () => {
             const letterPoints = Math.round(newStreak * 2 * categoryMultiplier);
 
             setStreak(newStreak);
+            if (newStreak > maxLetterStreak) {
+                setMaxLetterStreak(newStreak);
+            }
             setPoints(prev => prev + letterPoints);
+            setLastScoreChange(letterPoints);
 
             // Verificar si ganó
             const newCorrectLettersCount = selectedWord.split('').filter(
@@ -248,6 +258,7 @@ const useGame = () => {
 
                 setPoints(totalPointsAfterWin);
                 setLastEarnedPoints(finalBonus); // Mostramos el gran bono final
+                setLastScoreChange(letterPoints + finalBonus); // Total de puntos ganados en este turno
                 setLastWonWordLength(selectedWord.length);
 
                 setGamePhase('won');
@@ -255,6 +266,7 @@ const useGame = () => {
         } else {
             // Letra incorrecta — resetear racha
             setStreak(0);
+            setLastScoreChange(0); // No se ganan puntos con letras incorrectas
             const newFails = fails + 1;
             setFails(newFails);
 
@@ -268,7 +280,7 @@ const useGame = () => {
                 }
             }
         }
-    }, [lettersUsed, gamePhase, selectedWord, points, maxPoints, fails, streak, currentCategory]);
+    }, [lettersUsed, gamePhase, selectedWord, points, maxPoints, fails, streak, currentCategory, maxLetterStreak]);
 
     // Guarda el puntaje en el ranking
     const saveRankingScore = useCallback((initials) => {
@@ -388,6 +400,8 @@ const useGame = () => {
         correctCount,
         lastWonWordLength,
         lastEarnedPoints,
+        lastScoreChange,
+        maxLetterStreak,
         notification,
 
         // Acciones
