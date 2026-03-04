@@ -1,9 +1,22 @@
+import { useEffect } from 'react';
 import iconWin from '@/assets/images/icon-win.svg';
 import iconFail from '@/assets/images/icon-fail.svg';
 import Button from '@/components/ui/Button';
 import './GameAlert.css';
 
 const GameAlert = ({ type, secretWord, pointsWon, maxLetterStreak, onAction }) => {
+    useEffect(() => {
+        if (!type) return;
+        const handleKey = (e) => {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                onAction();
+            }
+        };
+        window.addEventListener('keydown', handleKey);
+        return () => window.removeEventListener('keydown', handleKey);
+    }, [type, onAction]);
+
     if (!type) return null;
 
     const isWin = type === 'won';
