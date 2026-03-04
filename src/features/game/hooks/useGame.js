@@ -30,14 +30,8 @@ const useGame = () => {
     const [selectedWord, setSelectedWord] = useState('');
     const [lettersUsed, setLettersUsed] = useState([]);
     const [fails, setFails] = useState(0);
-    const [points, setPoints] = useState(() => {
-        const stored = localStorage.getItem(STORAGE_KEYS.POINTS);
-        return stored ? parseInt(stored, 10) : 0;
-    });
-    const [streak, setStreak] = useState(() => {
-        const stored = localStorage.getItem(STORAGE_KEYS.STREAK);
-        return stored ? parseInt(stored, 10) : 0;
-    });
+    const [points, setPoints] = useState(0);
+    const [streak, setStreak] = useState(0);
     const [currentCategory, setCurrentCategory] = useState(() => {
         const stored = localStorage.getItem(STORAGE_KEYS.CATEGORY);
         const numeric = stored !== null ? Number(stored) : null;
@@ -118,16 +112,6 @@ const useGame = () => {
     useEffect(() => {
         localStorage.setItem(STORAGE_KEYS.RANKING, JSON.stringify(ranking));
     }, [ranking]);
-
-    // Persistencia de puntos actuales
-    useEffect(() => {
-        localStorage.setItem(STORAGE_KEYS.POINTS, points.toString());
-    }, [points]);
-
-    // Persistencia de racha
-    useEffect(() => {
-        localStorage.setItem(STORAGE_KEYS.STREAK, streak.toString());
-    }, [streak]);
 
     // Persistencia de palabras personalizadas
     useEffect(() => {
