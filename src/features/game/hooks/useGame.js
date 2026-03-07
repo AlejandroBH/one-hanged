@@ -1,5 +1,6 @@
 import { useState, useCallback, useEffect, useMemo } from 'react';
 import { CATEGORIES, WORD_LISTS } from '../data/wordLists';
+import { secureStorage } from '../../../utils/secureStorage';
 
 const MAX_FAILS = 7;
 const GAME_TIME_LIMIT = 10;
@@ -33,16 +34,16 @@ const useGame = () => {
     const [points, setPoints] = useState(0);
     const [streak, setStreak] = useState(0);
     const [currentCategory, setCurrentCategory] = useState(() => {
-        const stored = localStorage.getItem(STORAGE_KEYS.CATEGORY);
+        const stored = secureStorage.getItem(STORAGE_KEYS.CATEGORY);
         const numeric = stored !== null ? Number(stored) : null;
         return Object.values(CATEGORIES).includes(numeric) ? numeric : CATEGORIES.DEFAULT;
     });
     const [customWords, setCustomWords] = useState(() => {
-        const stored = localStorage.getItem(STORAGE_KEYS.CUSTOM_WORDS);
+        const stored = secureStorage.getItem(STORAGE_KEYS.CUSTOM_WORDS);
         return stored ? JSON.parse(stored) : [];
     });
     const [ranking, setRanking] = useState(() => {
-        const stored = localStorage.getItem(STORAGE_KEYS.RANKING);
+        const stored = secureStorage.getItem(STORAGE_KEYS.RANKING);
         return stored ? JSON.parse(stored) : [];
     });
 
@@ -110,17 +111,17 @@ const useGame = () => {
 
     // Persistencia de ranking
     useEffect(() => {
-        localStorage.setItem(STORAGE_KEYS.RANKING, JSON.stringify(ranking));
+        secureStorage.setItem(STORAGE_KEYS.RANKING, JSON.stringify(ranking));
     }, [ranking]);
 
     // Persistencia de palabras personalizadas
     useEffect(() => {
-        localStorage.setItem(STORAGE_KEYS.CUSTOM_WORDS, JSON.stringify(customWords));
+        secureStorage.setItem(STORAGE_KEYS.CUSTOM_WORDS, JSON.stringify(customWords));
     }, [customWords]);
 
     // Persistencia de categoría actual
     useEffect(() => {
-        localStorage.setItem(STORAGE_KEYS.CATEGORY, currentCategory);
+        secureStorage.setItem(STORAGE_KEYS.CATEGORY, currentCategory);
     }, [currentCategory]);
 
     // Obtiene la lista de palabras activa

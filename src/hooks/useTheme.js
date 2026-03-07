@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback } from 'react';
+import { secureStorage } from '../utils/secureStorage';
 
 const STORAGE_KEY = 'hanged-game-theme';
 
@@ -8,7 +9,7 @@ const STORAGE_KEY = 'hanged-game-theme';
  */
 const useTheme = () => {
     const getInitialTheme = () => {
-        const stored = localStorage.getItem(STORAGE_KEY);
+        const stored = secureStorage.getItem(STORAGE_KEY);
         if (stored === 'dark' || stored === 'light') return stored;
 
         // Fallback: preferencia del sistema operativo
@@ -23,7 +24,7 @@ const useTheme = () => {
     // Aplicar tema al <html> y persistir
     useEffect(() => {
         document.documentElement.setAttribute('data-theme', theme);
-        localStorage.setItem(STORAGE_KEY, theme);
+        secureStorage.setItem(STORAGE_KEY, theme);
     }, [theme]);
 
     const toggleTheme = useCallback(() => {
