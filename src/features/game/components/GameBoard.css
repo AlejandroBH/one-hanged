@@ -97,3 +97,23 @@
     gap: var(--spacing-xs);
     flex-wrap: wrap;
 }
+
+.game-board__button--pulse {
+    animation: skipButtonPulse 1.5s infinite ease-in-out;
+    box-shadow: 0 0 15px rgba(79, 70, 229, 0.4);
+}
+
+@keyframes skipButtonPulse {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(79, 70, 229, 0.6);
+    }
+    50% {
+        transform: scale(1.05);
+        box-shadow: 0 0 0 12px rgba(79, 70, 229, 0);
+    }
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(79, 70, 229, 0);
+    }
+}

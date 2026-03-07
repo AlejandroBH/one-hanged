@@ -69,7 +69,8 @@ const GameBoard = ({
                     variant="primary"
                     size="md"
                     onClick={handleNewGame}
-                    disabled={points === 0 && !isGameOver}
+                    disabled={!isGameOver && (points <= 0 || timeLeft > 3)}
+                    className={!isGameOver && points > 0 && timeLeft <= 3 ? 'game-board__button--pulse' : ''}
                 >
                     Nueva Palabra
                 </Button>
